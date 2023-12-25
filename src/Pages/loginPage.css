@@ -1,0 +1,116 @@
+/* body {
+    height: 100vh;
+    background-color: rgb(255, 151, 219);
+} */
+
+.login-page {
+    background-image: url('images/loginbg.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.login-bg {
+    background-color: rgba(73, 67, 67, 0.585);
+    height: 100vh;
+    width: 100%;
+    padding: 7% 28%;
+
+}
+
+.login-page-container {
+    background-color: rgba(242, 242, 242, 0.742);
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    position: relative;
+}
+
+.login-image-div {
+    position: absolute;
+    background-color: rgba(242, 242, 242, 0.947);
+    left: 42.5%;
+    top: -12.5%;
+    width: 20%;
+    height: 25%;
+    border-radius: 50%;
+}
+
+.login-icon {
+    width: 100%;
+    height: 90%;
+}
+
+.login-details {
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    top: 20%;
+    left: 15%;
+}
+
+.login-p1 {
+    font-size: 2.5vw;
+    font-weight: bold;
+}
+
+.username,
+.password {
+    display: flex;
+    width: 100%;
+    height: 12%;
+    background-color: white;
+    border-radius: 50px;
+    padding: 0% 1%;
+    margin-top: 5%;
+}
+
+.username-icon {
+    width: 5%;
+    height: 70%;
+    padding-top: 2%;
+}
+
+.password-icon {
+    width: 5%;
+    height: 70%;
+    padding-top: 1.8%;
+    padding-left: 1%;
+}
+
+.username-input,
+.password-input {
+    width: 90%;
+    height: 100%;
+    font-size: 1vw;
+    border: none;
+    padding-left: 1%;
+    outline: none;
+}
+
+.login-button {
+    width: 50%;
+    height: 10%;
+    margin-top: 10%;
+    margin-left: 25%;
+    font-size: 1.5vw;
+    font-weight: bold;
+    border-radius: 50px;
+    background-color: rgb(177, 175, 175);
+    box-shadow: 2px 3px #888888;
+    border: none;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: rgb(197, 197, 197);
+    box-shadow: 2px 3px #a9a9a9;
+}
+
+.login-button:active {
+    background-color: rgb(154, 154, 154);
+    box-shadow: 2px 3px #858585;
+}
+
+.login-p2 {
+    margin-top: 2%;
+}
