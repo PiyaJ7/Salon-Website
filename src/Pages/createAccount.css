@@ -95,31 +95,21 @@ h1 {
     font-size: 1.4vw;
     font-weight: bold;
     border-radius: 50px;
-    background-color: rgb(137, 137, 137);
-    box-shadow: 2px 3px #393838c9;
+    background-color: rgb(124, 123, 123);
+    box-shadow: 2px 3px #2d2c2cc9;
     color: black;
     border: none;
     cursor: pointer;
 }
 
 .create-account-button:hover {
-    background-color: rgb(160, 160, 160);
-    box-shadow: 2px 3px #636363c9;
+    background-color: rgb(140, 140, 140);
+    box-shadow: 2px 3px #595959c9;
 }
 
 .create-account-button:active {
-    background-color: rgb(122, 122, 122);
-    box-shadow: 2px 3px #404040c9;
-}
-
-.create-account-button:hover {
-    background-color: rgb(197, 197, 197);
-    box-shadow: 2px 3px #a9a9a9;
-}
-
-.create-account-button:active {
-    background-color: rgb(154, 154, 154);
-    box-shadow: 2px 3px #858585;
+    background-color: rgb(92, 92, 92);
+    box-shadow: 2px 3px #2f2f2fc9;
 }
 
 .create-account-p1 {

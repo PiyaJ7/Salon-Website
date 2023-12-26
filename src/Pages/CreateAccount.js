@@ -1,6 +1,8 @@
 import React from 'react'
 import './createAccount.css';
+import LoginPage from './LoginPage';
 import close from './images/close.png';
+import { Link } from 'react-router-dom';
 
 export default function CreateAccount() {
   return (
@@ -31,8 +33,8 @@ export default function CreateAccount() {
                   </div>
                   
                   <label for="terms-policy" id='terms-policy-label'><input type="checkbox" id='terms-policy'/> Agree to our terms of service and privacy policy.</label>
-                  <button className='create-account-button'>Create Account</button>
-                  <p className='create-account-p1'>Already have an account? <strong>Login</strong></p>
+                  <button type='submit' className='create-account-button'>Create Account</button>
+                  <p className='create-account-p1'>Already have an account? <strong><Link to="/">Login</Link></strong></p>
                 </form>                
             </div>
         </div>
