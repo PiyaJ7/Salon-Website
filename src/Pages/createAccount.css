@@ -6,7 +6,7 @@ body {
     
 }
 
-.createAccount-bg {
+.createAccount-page {
     background-color: rgba(220, 216, 216, 0.247);
     height: 100vh;
     width: 100%;
@@ -100,6 +100,16 @@ h1 {
     color: black;
     border: none;
     cursor: pointer;
+}
+
+.create-account-button:hover {
+    background-color: rgb(160, 160, 160);
+    box-shadow: 2px 3px #636363c9;
+}
+
+.create-account-button:active {
+    background-color: rgb(122, 122, 122);
+    box-shadow: 2px 3px #404040c9;
 }
 
 .create-account-button:hover {

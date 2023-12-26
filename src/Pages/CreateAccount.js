@@ -4,7 +4,7 @@ import close from './images/close.png';
 
 export default function CreateAccount() {
   return (
-        <div className="createAccount-bg">
+        <div className="createAccount-page">
             <div className="createAccount-container">                
                 <form action="">
                   <button className='close-button'><img className='close-icon' src={close}/></button>
