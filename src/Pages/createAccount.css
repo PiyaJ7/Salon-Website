@@ -1,23 +1,30 @@
-.createAccount-page {
+body {
     background-image: url('images/loginbg.webp');
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100vh;
+    
 }
 
 .createAccount-bg {
-    background-color: rgba(105, 101, 101, 0.748);
+    background-color: rgba(220, 216, 216, 0.247);
     height: 100vh;
     width: 100%;
-    padding: 3% 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 
 .createAccount-container {
     position: relative;
-    background-color: white;
-    width: 100%;
-    height: 100%;
-    padding: 2%;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    width: 40%;
+    height: auto;
+    padding: 2% 5%;
     border-radius: 50px;
 }
 
@@ -43,38 +50,36 @@ h1 {
     margin: 4% 0% 5% 0%;
 }
 
-label {
-    font-size: 1.3vw;
-    margin-left: 11%;
+.input-box {
+    position: relative;
+    height: 50px;
+    border-bottom: 2px solid rgba(54, 53, 53, 0.733);
+    margin: 30px 0;
 }
 
-#email,
-#username,
-#password,
-#confirm-password {
-    width: 80%;
-    height: 4.5vh;
-    margin: 1% 0% 2% 10%;
-    border-radius: 10px;
-    padding-left: 2%;
-    border: 1px solid rgba(98, 98, 98, 0.888);
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1.15vw;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -5px;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
     outline: none;
-}
-
-#password::placeholder,
-#confirm-password::placeholder {
-    color: #adadad;
-    font-size: 1.1vw;
-    
-}
-
-input[type="text"]
-{
-    font-size: 1.1vw;
-}
-
-#terms-policy {
-    margin-left: 10%;
+    padding: 0% 5px;
+    font-size: 1vw;
 }
 
 #terms-policy-label {
@@ -84,14 +89,15 @@ input[type="text"]
 
 .create-account-button {
     width: 50%;
-    height: 10%;
-    margin-top: 3%;
+    height: 35px;
+    margin-top: 8%;
     margin-left: 25%;
     font-size: 1.4vw;
     font-weight: bold;
     border-radius: 50px;
-    background-color: rgb(177, 175, 175);
-    box-shadow: 2px 3px #888888;
+    background-color: rgb(137, 137, 137);
+    box-shadow: 2px 3px #393838c9;
+    color: black;
     border: none;
     cursor: pointer;
 }
@@ -107,6 +113,6 @@ input[type="text"]
 }
 
 .create-account-p1 {
-    margin-left: 10%;
+   text-align: center;
     margin-top: 2%;
 }
