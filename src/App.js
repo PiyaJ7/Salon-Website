@@ -6,15 +6,19 @@ import { BrowserRouter, Route, Routes, } from "react-router-dom";
 import PackageManagement from './Pages/PackageManagement';
 import CreatePackages from './Pages/CreatePackages';
 import ServiceManagement from './Pages/ServiceManagement';
+import Home from './Pages/Home';
 
 function App() {
   return (
     <div className="App">
-      <Header/>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<ServiceManagement/>}></Route>
+          <Route path="/" element={<Home/>}></Route>
+          <Route path="/LoginPage" element={<LoginPage/>}></Route>
           <Route path="/CreateAccount" element={<CreateAccount/>}></Route>
+          <Route path="/PackageManagement" element={<PackageManagement/>}></Route>
+          <Route path="/CreatePackages" element={<CreatePackages/>}></Route>
+          <Route path="/ServiceManagement" element={<ServiceManagement/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
