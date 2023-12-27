@@ -50,6 +50,10 @@
     outline: none;
 }
 
+.search-icon {
+    cursor: pointer;
+}
+
 .header-left {
     width: 40%;
     display: flex;

@@ -1,0 +1,78 @@
+.packageManagememt {
+    background-color: rgba(144, 144, 144, 0.115);
+    backdrop-filter: blur(10px);
+    position: absolute;
+    top: 80px;
+    bottom: 0;
+    width: 100%;
+}
+
+.sm-header {
+    display: flex;
+    height: 15%;
+}
+
+.sm-header-left {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.sm-header-left h1 {
+    margin-left: 10%;
+}
+
+.menu-icon {
+    position: absolute;
+    left: 1%;
+    top: 4.5%;
+    cursor: pointer;
+}
+
+.sm-header-right {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.create-pack-button,
+.download-pack-button {
+    width: 35%;
+    height: 40%;
+    font-size: 1.1vw;
+    font-weight: bold;
+    border-radius: 50px;
+    background-color: rgb(175, 175, 175);
+    box-shadow: 2px 3px #393838c9;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+.create-pack-button:hover,
+.download-pack-button:hover {
+    background-color: rgb(160, 160, 160);
+    box-shadow: 2px 3px #636363c9;
+}
+
+.create-pack-button:active,
+.download-pack-button:active {
+    background-color: rgb(122, 122, 122);
+    box-shadow: 2px 3px #404040c9;
+}
+
+.sm-body {
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(236, 236, 236, 0.5);
+    background-color: rgba(237, 237, 237, 0.64);
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+    right: 2%;
+    top: 17%;
+
+}

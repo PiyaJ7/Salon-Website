@@ -20,7 +20,7 @@ export default function Header() {
                 <button className='logout-button'>Logout</button>
             </div>
             <div className="header-profile">
-                <FaCircleUser className='profile-icon'/>
+                <FaCircleUser size={40} className='profile-icon'/>
             </div>
         </div>
     </div>
