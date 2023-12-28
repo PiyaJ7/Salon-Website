@@ -7,11 +7,7 @@ import PackageManagement from './Pages/PackageManagement';
 import CreatePackages from './Pages/CreatePackages';
 import ServiceManagement from './Pages/ServiceManagement';
 import Home from './Pages/Home';
-<<<<<<< Updated upstream
-=======
-import AttendanceDetals from './Pages/AttendanceDetals';
 import ScheduleManagement from './Pages/ScheduleManagement';
->>>>>>> Stashed changes
 
 function App() {
   return (
@@ -24,11 +20,8 @@ function App() {
           <Route path="/PackageManagement" element={<PackageManagement/>}></Route>
           <Route path="/CreatePackages" element={<CreatePackages/>}></Route>
           <Route path="/ServiceManagement" element={<ServiceManagement/>}></Route>
-<<<<<<< Updated upstream
-=======
           <Route path="/AttendanceDetals" element={<AttendanceDetals/>}></Route>
           <Route path="/ScheduleManagement" element={<ScheduleManagement/>}></Route>
->>>>>>> Stashed changes
         </Routes>
       </BrowserRouter>
     </div>
