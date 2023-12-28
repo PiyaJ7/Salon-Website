@@ -55,7 +55,7 @@ export default function Home() {
                     Attendence details
                 </div>
             </Link>
-            <Link to="/LoginPage">
+            <Link to="/ScheduleManagement">
                 <div className="blocks">
                     Schedule Management
                 </div>
