@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import React from 'react'
+//import React from 'react'
 import './createAccount.css';
 import LoginPage from './LoginPage';
 import close from './images/close.png';
