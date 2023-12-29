@@ -15,7 +15,11 @@ app.use(cors());
 // Import the routes
 const userRoutes = require('./routes/userRoutes');
 //const appointmentRoutes = require('./routes/appointmentRoutes');
+
 //const packageRoutes = require('./routes/packageRoutes');
+=======
+const packageRoutes = require('./routes/packageRoutes');
+
 //const serviceRoutes = require('./routes/serviceRoutes');
 //const attendanceRoutes = require('./routes/attendanceRoutes');
 //const empRoutes = require('./routes/employeeRoutes');

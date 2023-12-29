@@ -50,9 +50,9 @@ export default function Home() {
                     Service Management
                 </div>
             </Link>
-            <Link to="/LoginPage">
+            <Link to="/AttendanceDetals">
                 <div className="blocks">
-                    Attendence details
+                    Attendance details
                 </div>
             </Link>
             <Link to="/LoginPage">
