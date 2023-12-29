@@ -7,110 +7,103 @@ import close from './images/close.png';
 import { Link } from 'react-router-dom';
 
 export default function CreateAccount() {
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleSubmit = async (e) => {
+
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState(false)
+  const [message, setMessage] = useState('')
+  const goThere = useNavigate();
+
+  async function signup(e) {
     e.preventDefault();
 
-    if (password !== confirmPassword) {
-      console.error('Passwords do not match');
-      return;
-    }
-
-    const userData = {
+    const user = {
+      name,
       email,
-      username,
-      password,
-    };
+      password
+
+
+    }
 
     try {
-      const response = await fetch('/api/users/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      });
+      const result = (await axios.post("/api/users/register", user)).data;
+      setMessage(true);
 
-      const data = await response.json();
+      setName("");
+      setEmail("");
+      setPassword("");
 
-      if (response.ok) {
-        console.log('Registration successful:', data);
-      } else {
-        console.error('Registration failed:', data.message);
-      }
+      window.location.reload();
+
+
     } catch (error) {
-      console.error('Error:', error);
+      console.log(error);
+      setError(true)
     }
-  };
+
+
+
+  }
+
 
   return (
-    <div className="createAccount-page">
-      <div className="createAccount-container">
-        <form onSubmit={handleSubmit}>
-          <button className='close-button'><img className='close-icon' src={close} alt="Close" /></button>
-          <h1>Create your Account</h1>
+    <div className="back-body">
 
-          <div className="input-box">
-            <input
-              type="text"
-              id="email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <label htmlFor="email">Enter your email address</label>
+
+      <div className="registration-form">
+        <form action='POST'>
+          <div className="subhead">
+            <h2>Create an Account</h2></div>
+          <div className="form-icon">
+            <span><i className="icon icon-user"></i></span>
+          </div>
+          <div className="form-group">
+            <input type="name" className="form-control item" onChange={(e) => { setName(e.target.value) }} placeholder='User Name' id='' />
+            {error && name.length <= 0 ?
+              <label className="error">User Name cannot be empty !!</label> : ""}
           </div>
 
-          <div className="input-box">
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
-            <label htmlFor="username">Enter a username</label>
+
+          <div className="form-group">
+            <input type="email" className="form-control item" onChange={(e) => { setEmail(e.target.value) }} placeholder='Email' id='' />
+            {error && email.length <= 0 ?
+              <label className="error">Email cannot be empty !!</label> : ""}
           </div>
 
-          <div className="input-box">
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <label htmlFor="password">Enter a Password</label>
+
+          <div className="form-group">
+            <input type="password" className="form-control item" onChange={(e) => { setPassword(e.target.value) }} placeholder='Password' id='' />
+            {error && password.length <= 0 ?
+              <label className="error">Password cannot be empty !!</label> : ""}
+            <p className="error">{message}</p>
           </div>
 
-          <div className="input-box">
-            <input
-              type="password"
-              id="confirm-password"
-              name="confirm-password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-            />
-            <label htmlFor="confirm-password">Confirm Password</label>
+
+
+          <div className="form-group">
+            <center>
+              <button type="submit" onClick={signup} className="btn btn-block create-account">Create Account</button>
+            </center>
           </div>
 
-          <label htmlFor="terms-policy" id='terms-policy-label'>
-            <input type="checkbox" id='terms-policy' required />
-            Agree to our terms of service and privacy policy.
-          </label>
+          <div className="text">
+            <h5>or</h5>
+            <p>Already have an account? </p>
 
-          <button type='submit' className='create-account-button'>Create Account</button>
-          <p className='create-account-p1'>Already have an account? <strong><Link to="/">Login</Link></strong></p>
+            <Link to="/" style={{ textDecoration: 'none' }}><h5>Login</h5></Link>
+
+          </div>
+
+
+
         </form>
+
       </div>
+
+
+
     </div>
-  );
+  )
 }
