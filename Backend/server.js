@@ -17,7 +17,7 @@ const userRoutes = require('./routes/userRoutes');
 //const appointmentRoutes = require('./routes/appointmentRoutes');
 
 //const packageRoutes = require('./routes/packageRoutes');
-=======
+
 const packageRoutes = require('./routes/packageRoutes');
 
 //const serviceRoutes = require('./routes/serviceRoutes');
@@ -70,4 +70,4 @@ portfinder.getPortPromise({ startPort: 3002 })
     })
     .catch((err) => console.error('Error finding available port:', err));
 
-serviceRoutes.json
+//serviceRoutes.json
