@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './loginPage.css';
 import { FaUser, FaLock } from "react-icons/fa";
-import React from 'react'
+//import React from 'react'
 import './loginPage.css';
 import close from './images/close.png';
 import CreateAccount from './CreateAccount';

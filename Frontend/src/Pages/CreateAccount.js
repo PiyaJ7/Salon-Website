@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 //import React from 'react'
 import './createAccount.css';
 import LoginPage from './LoginPage';
+import axios from 'axios';
 import close from './images/close.png';
 import { Link } from 'react-router-dom';
 
