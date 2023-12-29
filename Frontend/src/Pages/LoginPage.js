@@ -8,7 +8,7 @@ import CreateAccount from './CreateAccount';
 import { Link } from 'react-router-dom';
 
 export default function LoginPage() {
-<<<<<<< HEAD
+
 
     const history = useNavigate();
 
@@ -160,7 +160,7 @@ export default function LoginPage() {
             </div>
         </div>
     )
-=======
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -228,5 +228,5 @@ export default function LoginPage() {
             </div>
         </div>
     );
->>>>>>> 560f2e0af58d99c22d4cf8041ba5936b9a53feee
+
 }
