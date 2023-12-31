@@ -14,7 +14,7 @@ app.use(cors());
 
 // Import the routes
 const userRoutes = require('./routes/userRoutes');
-//const appointmentRoutes = require('./routes/appointmentRoutes');
+const appointmentRoutes = require('./routes/appointmentRoutes');
 
 //const packageRoutes = require('./routes/packageRoutes');
 
@@ -22,7 +22,7 @@ const packageRoutes = require('./routes/packageRoutes');
 
 //const serviceRoutes = require('./routes/serviceRoutes');
 //const attendanceRoutes = require('./routes/attendanceRoutes');
-//const empRoutes = require('./routes/employeeRoutes');
+const empRoutes = require('./routes/employeeRoutes');
 //const inventoryRoutes = require('./routes/inventoryRoutes');
 //const financeRoutes = require('./routes/financeRoutes');
 //const inveMsgRoutes = require('./routes/inveMsgRoutes');
@@ -34,11 +34,11 @@ const packageRoutes = require('./routes/packageRoutes');
 
 // Routes
 app.use('/api/users', userRoutes);
-//app.use('/api/Book', appointmentRoutes);
+app.use('/api/Book', appointmentRoutes);
 app.use('/api/packages', packageRoutes);
 //app.use("/api/services", serviceRoutes);
 //app.use("/api/attendances", attendanceRoutes);
-//app.use("/api/employees", empRoutes);
+app.use("/api/employees", empRoutes);
 //app.use("/api/Product", inventoryRoutes);
 //app.use("/api/Fin", financeRoutes);
 //app.use("/api/IMsg", inveMsgRoutes);
