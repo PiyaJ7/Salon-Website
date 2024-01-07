@@ -58,7 +58,7 @@ export default function CreateAccount() {
     <div className="createAccount-page">
       <div className="createAccount-container">
         <form onSubmit={handleSubmit}>
-          <button className='close-button'><img className='close-icon' src={close} alt="Close" /></button>
+        <Link to="/LoginPage"><button className='close-button'><img className='close-icon' src={close} alt="Close" /></button></Link>
           <h1>Create your Account</h1>
 
           <div className="input-box">
@@ -115,7 +115,7 @@ export default function CreateAccount() {
           </label>
 
           <button type='submit' className='create-account-button'>Create Account</button>
-          <p className='create-account-p1'>Already have an account? <strong><Link to="/">Login</Link></strong></p>
+          <p className='create-account-p1'>Already have an account? <strong><Link to="/LoginPage">Login</Link></strong></p>
         </form>
       </div>
     </div>
