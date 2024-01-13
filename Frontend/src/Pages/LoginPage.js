@@ -10,45 +10,31 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     const navigate = useNavigate();
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3000/LoginPage', {username, password})
-        .then(result => {console.log(result)
-        navigate('http://localhost:3000/')
-        })
-
         const loginData = {
-            username,
-            password,
+        username,
+        password,
         };
-
         try {
-            const response = await fetch('/api/users/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(loginData),
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                console.log('Login successful:', data);
-                // Navigate to dashboard or set authentication state
-            } else {
-                console.error('Login failed:', data.message);
-                // Display error message to the user
-            }
+        const response = await axios.post(
+            "http://localhost:8000/api/users/login",
+            loginData
+        );
+        console.log(response)
+        if (response.status === 200) {
+            console.log("Login successful:", response.data);
+            navigate("/Dashboard");
+        } else {
+            console.error("Login failed:", response.data.message);
+        }
         } catch (error) {
-            console.error('Error:', error);
+        console.error("Error:", error.message);
         }
     };
-
     return (
         <div className="login-page">
             <div className="loginpage-container">

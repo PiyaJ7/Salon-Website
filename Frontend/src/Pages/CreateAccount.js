@@ -1,31 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 //import React from 'react'
-import './createAccount.css';
-import LoginPage from './LoginPage';
-import axios from 'axios';
-import close from './images/close.png';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import "./createAccount.css";
+import LoginPage from "./LoginPage";
+import axios from "axios";
+import close from "./images/close.png";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateAccount() {
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();    
-    axios.post('http://localhost:3000/CreateAccount', {email, username, password, confirmPassword})
-    .then(result => {console.log(result)
-    navigate('http://localhost:3000/LoginPage')
-    })
-    .catch(err => console.log(err))
-
-    if (password !== confirmPassword) {
-      console.error('Passwords do not match');
-      return;
-    }
+    e.preventDefault();
 
     const userData = {
       email,
@@ -34,23 +24,17 @@ export default function CreateAccount() {
     };
 
     try {
-      const response = await fetch('/api/users/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        console.log('Registration successful:', data);
-      } else {
-        console.error('Registration failed:', data.message);
+      const response = await axios.post(
+        "http://localhost:8000/api/users/register",
+        userData
+      );
+      console.log(response);
+      if (response.status === 201) {
+        console.log("Login successful:", response.data);
+        navigate("/LoginPage");
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error.message);
     }
   };
 
@@ -58,7 +42,11 @@ export default function CreateAccount() {
     <div className="createAccount-page">
       <div className="createAccount-container">
         <form onSubmit={handleSubmit}>
-        <Link to="/LoginPage"><button className='close-button'><img className='close-icon' src={close} alt="Close" /></button></Link>
+          <Link to="/LoginPage">
+            <button className="close-button">
+              <img className="close-icon" src={close} alt="Close" />
+            </button>
+          </Link>
           <h1>Create your Account</h1>
 
           <div className="input-box">
@@ -109,13 +97,20 @@ export default function CreateAccount() {
             <label htmlFor="confirm-password">Confirm Password</label>
           </div>
 
-          <label htmlFor="terms-policy" id='terms-policy-label'>
-            <input type="checkbox" id='terms-policy' required />
+          <label htmlFor="terms-policy" id="terms-policy-label">
+            <input type="checkbox" id="terms-policy" required />
             Agree to our terms of service and privacy policy.
           </label>
 
-          <button type='submit' className='create-account-button'>Create Account</button>
-          <p className='create-account-p1'>Already have an account? <strong><Link to="/LoginPage">Login</Link></strong></p>
+          <button type="submit" className="create-account-button">
+            Create Account
+          </button>
+          <p className="create-account-p1">
+            Already have an account?{" "}
+            <strong>
+              <Link to="/LoginPage">Login</Link>
+            </strong>
+          </p>
         </form>
       </div>
     </div>
