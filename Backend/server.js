@@ -26,7 +26,7 @@ const packageRoutes = require("./routes/packageRoutes");
 const empRoutes = require("./routes/employeeRoutes");
 //const inventoryRoutes = require('./routes/inventoryRoutes');
 //const financeRoutes = require('./routes/financeRoutes');
-//const inveMsgRoutes = require('./routes/inveMsgRoutes');
+const inveMsgRoutes = require('./routes/inveMsgRoutes');
 //const orderRoutes = require('./routes/orderRoutes');
 //const salRoutes = require('./routes/salaryRoutes');
 //const scheduleRoutes = require('./routes/scheduleRoutes');
@@ -42,7 +42,7 @@ app.use("/api/packages", packageRoutes);
 app.use("/api/employees", empRoutes);
 //app.use("/api/Product", inventoryRoutes);
 //app.use("/api/Fin", financeRoutes);
-//app.use("/api/IMsg", inveMsgRoutes);
+app.use("/api/IMsg", inveMsgRoutes);
 //app.use("/api/Ord", orderRoutes)
 //app.use("/api/sal", salRoutes);
 //app.use("/api/schedu", scheduleRoutes);
