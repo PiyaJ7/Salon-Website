@@ -9,6 +9,7 @@ import ServiceManagement from "./Pages/ServiceManagement";
 import Home from "./Pages/Home";
 import AttendanceDetals from "./Pages/AttendanceDetals";
 import Dashboard from "./Pages/Dashboard";
+import ScheduleManagement from "./Pages/ScheduleManagement";
 
 function App() {
   return (
@@ -31,6 +32,10 @@ function App() {
           <Route
             path="/AttendanceDetals"
             element={<AttendanceDetals />}
+          ></Route>
+          <Route
+            path="/ScheduleManagement"
+            element={<ScheduleManagement />}
           ></Route>
         </Routes>
       </BrowserRouter>

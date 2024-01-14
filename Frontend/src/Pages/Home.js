@@ -39,7 +39,7 @@ export default function Home() {
             <Link to="/AttendanceDetals">
               <div className="blocks">Attendance details</div>
             </Link>
-            <Link to="/LoginPage">
+            <Link to="/ScheduleManagement">
               <div className="blocks">Schedule Management</div>
             </Link>
             <Link to="/LoginPage">
