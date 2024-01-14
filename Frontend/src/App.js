@@ -1,7 +1,6 @@
 import "./App.css";
 import CreateAccount from "./Pages/CreateAccount";
 import LoginPage from "./Pages/LoginPage";
-import Header from "./Components/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PackageManagement from "./Pages/PackageManagement";
 import CreatePackages from "./Pages/CreatePackages";
@@ -10,6 +9,7 @@ import Home from "./Pages/Home";
 import AttendanceDetals from "./Pages/AttendanceDetals";
 import Dashboard from "./Pages/Dashboard";
 import ScheduleManagement from "./Pages/ScheduleManagement";
+import InventoryMnagement from "./Pages/InventoryMnagement";
 
 function App() {
   return (
@@ -36,6 +36,10 @@ function App() {
           <Route
             path="/ScheduleManagement"
             element={<ScheduleManagement />}
+          ></Route>
+          <Route
+            path="/InventoryMnagement"
+            element={<InventoryMnagement />}
           ></Route>
         </Routes>
       </BrowserRouter>

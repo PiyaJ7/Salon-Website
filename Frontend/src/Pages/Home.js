@@ -45,7 +45,7 @@ export default function Home() {
             <Link to="/LoginPage">
               <div className="blocks">Create Schedule</div>
             </Link>
-            <Link to="/LoginPage">
+            <Link to="/InventoryMnagement">
               <div className="blocks">Inventory Mangement</div>
             </Link>
             <Link to="/LoginPage">
