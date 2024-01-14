@@ -82,6 +82,12 @@ h1 {
     font-size: 1vw;
 }
 
+.error-message {
+    font-size: 0.7vw;
+    color: rgb(115, 7, 7);
+    margin-top: 1%;
+}
+
 #terms-policy-label {
     margin-left: 1%;
     font-size: 1vw;

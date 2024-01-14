@@ -62,6 +62,11 @@ body {
     background: none;
 }
 
+.login-error-message {
+    color: rgb(115, 7, 7);
+    font-size: 0.8vw;
+}
+
 .login-button {
     width: 50%;
     height: 35px;

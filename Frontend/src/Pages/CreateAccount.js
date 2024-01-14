@@ -12,10 +12,32 @@ export default function CreateAccount() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState();
+  const [termsChecked, setTermsChecked] = useState(false);
+  const [emailError, setEmailError] = useState("");
   const navigate = useNavigate();
+
+  const validateEmail = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setEmailError("Enter a valid email address");
+      return false;
+    }
+    setEmailError("");
+    return true;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateEmail()) {
+      return;
+    }
+
+    if (confirmPassword != password) {
+      setError("Password and confirm password should me the same");
+      return;
+    }
 
     const userData = {
       email,
@@ -56,9 +78,11 @@ export default function CreateAccount() {
               name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              onBlur={validateEmail}
               required
             />
             <label htmlFor="email">Enter your email address</label>
+            {emailError && <span className="error-message">{emailError}</span>}
           </div>
 
           <div className="input-box">
@@ -91,10 +115,14 @@ export default function CreateAccount() {
               id="confirm-password"
               name="confirm-password"
               value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              onChange={(e) => {
+                setConfirmPassword(e.target.value);
+                setError("");
+              }}
               required
             />
             <label htmlFor="confirm-password">Confirm Password</label>
+            <p className="error-message">{error}</p>
           </div>
 
           <label htmlFor="terms-policy" id="terms-policy-label">
