@@ -57,7 +57,7 @@ export default function Home() {
             <Link to="/EmployeeManagement">
               <div className="blocks">Employee Management</div>
             </Link>
-            <Link to="/LoginPage">
+            <Link to="/AddEmployee">
               <div className="blocks">Add employee</div>
             </Link>
             <Link to="/SalaryDetails">
