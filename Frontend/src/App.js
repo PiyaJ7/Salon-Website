@@ -12,6 +12,7 @@ import ScheduleManagement from "./Pages/ScheduleManagement";
 import InventoryMnagement from "./Pages/InventoryMnagement";
 import FinanceManagement from "./Pages/FinanceManagement";
 import AppointmentManagement from "./Pages/AppointmentManagement";
+import EmployeeManagement from "./Pages/EmployeeManagement";
 
 function App() {
   return (
@@ -51,11 +52,11 @@ function App() {
             path="/AppointmentManagement"
             element={<AppointmentManagement />}
           ></Route>
-          {/* <Route
-            path="/AttendanceDetals"
-            element={<AttendanceDetals />}
-          ></Route>
           <Route
+            path="/EmployeeManagement"
+            element={<EmployeeManagement />}
+          ></Route>
+          {/* <Route
             path="/ScheduleManagement"
             element={<ScheduleManagement />}
           ></Route>
