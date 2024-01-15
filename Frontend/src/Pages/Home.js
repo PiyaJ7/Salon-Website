@@ -60,7 +60,7 @@ export default function Home() {
             <Link to="/LoginPage">
               <div className="blocks">Add employee</div>
             </Link>
-            <Link to="/LoginPage">
+            <Link to="/SalaryDetails">
               <div className="blocks">Salary details</div>
             </Link>
             <Link to="/LoginPage">
