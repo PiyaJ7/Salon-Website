@@ -11,6 +11,7 @@ import Dashboard from "./Pages/Dashboard";
 import ScheduleManagement from "./Pages/ScheduleManagement";
 import InventoryMnagement from "./Pages/InventoryMnagement";
 import FinanceManagement from "./Pages/FinanceManagement";
+import AppointmentManagement from "./Pages/AppointmentManagement";
 
 function App() {
   return (
@@ -46,6 +47,26 @@ function App() {
             path="/FinanceManagement"
             element={<FinanceManagement />}
           ></Route>
+          <Route
+            path="/AppointmentManagement"
+            element={<AppointmentManagement />}
+          ></Route>
+          {/* <Route
+            path="/AttendanceDetals"
+            element={<AttendanceDetals />}
+          ></Route>
+          <Route
+            path="/ScheduleManagement"
+            element={<ScheduleManagement />}
+          ></Route>
+          <Route
+            path="/InventoryMnagement"
+            element={<InventoryMnagement />}
+          ></Route>
+          <Route
+            path="/FinanceManagement"
+            element={<FinanceManagement />}
+          ></Route> */}
         </Routes>
       </BrowserRouter>
     </div>
