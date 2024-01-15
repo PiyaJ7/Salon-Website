@@ -14,6 +14,7 @@ import FinanceManagement from "./Pages/FinanceManagement";
 import AppointmentManagement from "./Pages/AppointmentManagement";
 import EmployeeManagement from "./Pages/EmployeeManagement";
 import SalaryDetails from "./Pages/SalaryDetails";
+import SupplierManagement from "./Pages/SupplierManagement";
 
 function App() {
   return (
@@ -58,11 +59,11 @@ function App() {
             element={<EmployeeManagement />}
           ></Route>
           <Route path="/SalaryDetails" element={<SalaryDetails />}></Route>
-          {/* <Route
-            path="/InventoryMnagement"
-            element={<InventoryMnagement />}
-          ></Route>
           <Route
+            path="/SupplierManagement"
+            element={<SupplierManagement />}
+          ></Route>
+          {/* <Route
             path="/FinanceManagement"
             element={<FinanceManagement />}
           ></Route> */}
