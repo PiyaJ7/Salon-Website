@@ -21,6 +21,7 @@ import CreateSchedule from "./Pages/CreateSchedule";
 import AddEmployee from "./Pages/AddEmployee";
 import AddSalary from "./Pages/AddSalary";
 import AddSupplier from "./Pages/AddSupplier";
+import AddOrder from "./Pages/AddOrder";
 
 function App() {
   return (
@@ -75,6 +76,7 @@ function App() {
           <Route path="/SupplierDetails" element={<SupplierDetails />}></Route>
           <Route path="/AddSupplier" element={<AddSupplier />}></Route>
           <Route path="/OrderDetails" element={<OrderDetails />}></Route>
+          <Route path="/AddOrder" element={<AddOrder />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

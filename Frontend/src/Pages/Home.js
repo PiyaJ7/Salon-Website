@@ -78,7 +78,7 @@ export default function Home() {
             <Link to="/OrderDetails">
               <div className="blocks">Order details</div>
             </Link>
-            <Link to="/LoginPage">
+            <Link to="/AddOrder">
               <div className="blocks">Add order</div>
             </Link>
           </div>
