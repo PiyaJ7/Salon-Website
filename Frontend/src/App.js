@@ -17,6 +17,7 @@ import SalaryDetails from "./Pages/SalaryDetails";
 import SupplierManagement from "./Pages/SupplierManagement";
 import SupplierDetails from "./Pages/SupplierDetails";
 import OrderDetails from "./Pages/OrderDetails";
+import CreateSchedule from "./Pages/CreateSchedule";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
             path="/ScheduleManagement"
             element={<ScheduleManagement />}
           ></Route>
+          <Route path="/CreateSchedule" element={<CreateSchedule />}></Route>
           <Route
             path="/InventoryMnagement"
             element={<InventoryMnagement />}
