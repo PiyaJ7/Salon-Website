@@ -37,8 +37,7 @@
     justify-content: space-around;
 }
 
-.download-appointment-button,
-.add-new-appointment-button {
+.download-appointment-button {
     width: 30%;
     height: 40%;
     font-size: 1.1vw;
@@ -51,14 +50,12 @@
     cursor: pointer;
 }
 
-.download-appointment-button:hover,
-.add-new-appointment-button:hover {
+.download-appointment-button:hover {
     background-color: rgb(160, 160, 160);
     box-shadow: 2px 3px #636363c9;
 }
 
-.download-appointment-button:active,
-.add-new-appointment-button:active {
+.download-appointment-button:active {
     background-color: rgb(122, 122, 122);
     box-shadow: 2px 3px #404040c9;
 }
