@@ -48,7 +48,7 @@ export default function Home() {
             <Link to="/InventoryMnagement">
               <div className="blocks">Inventory Mangement</div>
             </Link>
-            <Link to="/LoginPage">
+            <Link to="/FinanceManagement">
               <div className="blocks">Finance Management</div>
             </Link>
             <Link to="/LoginPage">

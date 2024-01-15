@@ -10,6 +10,7 @@ import AttendanceDetals from "./Pages/AttendanceDetals";
 import Dashboard from "./Pages/Dashboard";
 import ScheduleManagement from "./Pages/ScheduleManagement";
 import InventoryMnagement from "./Pages/InventoryMnagement";
+import FinanceManagement from "./Pages/FinanceManagement";
 
 function App() {
   return (
@@ -40,6 +41,10 @@ function App() {
           <Route
             path="/InventoryMnagement"
             element={<InventoryMnagement />}
+          ></Route>
+          <Route
+            path="/FinanceManagement"
+            element={<FinanceManagement />}
           ></Route>
         </Routes>
       </BrowserRouter>
