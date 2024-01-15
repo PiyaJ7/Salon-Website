@@ -59,6 +59,10 @@
     display: flex;
 }
 
+.logo-image {
+    width: 50%;
+}
+
 .header-logout {
     width: 70%;
     display: flex;

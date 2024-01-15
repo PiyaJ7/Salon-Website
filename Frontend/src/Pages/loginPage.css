@@ -101,6 +101,7 @@ body {
     font-size: 1.1vw;
 }
 
-Link {
-    text-decoration: none;
+.loginpage-link {
+    color: rgb(36, 33, 33);
+    text-decoration: none !important;
 }

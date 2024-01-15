@@ -1,19 +1,22 @@
-import React from 'react';
-import './createSchedule.css';
-import close from './images/close.png';
-import { Link } from "react-router-dom";
+import React from "react";
+import "./createSchedule.css";
+import close from "./images/close.png";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateSchedule() {
+  const navigate = useNavigate();
+
+  const navigteBack = () => {
+    navigate(-1);
+  };
   return (
     <div className="createSchedule-page">
       <div className="createSchedule-container">
         <form action="">
-        <Link to="/ScheduleManagement">
-            <button className="close-button">
-                <img className="close-icon" src={close} />
-            </button>
-          </Link>
-          
+          <button onClick={navigteBack} className="close-button">
+            <img className="close-icon" src={close} />
+          </button>
+
           <h1>Create a Schedule</h1>
 
           <div className="input-box">
@@ -27,12 +30,12 @@ export default function CreateSchedule() {
           </div>
 
           <div className="schedule-date-input">
-          <label for="">Date</label> <br />
+            <label for="">Date</label> <br />
             <input type="date" id="" name="" required />
           </div>
 
           <div className="schedule-time-input">
-          <label for="">Time</label> <br />
+            <label for="">Time</label> <br />
             <input type="time" id="" name="" required />
           </div>
 
@@ -56,5 +59,5 @@ export default function CreateSchedule() {
         </form>
       </div>
     </div>
-  )
+  );
 }

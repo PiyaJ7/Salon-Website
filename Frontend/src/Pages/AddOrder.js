@@ -1,18 +1,22 @@
 import React from "react";
 import "./addOrder.css";
 import close from "./images/close.png";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function AddOrder() {
+  const navigate = useNavigate();
+
+  const navigteBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="addOrder-page">
       <div className="addOrder-container">
         <form action="">
-          <Link to="/OrderDetails">
-            <button className="close-button">
-              <img className="close-icon" src={close} />
-            </button>
-          </Link>
+          <button onClick={navigteBack} className="close-button">
+            <img className="close-icon" src={close} />
+          </button>
 
           <h1>Add new order</h1>
 

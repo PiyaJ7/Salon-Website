@@ -17,8 +17,13 @@ export default function CreateAccount() {
   const [emailError, setEmailError] = useState("");
   const navigate = useNavigate();
 
+  const navigteBack = () => {
+    navigate(-1);
+  };
+
   const validateEmail = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     if (!emailRegex.test(email)) {
       setEmailError("Enter a valid email address");
       return false;
@@ -64,14 +69,12 @@ export default function CreateAccount() {
     <div className="createAccount-page">
       <div className="createAccount-container">
         <form onSubmit={handleSubmit}>
-          <Link to="/LoginPage">
-            <button className="close-button">
-              <img className="close-icon" src={close} alt="Close" />
-            </button>
-          </Link>
+          <button onClick={navigteBack} className="close-button">
+            <img className="close-icon" src={close} alt="Close" />
+          </button>
           <h1>Create your Account</h1>
 
-          <div className="input-box">
+          <div className="createAcc-input-box">
             <input
               type="text"
               id="email"
@@ -85,7 +88,7 @@ export default function CreateAccount() {
             {emailError && <span className="error-message">{emailError}</span>}
           </div>
 
-          <div className="input-box">
+          <div className="createAcc-input-box">
             <input
               type="text"
               id="username"
@@ -97,7 +100,7 @@ export default function CreateAccount() {
             <label htmlFor="username">Enter a username</label>
           </div>
 
-          <div className="input-box">
+          <div className="createAcc-input-box">
             <input
               type="password"
               id="password"
@@ -109,7 +112,7 @@ export default function CreateAccount() {
             <label htmlFor="password">Enter a Password</label>
           </div>
 
-          <div className="input-box">
+          <div className="createAcc-input-box">
             <input
               type="password"
               id="confirm-password"
@@ -136,7 +139,9 @@ export default function CreateAccount() {
           <p className="create-account-p1">
             Already have an account?{" "}
             <strong>
-              <Link to="/LoginPage">Login</Link>
+              <Link className="createaccount-link" to="/LoginPage">
+                Login
+              </Link>
             </strong>
           </p>
         </form>

@@ -83,7 +83,9 @@ export default function LoginPage() {
             <p>
               Don't have an account?{" "}
               <strong>
-                <Link to="/CreateAccount">Sign up</Link>
+                <Link className="loginpage-link" to="/CreateAccount">
+                  Sign up
+                </Link>
               </strong>
             </p>
           </div>

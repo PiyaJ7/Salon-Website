@@ -76,3 +76,8 @@
     top: 17%;
 
 }
+
+.custom-link {
+    text-decoration: none; /* Remove default underline */
+    color: inherit; /* Inherit text color */
+  }

@@ -1,18 +1,22 @@
 import React from "react";
 import "./addSupplier.css";
 import close from "./images/close.png";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function SupplierDetails() {
+  const navigate = useNavigate();
+
+  const navigteBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="supplierDetails-page">
       <div className="addEmployee-container">
         <form action="">
-          <Link to="/supplierDetails">
-            <button className="close-button">
-              <img className="close-icon" src={close} />
-            </button>
-          </Link>
+          <button onClick={navigteBack} className="close-button">
+            <img className="close-icon" src={close} />
+          </button>
 
           <h1>Add new supplier</h1>
 
@@ -36,7 +40,7 @@ export default function SupplierDetails() {
             <label for="">Email</label>
           </div>
 
-          <div className="select-position-box">
+          <div className="select-supplier-box">
             <select>
               <option value="0">Select Status</option>
               <option value="1">Approved</option>

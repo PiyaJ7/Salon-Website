@@ -1,19 +1,22 @@
-import React from 'react';
-import './addEmployee.css';
-import close from './images/close.png';
-import { Link } from "react-router-dom";
+import React from "react";
+import "./addEmployee.css";
+import close from "./images/close.png";
+import { useNavigate } from "react-router-dom";
 
 export default function AddEmployee() {
+  const navigate = useNavigate();
+
+  const navigteBack = () => {
+    navigate(-1);
+  };
   return (
     <div className="addEmployee-page">
       <div className="addEmployee-container">
         <form action="">
-        <Link to="/EmployeeManagement">
-            <button className="close-button">
-                <img className="close-icon" src={close} />
-            </button>
-          </Link>
-          
+          <button className="close-button">
+            <img onClick={navigteBack} className="close-icon" src={close} />
+          </button>
+
           <h1>Add new employee</h1>
 
           <div className="input-box">
@@ -32,7 +35,7 @@ export default function AddEmployee() {
           </div>
 
           <div className="schedule-date-input">
-          <label for="">Joined date</label> <br />
+            <label for="">Joined date</label> <br />
             <input type="date" id="" name="" required />
           </div>
 
@@ -62,5 +65,5 @@ export default function AddEmployee() {
         </form>
       </div>
     </div>
-  )
+  );
 }
