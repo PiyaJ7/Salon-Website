@@ -69,7 +69,7 @@ export default function Home() {
             <Link to="/SupplierManagement">
               <div className="blocks">Supplier Management</div>
             </Link>
-            <Link to="/LoginPage">
+            <Link to="/SupplierDetails">
               <div className="blocks">Supplier details</div>
             </Link>
             <Link to="/LoginPage">

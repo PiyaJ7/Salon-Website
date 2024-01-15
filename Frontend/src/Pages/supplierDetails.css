@@ -1,0 +1,134 @@
+.supplierDetails {
+    background-color: rgba(144, 144, 144, 0.115);
+    backdrop-filter: blur(10px);
+    position: absolute;
+    top: 80px;
+    bottom: 0;
+    width: 100%;
+}
+
+.supplierDetails-header {
+    display: flex;
+    height: 15%;
+}
+
+.supplierDetails-header-left {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.supplierDetails-header-left h1 {
+    margin-left: 10%;
+}
+
+.menu-icon {
+    position: absolute;
+    left: 1%;
+    top: 4.5%;
+    cursor: pointer;
+}
+
+.supplierDetails-header-right {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.add-new-supplier-button,
+.download-supplier-list-button {
+    width: 30%;
+    height: 40%;
+    font-size: 1.1vw;
+    font-weight: bold;
+    border-radius: 50px;
+    background-color: rgb(175, 175, 175);
+    box-shadow: 2px 3px #393838c9;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+.add-new-supplier-button:hover,
+.download-supplier-list-button:hover {
+    background-color: rgb(160, 160, 160);
+    box-shadow: 2px 3px #636363c9;
+}
+
+.add-new-supplier-button:active,
+.download-supplier-list-button:active {
+    background-color: rgb(122, 122, 122);
+    box-shadow: 2px 3px #404040c9;
+}
+
+.supplierDetails-body {
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(236, 236, 236, 0.5);
+    background-color: rgba(237, 237, 237, 0.64);
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+    right: 2%;
+    top: 17%;
+
+}
+
+.sort-button {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.sort-by-type,
+.sort-by-price {
+    width: 10%;
+    height: 50%;
+    font-size: 1.1vw;
+    font-weight: bold;
+    border-radius: 50px;
+    background-color: rgb(169, 169, 169);
+    box-shadow: 2px 3px #767676c9;
+    color: rgb(63, 63, 63);
+    border: none;
+    cursor: pointer;
+    margin: 0% 3%;
+}
+
+.sort-by-type:hover,
+.sort-by-price:hover {
+    background-color: rgb(160, 160, 160);
+    box-shadow: 2px 3px #636363c9;
+}
+
+.sort-by-type:active,
+.sort-by-price:active {
+    background-color: rgb(122, 122, 122);
+    box-shadow: 2px 3px #404040c9;
+}
+
+.supplierDetails-body table {
+    border-collapse: collapse;
+    width: 96%;
+    margin: 1%;
+}
+
+.supplierDetails-body td, th {
+    border: 1px solid black;
+    text-align: left;
+    padding: 1%;
+  }
+
+  .supplierDetails-body th {
+    background-color: rgba(158, 158, 158, 0.878);
+    font-style: italic;
+  }
+
+  .supplierDetails tr:nth-child(odd) {
+    background-color: rgb(212, 212, 212);
+  }
