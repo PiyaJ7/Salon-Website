@@ -26,7 +26,7 @@ export default function Dashboard() {
             <Link to="/FinanceManagement" className="dashboard-link">
               <div className="dashboard-blocks">Finance Management</div>
             </Link>
-            <Link to="/ScheduleManagement" className="dashboard-link">
+            <Link to="/AttendanceDetals" className="dashboard-link">
               <div className="dashboard-blocks">Schedule Management</div>
             </Link>
             <Link to="/InventoryMnagement" className="dashboard-link">

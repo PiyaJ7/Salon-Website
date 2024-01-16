@@ -11,6 +11,10 @@ export default function EmployeeManagement() {
     navigate("/AddEmployee");
   };
 
+  const employeesalaryClick = () => {
+    navigate("/SalaryDetails");
+  };
+
   return (
     <div>
       <Header />
@@ -27,7 +31,12 @@ export default function EmployeeManagement() {
             <button className="download-employee-list-button">
               Download employee list
             </button>
-            <button className="employee-salary-button">Employee Salary</button>
+            <button
+              onClick={employeesalaryClick}
+              className="employee-salary-button"
+            >
+              Employee Salary
+            </button>
           </div>
         </div>
         <div className="employeeManagement-body">
@@ -42,7 +51,7 @@ export default function EmployeeManagement() {
               <th>Joined Date</th>
               <th>Position</th>
               <th>Address</th>
-              <th>Contact date</th>
+              <th>Contact No</th>
               <th>Action</th>
             </tr>
           </table>

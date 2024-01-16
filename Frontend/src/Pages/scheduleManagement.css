@@ -1,96 +1,100 @@
 .scheduleManagement {
-    background-color: rgba(144, 144, 144, 0.115);
-    backdrop-filter: blur(10px);
-    position: absolute;
-    top: 80px;
-    bottom: 0;
-    width: 100%;
+  background-color: rgba(144, 144, 144, 0.115);
+  backdrop-filter: blur(10px);
+  position: absolute;
+  top: 80px;
+  bottom: 0;
+  width: 100%;
 }
 
 .scheduleManagement-header {
-    display: flex;
-    height: 15%;
+  display: flex;
+  height: 15%;
 }
 
 .scheduleManagement-header-left {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .scheduleManagement-header-left h1 {
-    margin-left: 10%;
+  margin-left: 10%;
 }
 
 .menu-icon {
-    position: absolute;
-    left: 1%;
-    top: 4.5%;
-    cursor: pointer;
+  position: absolute;
+  left: 1%;
+  top: 4.5%;
+  cursor: pointer;
 }
 
 .scheduleManagement-header-right {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .create-schedule-button {
-    width: 35%;
-    height: 40%;
-    font-size: 1.1vw;
-    font-weight: bold;
-    border-radius: 50px;
-    background-color: rgb(175, 175, 175);
-    box-shadow: 2px 3px #393838c9;
-    color: black;
-    border: none;
-    cursor: pointer;
+  width: 35%;
+  height: 40%;
+  font-size: 1.1vw;
+  font-weight: bold;
+  border-radius: 50px;
+  background-color: rgb(175, 175, 175);
+  box-shadow: 2px 3px #393838c9;
+  color: black;
+  border: none;
+  cursor: pointer;
 }
 
 .create-schedule-button:hover {
-    background-color: rgb(160, 160, 160);
-    box-shadow: 2px 3px #636363c9;
+  background-color: rgb(160, 160, 160);
+  box-shadow: 2px 3px #636363c9;
 }
 
 .create-schedule-button:active {
-    background-color: rgb(122, 122, 122);
-    box-shadow: 2px 3px #404040c9;
+  background-color: rgb(122, 122, 122);
+  box-shadow: 2px 3px #404040c9;
 }
 
 .scheduleManagement-body {
-    background: transparent;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-    border: 2px solid rgba(236, 236, 236, 0.5);
-    background-color: rgba(237, 237, 237, 0.64);
-    position: absolute;
-    bottom: 2%;
-    left: 2%;
-    right: 2%;
-    top: 17%;
-
+  background: transparent;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(236, 236, 236, 0.5);
+  background-color: rgba(237, 237, 237, 0.64);
+  position: absolute;
+  bottom: 2%;
+  left: 2%;
+  right: 2%;
+  top: 17%;
 }
 
 .scheduleManagement-body table {
-    border-collapse: collapse;
-    width: 96%;
-    margin: 2%;
+  border-collapse: collapse;
+  width: 96%;
+  margin: 2%;
 }
 
-.scheduleManagement-body td, th {
-    border: 1px solid black;
-    text-align: left;
-    padding: 1%;
-  }
+.scheduleManagement-body td,
+th {
+  border: 1px solid black;
+  text-align: left;
+  padding: 1%;
+}
 
-  .scheduleManagement-body th {
-    background-color: rgba(158, 158, 158, 0.878);
-    font-style: italic;
-  }
+.scheduleManagement-body th {
+  background-color: rgba(158, 158, 158, 0.878);
+  font-style: italic;
+}
 
-  tr:nth-child(odd) {
-    background-color: rgb(212, 212, 212);
-  }
+.scheduleManagement tr:nth-child(odd) {
+  background-color: rgb(212, 212, 212);
+}
+
+.scheduleManagement tr:nth-child(even) {
+  background-color: rgb(234, 234, 234);
+}

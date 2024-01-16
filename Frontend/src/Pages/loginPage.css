@@ -1,107 +1,105 @@
 body {
-    background-image: url('images/loginbg.webp');
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    
+  background-image: url("images/loginbg.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
 
 .login-page {
-    background-color: rgba(220, 216, 216, 0.247);
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+  background-color: rgba(220, 216, 216, 0.247);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .loginpage-container {
-    position: relative;
-    background: transparent;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-    border: 2px solid rgba(255, 255, 255, 0.5);
-    width: 40%;
-    height: auto;
-    padding: 2%;
-    border-radius: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  background: transparent;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  width: 40%;
+  height: auto;
+  padding: 2%;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .loginpage-container h1 {
-    font-size: 3vw;
+  font-size: 3vw;
 }
 
 .input-element {
-    position: relative;
-    background: transparent;
-    box-shadow: 0 0 10px rgba(131, 131, 131, 0.5);
-    border: 2px solid rgba(176, 176, 176, 0.645);
-    margin: 5% 0%;
-    width: 60vh;
-    height: 40px;
-    border-radius: 20px;
+  position: relative;
+  background: transparent;
+  box-shadow: 0 0 10px rgba(131, 131, 131, 0.5);
+  border: 2px solid rgba(176, 176, 176, 0.645);
+  margin: 5% 0%;
+  width: 60vh;
+  height: 40px;
+  border-radius: 20px;
 }
 
 .icon {
-    position: absolute;
-    left: 5%;
-    top: 25%;
+  position: absolute;
+  left: 5%;
+  top: 25%;
 }
 
 .input-element input {
-    width: 90%;
-    margin-left: 12%;
-    height: 100%;
-    border: none;
-    outline: none;
-    font-size: 1vw;
-    background: none;
+  width: 90%;
+  margin-left: 12%;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 1vw;
+  background: none;
 }
 
 .login-error-message {
-    color: rgb(115, 7, 7);
-    font-size: 0.8vw;
+  color: rgb(115, 7, 7);
+  font-size: 0.8vw;
 }
 
 .login-button {
-    width: 50%;
-    height: 35px;
-    margin-top: 8%;
-    margin-left: 25%;
-    font-size: 1.4vw;
-    font-weight: bold;
-    border-radius: 50px;
-    background-color: rgb(137, 137, 137);
-    box-shadow: 2px 3px #393838c9;
-    color: black;
-    border: none;
-    cursor: pointer;
+  width: 50%;
+  height: 35px;
+  margin-top: 8%;
+  margin-left: 25%;
+  font-size: 1.4vw;
+  font-weight: bold;
+  border-radius: 50px;
+  background-color: rgb(137, 137, 137);
+  box-shadow: 2px 3px #393838c9;
+  color: black;
+  border: none;
+  cursor: pointer;
 }
 
 .login-button:hover {
-    background-color: rgb(160, 160, 160);
-    box-shadow: 2px 3px #636363c9;
+  background-color: rgb(160, 160, 160);
+  box-shadow: 2px 3px #636363c9;
 }
 
 .login-button:active {
-    background-color: rgb(122, 122, 122);
-    box-shadow: 2px 3px #404040c9;
+  background-color: rgb(122, 122, 122);
+  box-shadow: 2px 3px #404040c9;
 }
 
 .register-link {
-    margin: 5%;
-    width: 100%;
+  margin: 5%;
+  width: 100%;
 }
 
 .register-link p {
-    font-size: 1.1vw;
+  font-size: 1.1vw;
 }
 
 .loginpage-link {
-    color: rgb(36, 33, 33);
-    text-decoration: none !important;
+  color: rgb(36, 33, 33);
+  text-decoration: none !important;
 }
