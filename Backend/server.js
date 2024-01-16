@@ -47,7 +47,7 @@ app.use("/api/Product", inventoryRoutes);
 // app.use("/api/sal", salRoutes);
 // app.use("/api/schedu", scheduleRoutes);
 // app.use("/api/Msg", supMsgRoutes);
-app.use("/api/Sup", supplierRoutes);
+//app.use("/api/Sup", supplierRoutes);
 
 // Connect to the MongoDB database
 mongoose
