@@ -25,7 +25,7 @@ const packageRoutes = require('./routes/packageRoutes');
 const attendanceRoutes = require('./routes/attendanceRoutes');
 const empRoutes = require('./routes/employeeRoutes');
 const inventoryRoutes = require('./routes/inventoryRoutes');
-const financeRoutes = require('./routes/financeRoutes');
+// const financeRoutes = require('./routes/financeRoutes');
 // const inveMsgRoutes = require('./routes/inveMsgRoutes');
 // const orderRoutes = require('./routes/orderRoutes');
 // const salRoutes = require('./routes/salaryRoutes');
@@ -41,7 +41,7 @@ app.use('/api/packages', packageRoutes);
 app.use("/api/attendances", attendanceRoutes);
 app.use("/api/employees", empRoutes);
 app.use("/api/Product", inventoryRoutes);
-app.use("/api/Fin", financeRoutes);
+//app.use("/api/Fin", financeRoutes);
 // app.use("/api/IMsg", inveMsgRoutes);
 // app.use("/api/Ord", orderRoutes)
 // app.use("/api/sal", salRoutes);
