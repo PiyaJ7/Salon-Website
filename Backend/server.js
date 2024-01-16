@@ -8,9 +8,14 @@ const portfinder = require('portfinder');
 const app = express();
 
 // Use middlewares to handle data and requests
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
+// app.use(express.urlencoded({ extended: false }));
+// app.use(cors());
+
+// Use middlewares to handle data and requests
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
+
 
 // Import the routes
 const userRoutes = require('./routes/userRoutes');
