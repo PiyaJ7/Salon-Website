@@ -1,0 +1,70 @@
+.addAttendance {
+  background-color: rgba(144, 144, 144, 0.115);
+  backdrop-filter: blur(10px);
+  position: absolute;
+  top: 80px;
+  bottom: 0;
+  width: 100%;
+}
+
+.addAttendance-header {
+  display: flex;
+  height: 15%;
+}
+
+.addAttendance-header-left {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.addAttendance-header-left h1 {
+  margin-left: 10%;
+}
+
+.menu-icon {
+  position: absolute;
+  left: 1%;
+  top: 4.5%;
+  cursor: pointer;
+}
+
+.addAttendance-body {
+  background: transparent;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(236, 236, 236, 0.5);
+  background-color: rgba(237, 237, 237, 0.64);
+  position: absolute;
+  bottom: 2%;
+  left: 2%;
+  right: 2%;
+  top: 17%;
+}
+
+.addAttendance-body table {
+  border-collapse: collapse;
+  width: 96%;
+  margin: 1%;
+}
+
+.addAttendance-body td,
+th {
+  border: 1px solid black;
+  text-align: left;
+  padding: 1%;
+}
+
+.addAttendance-body th {
+  background-color: rgba(158, 158, 158, 0.878);
+  font-style: italic;
+}
+
+.addAttendance tr:nth-child(odd) {
+  background-color: rgb(212, 212, 212);
+}
+
+.addAttendance tr:nth-child(even) {
+  background-color: rgb(234, 234, 234);
+}

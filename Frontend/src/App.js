@@ -24,6 +24,7 @@ import AddSupplier from "./Pages/AddSupplier";
 import AddOrder from "./Pages/AddOrder";
 import AddService from "./Pages/AddService";
 import AddTransaction from "./Pages/AddTransaction";
+import AddAttendance from "./Pages/AddAttendance";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
             path="/AttendanceDetals"
             element={<AttendanceDetals />}
           ></Route>
+          <Route path="/AddAttendance" element={<AddAttendance />}></Route>
           <Route
             path="/ScheduleManagement"
             element={<ScheduleManagement />}
