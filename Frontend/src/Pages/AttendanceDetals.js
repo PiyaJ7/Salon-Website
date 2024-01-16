@@ -11,6 +11,10 @@ export default function AttendanceDetals() {
     navigate("/ScheduleManagement");
   };
 
+  const addAttendanceClick = () => {
+    navigate("/AddAttendance");
+  };
+
   return (
     <div>
       <Header />
@@ -21,7 +25,12 @@ export default function AttendanceDetals() {
             <h1>Attendance Details</h1>
           </div>
           <div className="attendanceDetals-header-right">
-            <button className="add-attendance-button">Add attendance</button>
+            <button
+              onClick={addAttendanceClick}
+              className="add-attendance-button"
+            >
+              Add attendance
+            </button>
             <button className="download-attendance-button">
               Download daily attendance
             </button>

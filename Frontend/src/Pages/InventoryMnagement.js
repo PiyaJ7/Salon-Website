@@ -2,8 +2,15 @@ import React from "react";
 import "./inventoryMnagement.css";
 import { TiThMenu } from "react-icons/ti";
 import Header from "../Components/Header";
+import { useNavigate } from "react-router-dom";
 
 export default function InventoryMnagement() {
+  const navigate = useNavigate();
+
+  const addProductClick = () => {
+    navigate("/AddProduct");
+  };
+
   return (
     <div>
       <Header />
@@ -14,7 +21,12 @@ export default function InventoryMnagement() {
             <h1>Inventory Management</h1>
           </div>
           <div className="inventoryManagement-header-right">
-            <button className="add-new-product-button">Add new product</button>
+            <button
+              onClick={addProductClick}
+              className="add-new-product-button"
+            >
+              Add new product
+            </button>
             <button className="report-button">Report</button>
           </div>
         </div>

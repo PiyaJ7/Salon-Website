@@ -2,8 +2,15 @@ import React from "react";
 import "./serviceManagement.css";
 import { TiThMenu } from "react-icons/ti";
 import Header from "../Components/Header";
+import { useNavigate } from "react-router-dom";
 
 export default function ServiceManagement() {
+  const navigate = useNavigate();
+
+  const addServiceClick = () => {
+    navigate("/AddService");
+  };
+
   return (
     <div>
       <Header />
@@ -17,7 +24,9 @@ export default function ServiceManagement() {
             <button className="generate-service-button">
               Generate a report
             </button>
-            <button className="add-service-button">Add New Service</button>
+            <button onClick={addServiceClick} className="add-service-button">
+              Add New Service
+            </button>
           </div>
         </div>
         <div className="serviceManagement-body">

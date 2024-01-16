@@ -2,8 +2,17 @@ import React from "react";
 import "./financeManagement.css";
 import { TiThMenu } from "react-icons/ti";
 import Header from "../Components/Header";
+import { useNavigate } from "react-router-dom";
 
 export default function FinanceManagement() {
+  const navigate = useNavigate();
+
+  const addTransactionClick = useNavigate();
+
+  const addServiceClick = () => {
+    navigate("/AddTransaction");
+  };
+
   return (
     <div>
       <Header />
@@ -14,7 +23,10 @@ export default function FinanceManagement() {
             <h1>Income & Expenses</h1>
           </div>
           <div className="financeManagement-header-right">
-            <button className="add-new-transaction-button">
+            <button
+              onClick={addServiceClick}
+              className="add-new-transaction-button"
+            >
               Add new transaction
             </button>
             <button className="finance-report-button">Finance report</button>
