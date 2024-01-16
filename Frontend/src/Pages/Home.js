@@ -90,6 +90,9 @@ export default function Home() {
             <Link to="/AddAttendance">
               <div className="blocks">AddAttendance</div>
             </Link>
+            <Link to="/AddProduct">
+              <div className="blocks">AddProduct</div>
+            </Link>
           </div>
         </div>
       </div>

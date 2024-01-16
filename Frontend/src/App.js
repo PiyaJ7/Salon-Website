@@ -25,6 +25,7 @@ import AddOrder from "./Pages/AddOrder";
 import AddService from "./Pages/AddService";
 import AddTransaction from "./Pages/AddTransaction";
 import AddAttendance from "./Pages/AddAttendance";
+import AddProduct from "./Pages/AddProduct";
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
             path="/InventoryMnagement"
             element={<InventoryMnagement />}
           ></Route>
+          <Route path="/AddProduct" element={<AddProduct />}></Route>
           <Route
             path="/FinanceManagement"
             element={<FinanceManagement />}
