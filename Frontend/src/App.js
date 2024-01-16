@@ -22,13 +22,14 @@ import AddEmployee from "./Pages/AddEmployee";
 import AddSalary from "./Pages/AddSalary";
 import AddSupplier from "./Pages/AddSupplier";
 import AddOrder from "./Pages/AddOrder";
+import AddService from "./Pages/AddService";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<LoginPage />}></Route>
+          <Route path="/" element={<Home />}></Route>
           <Route path="/LoginPage" element={<LoginPage />}></Route>
           <Route path="/CreateAccount" element={<CreateAccount />}></Route>
           <Route path="/Dashboard" element={<Dashboard />}></Route>
@@ -41,6 +42,7 @@ function App() {
             path="/ServiceManagement"
             element={<ServiceManagement />}
           ></Route>
+          <Route path="/AddService" element={<AddService />}></Route>
           <Route
             path="/AttendanceDetals"
             element={<AttendanceDetals />}

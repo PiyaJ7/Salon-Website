@@ -81,6 +81,9 @@ export default function Home() {
             <Link to="/AddOrder">
               <div className="blocks">Add order</div>
             </Link>
+            <Link to="/AddService">
+              <div className="blocks">AddService</div>
+            </Link>
           </div>
         </div>
       </div>
