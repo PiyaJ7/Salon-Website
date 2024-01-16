@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const portfinder = require("portfinder");
+// const portfinder = require("portfinder");
 const userModel = require("./models/userModels");
 
 // Create the Express app
@@ -64,14 +64,21 @@ app.get("/", (req, res) => {
 
 // Find an available port dynamically
 // Install on backend npm install portfinder
-portfinder
-  .getPortPromise({ startPort: 3002 })
-  .then((port) => {
-    // Start the server on the dynamically found port
-    app.listen(port, () => {
-      console.log(`Server is listening on port ${port}`);
-    });
-  })
-  .catch((err) => console.error("Error finding available port:", err));
+// portfinder
+//   .getPortPromise({ startPort: 3002 })
+//   .then((port) => {
+//     // Start the server on the dynamically found port
+//     app.listen(port, () => {
+//       console.log(`Server is listening on port ${port}`);
+//     });
+//   })
+//   .catch((err) => console.error("Error finding available port:", err));
+
+// Start the server on port 8000
+const PORT = 8000;
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
+
 
 //serviceRoutes.json
