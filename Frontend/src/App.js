@@ -23,6 +23,7 @@ import AddSalary from "./Pages/AddSalary";
 import AddSupplier from "./Pages/AddSupplier";
 import AddOrder from "./Pages/AddOrder";
 import AddService from "./Pages/AddService";
+import AddTransaction from "./Pages/AddTransaction";
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
             path="/FinanceManagement"
             element={<FinanceManagement />}
           ></Route>
+          <Route path="/AddTransaction" element={<AddTransaction />}></Route>
           <Route
             path="/AppointmentManagement"
             element={<AppointmentManagement />}
