@@ -17,7 +17,7 @@ app.use(cors());
 const userRoutes = require("./routes/userRoutes");
 const appointmentRoutes = require("./routes/appointmentRoutes");
 
-const packageRoutes = require("./routes/packageRoutes");
+//const packageRoutes = require("./routes/packageRoutes");
 
 //const packageRoutes = require('./routes/packageRoutes');
 
@@ -36,7 +36,7 @@ const supplierRoutes = require('./routes/supplierRoutes')
 // Routes
 app.use("/api/users", userRoutes);
 app.use("/api/Book", appointmentRoutes);
-app.use("/api/packages", packageRoutes);
+//app.use("/api/packages", packageRoutes);
 app.use("/api/services", serviceRoutes);
 app.use("/api/attendances", attendanceRoutes);
 app.use("/api/employees", empRoutes);
