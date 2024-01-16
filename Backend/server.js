@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 // Import the routes
-//const userRoutes = require("./routes/userRoutes");
+const userRoutes = require("./routes/userRoutes");
 const appointmentRoutes = require("./routes/appointmentRoutes");
 
 //const packageRoutes = require("./routes/packageRoutes");
@@ -34,7 +34,7 @@ const supMsgRoutes = require('./routes/supMsgRoutes');
 const supplierRoutes = require('./routes/supplierRoutes')
 
 // Routes
-//app.use("/api/users", userRoutes);
+app.use("/api/users", userRoutes);
 app.use("/api/Book", appointmentRoutes);
 app.use("/api/packages", packageRoutes);
 app.use("/api/services", serviceRoutes);
