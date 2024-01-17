@@ -1,21 +1,16 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const portfinder = require('portfinder');
 
 // Create the Express app
 const app = express();
 
 // Use middlewares to handle data and requests
-// app.use(bodyParser.json());
-// app.use(express.urlencoded({ extended: false }));
-// app.use(cors());
-
-// Use middlewares to handle data and requests
-app.use(express.json());
+app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
-
+app.use(cors());
 
 // Import the routes
 const userRoutes = require('./routes/userRoutes');
@@ -71,5 +66,4 @@ portfinder.getPortPromise({ startPort: 3002 })
   })
   .catch((err) => console.error('Error finding available port:', err));
 
-
-  //serviceRoutes.json
+serviceRoutes.json
