@@ -3,6 +3,7 @@ import "./dashboard.css";
 import { TiThMenu } from "react-icons/ti";
 import { Link } from "react-router-dom";
 import Header from "../Components/Header";
+import Sidebar from "../Components/Sidebar";
 
 export default function Dashboard() {
   return (
@@ -11,7 +12,7 @@ export default function Dashboard() {
       <div className="dashboard-page">
         <div className="dashboard-header">
           <div className="dashboard-header-left">
-            <TiThMenu size={29} className="menu-icon" />
+            <Sidebar />
             <h1>Dashboard</h1>
           </div>
         </div>
