@@ -3,6 +3,7 @@ import "./financeManagement.css";
 import { TiThMenu } from "react-icons/ti";
 import Header from "../Components/Header";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "../Components/Sidebar";
 
 export default function FinanceManagement() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ export default function FinanceManagement() {
       <div className="financeManagement">
         <div className="financeManagement-header">
           <div className="financeManagement-header-left">
-            <TiThMenu size={29} className="menu-icon" />
+            <Sidebar />
             <h1>Income & Expenses</h1>
           </div>
           <div className="financeManagement-header-right">

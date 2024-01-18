@@ -3,6 +3,7 @@ import "./packageManagement.css";
 import { TiThMenu } from "react-icons/ti";
 import Header from "../Components/Header";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "../Components/Sidebar";
 
 export default function PackageManagement() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function PackageManagement() {
       <div className="packageManagememt">
         <div className="sm-header">
           <div className="sm-header-left">
-            <TiThMenu size={29} className="menu-icon" />
+            <Sidebar />
             <h1>Salon Packages</h1>
           </div>
           <div className="sm-header-right">

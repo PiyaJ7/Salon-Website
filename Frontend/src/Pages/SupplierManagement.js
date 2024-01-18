@@ -3,6 +3,7 @@ import "./supplierManagement.css";
 import { TiThMenu } from "react-icons/ti";
 import { Link } from "react-router-dom";
 import Header from "../Components/Header";
+import Sidebar from "../Components/Sidebar";
 
 export default function SupplierManagement() {
   return (
@@ -11,7 +12,7 @@ export default function SupplierManagement() {
       <div className="supplierManagement">
         <div className="supplierManagement-header">
           <div className="supplierManagement-header-left">
-            <TiThMenu size={29} className="menu-icon" />
+            <Sidebar />
             <h1>Supplier Management</h1>
           </div>
         </div>

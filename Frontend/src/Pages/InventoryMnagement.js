@@ -3,6 +3,7 @@ import "./inventoryMnagement.css";
 import { TiThMenu } from "react-icons/ti";
 import Header from "../Components/Header";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "../Components/Sidebar";
 
 export default function InventoryMnagement() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function InventoryMnagement() {
       <div className="inventoryManagement">
         <div className="inventoryManagement-header">
           <div className="inventoryManagement-header-left">
-            <TiThMenu size={29} className="menu-icon" />
+            <Sidebar />
             <h1>Inventory Management</h1>
           </div>
           <div className="inventoryManagement-header-right">

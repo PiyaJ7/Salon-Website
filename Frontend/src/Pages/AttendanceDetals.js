@@ -3,6 +3,7 @@ import "./attendanceDetals.css";
 import { TiThMenu } from "react-icons/ti";
 import Header from "../Components/Header";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "../Components/Sidebar";
 
 export default function AttendanceDetals() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export default function AttendanceDetals() {
       <div className="attendanceDetals">
         <div className="attendanceDetals-header">
           <div className="attendanceDetals-header-left">
-            <TiThMenu size={29} className="menu-icon" />
+            <Sidebar />
             <h1>Attendance Details</h1>
           </div>
           <div className="attendanceDetals-header-right">

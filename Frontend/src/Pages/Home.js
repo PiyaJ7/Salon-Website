@@ -3,6 +3,7 @@ import "./home.css";
 import { TiThMenu } from "react-icons/ti";
 import { Link } from "react-router-dom";
 import Header from "../Components/Header";
+import Sidebar from "../Components/Sidebar";
 
 export default function Home() {
   return (
@@ -11,7 +12,7 @@ export default function Home() {
       <div className="home-page">
         <div className="serviceManagement-header">
           <div className="serviceManagement-header-left">
-            <TiThMenu size={29} className="menu-icon" />
+            <Sidebar />
             <h1>Home</h1>
           </div>
           <div className="serviceManagement-header-right"></div>

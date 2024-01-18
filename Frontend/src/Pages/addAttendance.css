@@ -20,14 +20,8 @@
 }
 
 .addAttendance-header-left h1 {
-  margin-left: 10%;
-}
-
-.menu-icon {
-  position: absolute;
-  left: 1%;
-  top: 4.5%;
-  cursor: pointer;
+  margin-left: 3%;
+  margin-top: 3%;
 }
 
 .addAttendance-body {

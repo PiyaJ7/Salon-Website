@@ -3,6 +3,7 @@ import "./scheduleManagement.css";
 import { TiThMenu } from "react-icons/ti";
 import Header from "../Components/Header";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "../Components/Sidebar";
 
 export default function ScheduleManagement() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function ScheduleManagement() {
       <div className="scheduleManagement">
         <div className="scheduleManagement-header">
           <div className="scheduleManagement-header-left">
-            <TiThMenu size={29} className="menu-icon" />
+            <Sidebar />
             <h1>Schedule Management</h1>
           </div>
           <div className="scheduleManagement-header-right">

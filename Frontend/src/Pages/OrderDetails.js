@@ -3,6 +3,7 @@ import "./orderDetails.css";
 import { TiThMenu } from "react-icons/ti";
 import Header from "../Components/Header";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "../Components/Sidebar";
 
 export default function OrderDetails() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function OrderDetails() {
       <div className="orderDetails">
         <div className="orderDetails-header">
           <div className="orderDetails-header-left">
-            <TiThMenu size={29} className="menu-icon" />
+            <Sidebar />
             <h1>Order Details</h1>
           </div>
           <div className="orderDetails-header-right">

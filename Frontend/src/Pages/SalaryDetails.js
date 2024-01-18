@@ -3,6 +3,7 @@ import "./salaryDetails.css";
 import { TiThMenu } from "react-icons/ti";
 import Header from "../Components/Header";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "../Components/Sidebar";
 
 export default function SalaryDetails() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function SalaryDetails() {
       <div className="salaryDetails">
         <div className="salaryDetails-header">
           <div className="salaryDetails-header-left">
-            <TiThMenu size={29} className="menu-icon" />
+            <Sidebar />
             <h1>Salary Detals</h1>
           </div>
           <div className="salaryDetails-header-right">

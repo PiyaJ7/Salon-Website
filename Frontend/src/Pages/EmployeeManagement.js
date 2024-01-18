@@ -3,6 +3,7 @@ import "./employeeManagement.css";
 import { TiThMenu } from "react-icons/ti";
 import Header from "../Components/Header";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "../Components/Sidebar";
 
 export default function EmployeeManagement() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export default function EmployeeManagement() {
       <div className="employeeManagement">
         <div className="employeeManagement-header">
           <div className="employeeManagement-header-left">
-            <TiThMenu size={29} className="menu-icon" />
+            <Sidebar />
             <h1>Employee Detals</h1>
           </div>
           <div className="employeeManagement-header-right">

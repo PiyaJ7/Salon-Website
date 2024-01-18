@@ -34,20 +34,7 @@
 .dashboard-item {
   padding: 8%;
   width: 100%;
-}
-
-.sidebar-menu-button {
-  margin-left: 50%;
-  width: 5%;
-  height: 40%;
-  background-color: transparent;
-  border: none;
-}
-
-.sidebar-close-icon {
-  position: absolute;
-  top: 0;
-  right: 0;
+  cursor: pointer;
 }
 
 .dashboard-item:hover {
@@ -56,4 +43,20 @@
 
 .dashboard-item:active {
   background-color: rgba(165, 165, 165, 0.612);
+}
+
+.sidebar-menu-button {
+  margin-left: 50%;
+  width: 5%;
+  height: 40%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar-close-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
 }

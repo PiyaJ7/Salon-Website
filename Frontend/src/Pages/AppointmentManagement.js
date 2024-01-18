@@ -2,6 +2,7 @@ import React from "react";
 import "./appointmentManagement.css";
 import { TiThMenu } from "react-icons/ti";
 import Header from "../Components/Header";
+import Sidebar from "../Components/Sidebar";
 
 export default function AppointmentManagement() {
   return (
@@ -10,7 +11,7 @@ export default function AppointmentManagement() {
       <div className="appointmentManagement">
         <div className="appointmentManagement-header">
           <div className="appointmentManagement-header-left">
-            <TiThMenu size={29} className="menu-icon" />
+            <Sidebar />
             <h1>Salon Appointments</h1>
           </div>
           <div className="appointmentManagement-header-right">

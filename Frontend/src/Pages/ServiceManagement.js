@@ -3,6 +3,7 @@ import "./serviceManagement.css";
 import { TiThMenu } from "react-icons/ti";
 import Header from "../Components/Header";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "../Components/Sidebar";
 
 export default function ServiceManagement() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function ServiceManagement() {
       <div className="serviceManagement">
         <div className="serviceManagement-header">
           <div className="serviceManagement-header-left">
-            <TiThMenu size={29} className="menu-icon" />
+            <Sidebar />
             <h1>Available Services</h1>
           </div>
           <div className="serviceManagement-header-right">

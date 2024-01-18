@@ -7,6 +7,11 @@ import { useNavigate } from "react-router-dom";
 export default function Sidebar() {
   const navigate = useNavigate();
 
+  const clickDashboard = () => {
+    navigate("/Dashboard");
+    hideSidebar();
+  };
+
   const clickPackageManagement = () => {
     navigate("/PackageManagement");
     hideSidebar();
@@ -67,6 +72,9 @@ export default function Sidebar() {
           <button onClick={hideSidebar}>
             <IoClose className="sidebar-close-icon" size={29} />
           </button>
+          <div onClick={clickDashboard} className="dashboard-item">
+            Dashboard
+          </div>
           <div onClick={clickPackageManagement} className="dashboard-item">
             Package Management
           </div>
