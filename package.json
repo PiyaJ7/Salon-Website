@@ -1,5 +1,10 @@
 {
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  },
+  "dependencies": {
+    "apexcharts": "^3.45.1",
+    "react-apexcharts": "^1.4.1",
+    "recharts": "^2.10.4"
   }
 }
