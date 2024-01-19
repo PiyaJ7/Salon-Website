@@ -12,7 +12,7 @@ export default function ServiceManagement() {
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/services/posts")
-      .then((response) => setService(response.data))
+      .then((items) => setService(items.data))
       .catch((err) => console.log(err));
   }, []);
 

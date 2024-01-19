@@ -3,28 +3,28 @@
   backdrop-filter: blur(10px);
   position: absolute;
   top: 80px;
-  bottom: 0;
+  bottom: 0%;
   width: 100%;
 }
 
-.sm-header {
+.package-header {
   display: flex;
   height: 15%;
 }
 
-.sm-header-left {
+.package-header-left {
   width: 50%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 
-.sm-header-left h1 {
+.package-header-left h1 {
   margin-left: 3%;
   margin-top: 3%;
 }
 
-.sm-header-right {
+.package-header-right {
   width: 50%;
   display: flex;
   align-items: center;
@@ -57,17 +57,70 @@
   box-shadow: 2px 3px #404040c9;
 }
 
-.sm-body {
-  background: transparent;
+.package-body {
   backdrop-filter: blur(20px);
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
   border: 2px solid rgba(236, 236, 236, 0.5);
-  background-color: rgba(237, 237, 237, 0.64);
+  background-color: rgba(237, 237, 237, 0.782);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   position: absolute;
+  height: fit-content;
   bottom: 2%;
   left: 2%;
   right: 2%;
   top: 17%;
+}
+
+.package-block {
+  background-image: linear-gradient(
+    rgba(190, 189, 189, 0.773),
+    rgba(205, 204, 204, 0.773),
+    rgba(221, 217, 217, 0.773),
+    rgba(205, 202, 202, 0.773),
+    rgba(172, 167, 167, 0.773)
+  );
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  margin: 2%;
+  text-align: center;
+  padding: 5% 0;
+}
+
+.package-block-header {
+  line-height: 100%;
+}
+
+.package-block-paragrph {
+  display: grid;
+  grid-template-columns: 65% 35%;
+  padding: 8% 0;
+  font-size: 1.2vw;
+}
+
+.package-price {
+  text-align: left;
+}
+
+.package-block-update,
+.package-block-delete {
+  padding: 2% 5%;
+  margin: 0 5%;
+  border: none;
+  font-size: 1vw;
+  font-weight: bold;
+  border-radius: 50px;
+}
+
+.package-block-update {
+  background-color: rgb(160, 160, 160);
+  box-shadow: 2px 3px #636363c9;
+}
+
+.package-block-delete {
+  background-color: rgb(144, 40, 40);
+  box-shadow: 2px 3px #4a0b0bc9;
 }
 
 .custom-link {

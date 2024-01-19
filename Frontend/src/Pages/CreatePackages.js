@@ -10,7 +10,6 @@ export default function CreatePackages() {
   const [type, setType] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
-  const [error, setError] = useState();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,7 +49,7 @@ export default function CreatePackages() {
       <div className="createPackage-container">
         <form onSubmit={handleSubmit}>
           <button onClick={navigteBack} className="close-button">
-            <img className="close-icon" src={close} />
+            <img className="close-icon" src={close} alt="close" />
           </button>
 
           <h1>Create New Package</h1>
@@ -76,9 +75,9 @@ export default function CreatePackages() {
               required
             >
               <option value="0">Select Package type</option>
-              <option value="1">Daily Package</option>
-              <option value="2">Event Package</option>
-              <option value="3">Seasonal Package</option>
+              <option value="Daily Package">Daily Package</option>
+              <option value="Event Package">Event Package</option>
+              <option value="Seasonal Package">Seasonal Package</option>
             </select>
           </div>
 
