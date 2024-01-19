@@ -4,6 +4,7 @@
   position: absolute;
   top: 80px;
   bottom: 0;
+  height: 100%;
   width: 100%;
 }
 
@@ -64,10 +65,11 @@
   border: 2px solid rgba(236, 236, 236, 0.5);
   background-color: rgba(237, 237, 237, 0.64);
   position: absolute;
-  bottom: 2%;
+  height: fit-content;
   left: 2%;
   right: 2%;
   top: 17%;
+  bottom: 2%;
 }
 
 .serviceManagement-body table {
@@ -94,4 +96,39 @@ th {
 
 .serviceManagement tr:nth-child(even) {
   background-color: rgb(234, 234, 234);
+}
+
+.service-table-edit-button,
+.service-table-delete-button {
+  width: 40%;
+  height: 30px;
+  margin: 0 5%;
+  border: none;
+  font-weight: bold;
+  font-size: 1vw;
+  cursor: pointer;
+}
+
+.service-table-edit-button {
+  background-color: rgb(106, 150, 106);
+}
+
+.service-table-edit-button:hover {
+  background-color: rgb(129, 175, 129);
+}
+
+.service-table-edit-button:active {
+  background-color: rgb(86, 133, 86);
+}
+
+.service-table-delete-button {
+  background-color: rgb(172, 67, 67);
+}
+
+.service-table-delete-button:hover {
+  background-color: rgb(194, 102, 102);
+}
+
+.service-table-delete-button:active {
+  background-color: rgb(161, 54, 54);
 }

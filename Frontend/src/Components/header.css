@@ -1,107 +1,105 @@
 .header {
-    background: transparent;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
-    display: flex;
-    width: 100%;
-    height: 80px;
-    position: fixed;
-
+  background: transparent;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  z-index: 100;
 }
 
 .header-logo {
-    width: 30%;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 30%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header-searchbar {
-    width: 60%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .search-bar {
-    width: 50%;
-    height: 40%;
-    background-color: white;
-    border-radius: 20px;
+  width: 50%;
+  height: 40%;
+  background-color: white;
+  border-radius: 20px;
 }
 
 .search-input {
-    width: 90%;
-    height: 100%;
-    border-radius: 0;
-    padding-left: 3%;
-    background: transparent;
-    border: none;
-    outline: none;
+  width: 90%;
+  height: 100%;
+  border-radius: 0;
+  padding-left: 3%;
+  background: transparent;
+  border: none;
+  outline: none;
 }
 
 .search-button {
-    width: 10%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
+  width: 10%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
 }
 
 .search-icon {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .header-left {
-    width: 40%;
-    display: flex;
+  width: 40%;
+  display: flex;
 }
 
 .logo-image {
-    width: 50%;
+  width: 50%;
 }
 
 .header-logout {
-    width: 70%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+  width: 70%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .header-profile {
-    width: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logout-button {
-    width: 40%;
-    height: 40%;
-    font-size: 1.1vw;
-    font-weight: bold;
-    border-radius: 50px;
-    background-color: rgb(137, 137, 137);
-    box-shadow: 2px 3px #393838c9;
-    color: black;
-    border: none;
-    cursor: pointer;
-
+  width: 40%;
+  height: 40%;
+  font-size: 1.1vw;
+  font-weight: bold;
+  border-radius: 50px;
+  background-color: rgb(137, 137, 137);
+  box-shadow: 2px 3px #393838c9;
+  color: black;
+  border: none;
+  cursor: pointer;
 }
 
 .logout-button:hover {
-    background-color: rgb(160, 160, 160);
-    box-shadow: 2px 3px #636363c9;
+  background-color: rgb(160, 160, 160);
+  box-shadow: 2px 3px #636363c9;
 }
 
 .logout-button:active {
-    background-color: rgb(122, 122, 122);
-    box-shadow: 2px 3px #404040c9;
+  background-color: rgb(122, 122, 122);
+  box-shadow: 2px 3px #404040c9;
 }
 
-
 .profile-icon {
-    width: 50px;
+  width: 50px;
 }

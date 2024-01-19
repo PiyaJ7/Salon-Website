@@ -1,13 +1,7 @@
-body {
-  background-image: url("images/loginbg.webp");
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-}
-
 .login-page {
   background-color: rgba(220, 216, 216, 0.247);
-  height: 100vh;
+  height: 100%;
+  margin: 0;
   width: 100%;
   display: flex;
   justify-content: center;

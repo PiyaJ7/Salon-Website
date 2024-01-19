@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./serviceManagement.css";
-import { TiThMenu } from "react-icons/ti";
+import axios from "axios";
 import Header from "../Components/Header";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../Components/Sidebar";
 
 export default function ServiceManagement() {
   const navigate = useNavigate();
+  const [service, setService] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/services/posts")
+      .then((response) => setService(response.data))
+      .catch((err) => console.log(err));
+  }, []);
 
   const addServiceClick = () => {
     navigate("/AddService");
@@ -32,13 +40,35 @@ export default function ServiceManagement() {
         </div>
         <div className="serviceManagement-body">
           <table>
-            <tr>
-              <th>Service ID</th>
-              <th>Service name</th>
-              <th>Price</th>
-              <th>Category</th>
-              <th>Action</th>
-            </tr>
+            <thead>
+              <tr>
+                <th>Service ID</th>
+                <th>Service name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {service.map((service, index) => {
+                return (
+                  <tr key={service.id}>
+                    <td>{index + 1}</td>
+                    <td>{service.sName}</td>
+                    <td>{service.sPrice}</td>
+                    <td>{service.sCategory}</td>
+                    <td>
+                      <button className="service-table-edit-button">
+                        Edit
+                      </button>
+                      <button className="service-table-delete-button">
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
           </table>
         </div>
       </div>
