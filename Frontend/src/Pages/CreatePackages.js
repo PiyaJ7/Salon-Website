@@ -1,10 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import "./createPackages.css";
 import close from "./images/close.png";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function CreatePackages() {
   const navigate = useNavigate();
+  const [title, setTitle] = useState("");
+  const [type, setType] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [error, setError] = useState();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const packageData = {
+      title,
+      type,
+      description,
+      price,
+    };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/packages/create",
+        packageData
+      );
+
+      console.log(response);
+
+      if (response.status === 201) {
+        console.log(response);
+        navigate("/PackageManagement");
+      } else {
+        console.log(response);
+      }
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
+  };
 
   const navigteBack = () => {
     navigate(-1);
@@ -13,7 +48,7 @@ export default function CreatePackages() {
   return (
     <div className="createPackage-page">
       <div className="createPackage-container">
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <button onClick={navigteBack} className="close-button">
             <img className="close-icon" src={close} />
           </button>
@@ -21,12 +56,25 @@ export default function CreatePackages() {
           <h1>Create New Package</h1>
 
           <div className="craetePkg-input-box">
-            <input type="text" id="packagetitle" name="packagetitle" required />
-            <label for="packagetitle">Title of the new package</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
+            <label htmlFor="title">Title of the new package</label>
           </div>
 
           <div className="craetePkg-select-box">
-            <select>
+            <select
+              id="type"
+              name="type"
+              value={type}
+              onChange={(e) => setType(e.target.value)}
+              required
+            >
               <option value="0">Select Package type</option>
               <option value="1">Daily Package</option>
               <option value="2">Event Package</option>
@@ -35,13 +83,27 @@ export default function CreatePackages() {
           </div>
 
           <div className="craetePkg-input-box">
-            <input type="text" id="description" name="description" required />
-            <label for="description">Description</label>
+            <input
+              type="text"
+              id="description"
+              name="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            />
+            <label htmlFor="description">Description</label>
           </div>
 
           <div className="craetePkg-input-box">
-            <input type="text" id="price" name="price" required />
-            <label for="price">Price (LKR)</label>
+            <input
+              type="text"
+              id="price"
+              name="price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              required
+            />
+            <label htmlFor="price">Price (LKR)</label>
           </div>
 
           <button type="submit" className="createPackage-button">
