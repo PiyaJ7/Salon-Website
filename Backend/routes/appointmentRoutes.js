@@ -121,12 +121,23 @@ router.get("/appointment/:id", async (req, res) => {
 
 
 // Create API route for Delete method in CRUD Operations
-router.delete("/delete/:id", (req, res) => {
-    //create route for delete
-    Appointment.findByIdAndDelete({ _id: req.params.id })
-        .then((doc) => console.log(doc))
-        .catch((err) => console.log(err));
+// router.delete("/delete/:id", (req, res) => {
+//     //create route for delete
+//     Appointment.findByIdAndDelete({ _id: req.params.id })
+//         .then((doc) => console.log(doc))
+//         .catch((err) => console.log(err));
+// });
+router.delete("/delete/:id", async (req, res) => {
+    try {
+        const deletedAppointment = await Appointment.findByIdAndDelete({ _id: req.params.id });
+        console.log(deletedAppointment);
+        res.send("Appointment Deleted Successfully");
+    } catch (err) {
+        console.log(err);
+        res.status(500).send("Error Deleting Appointment");
+    }
 });
+
 
 // Create API route for Update method in CRUD Operations
 router.put("/update/:id", (req, res) => {
