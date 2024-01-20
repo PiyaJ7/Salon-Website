@@ -1,61 +1,64 @@
-import React, { useState } from "react";
-import "./createSchedule.css";
+import React, { useEffect, useState } from "react";
+import "./updateSchedule.css";
 import close from "./images/close.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-export default function CreateSchedule() {
+export default function UpdateSchedule() {
   const navigate = useNavigate();
+  const { id } = useParams();
   const [name, setName] = useState("");
   const [contact, setcontact] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [service, setService] = useState("");
 
-  const handleSubmit = async (e) => {
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/schedu/update/" + id)
+      .then((result) => {
+        console.log(result);
+        setName(result.data.name);
+        setcontact(result.data.contact);
+        setDate(result.data.date);
+        setTime(result.data.time);
+        setService(result.data.service);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    const scheduleData = {
-      name,
-      contact,
-      date,
-      time,
-      service,
-    };
-
-    try {
-      const response = await axios.post(
-        "http://localhost:8000/api/schedu/make",
-        scheduleData
-      );
-
-      console.log(scheduleData);
-
-      if (response.status === 201) {
-        console.log(response);
+    axios
+      .put("http://localhost:8000/api/schedu/update/" + id, {
+        name,
+        contact,
+        date,
+        time,
+        service,
+      })
+      .then((result) => {
+        console.log(result);
         navigate("/ScheduleManagement");
-      } else {
-        console.log(response);
-      }
-    } catch (error) {
-      console.error("Error:", error.message);
-    }
+      })
+      .catch((err) => console.log(err));
   };
 
   const navigteBack = () => {
     navigate(-1);
   };
+
   return (
-    <div className="createSchedule-page">
-      <div className="createSchedule-container">
+    <div className="updateSchedule-page">
+      <div className="updateSchedule-container">
         <form onSubmit={handleSubmit}>
           <button onClick={navigteBack} className="close-button">
-            <img className="close-icon" src={close} alt="close" />
+            <img className="close-icon" src={close} alt="cose" />
           </button>
 
-          <h1>Create a Schedule</h1>
+          <h1>Update Schedule</h1>
 
-          <div className="input-box">
+          <div className="updateSchedule-input-box">
             <input
               type="text"
               id="name"
@@ -67,7 +70,7 @@ export default function CreateSchedule() {
             <label htmlFor="name">Name</label>
           </div>
 
-          <div className="input-box">
+          <div className="updateSchedule-input-box">
             <input
               type="text"
               id="contact"
@@ -79,7 +82,7 @@ export default function CreateSchedule() {
             <label htmlFor="contact">Contact</label>
           </div>
 
-          <div className="schedule-date-input">
+          <div className="updateSchedule-date-input">
             <label htmlFor="date">Date</label> <br />
             <input
               type="date"
@@ -91,7 +94,7 @@ export default function CreateSchedule() {
             />
           </div>
 
-          <div className="schedule-time-input">
+          <div className="updateSchedule-time-input">
             <label htmlFor="time">Time</label> <br />
             <input
               type="time"
@@ -103,7 +106,7 @@ export default function CreateSchedule() {
             />
           </div>
 
-          <div className="select-schedule-box">
+          <div className="select-updateSchedule-box">
             <select
               id="service"
               name="service"
@@ -116,15 +119,15 @@ export default function CreateSchedule() {
               <option value="Hair coloring">Hair coloring</option>
               <option value="Nail arts">Nail arts</option>
               <option value="Tinting eyelashes">Tinting eyelashes</option>
-              <option value="Bady care">Bady care</option>
+              <option value="Body care">Body care</option>
               <option value="Facial">Facial</option>
               <option value="Makeup">Makeup</option>
               <option value="ear piercing">ear piercing</option>
             </select>
           </div>
 
-          <button type="submit" className="createSchedule-button">
-            Create Schedule
+          <button type="submit" className="updateSchedule-button">
+            Update Schedule
           </button>
         </form>
       </div>

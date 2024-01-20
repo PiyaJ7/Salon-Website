@@ -92,3 +92,38 @@ th {
 .scheduleManagement tr:nth-child(even) {
   background-color: rgb(234, 234, 234);
 }
+
+.schedule-table-edit-button,
+.schedule-table-delete-button {
+  width: 40%;
+  height: 30px;
+  margin: 0 5%;
+  border: none;
+  font-weight: bold;
+  font-size: 1vw;
+  cursor: pointer;
+}
+
+.schedule-table-edit-button {
+  background-color: rgb(33, 145, 33);
+}
+
+.schedule-table-edit-button:hover {
+  background-color: rgb(71, 173, 71);
+}
+
+.schedule-table-edit-button:active {
+  background-color: rgb(21, 120, 21);
+}
+
+.schedule-table-delete-button {
+  background-color: rgb(167, 43, 43);
+}
+
+.schedule-table-delete-button:hover {
+  background-color: rgb(178, 67, 67);
+}
+
+.schedule-table-delete-button:active {
+  background-color: rgb(147, 33, 33);
+}

@@ -25,6 +25,7 @@ import AddService from "./Pages/AddService";
 import AddTransaction from "./Pages/AddTransaction";
 import AddAttendance from "./Pages/AddAttendance";
 import AddProduct from "./Pages/AddProduct";
+import UpdateSchedule from "./Pages/UpdateSchedule";
 
 function App() {
   return (
@@ -55,6 +56,10 @@ function App() {
             element={<ScheduleManagement />}
           ></Route>
           <Route path="/CreateSchedule" element={<CreateSchedule />}></Route>
+          <Route
+            path="/UpdateSchedule/:id"
+            element={<UpdateSchedule />}
+          ></Route>
           <Route
             path="/InventoryMnagement"
             element={<InventoryMnagement />}
