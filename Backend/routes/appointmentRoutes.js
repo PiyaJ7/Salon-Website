@@ -86,7 +86,7 @@ router.post("/make2", async (req, res) => {
 router.get("/appointments", async (req, res) => {
     try {
         const appointments = await Appointment.find();
-        res.json(appointments);
+        res.status(200).json(appointments);
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: "Internal Server Error" });
@@ -96,7 +96,7 @@ router.get("/appointments", async (req, res) => {
 router.get("/appointment/:id", async (req, res) => {
     try {
         const appointment = await Appointment.findById(req.params.id);
-        res.json(appointment);
+        res.status(200).json(appointment);
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: "Internal Server Error" });
@@ -131,7 +131,7 @@ router.delete("/delete/:id", async (req, res) => {
     try {
         const deletedAppointment = await Appointment.findByIdAndDelete({ _id: req.params.id });
         console.log(deletedAppointment);
-        res.send("Appointment Deleted Successfully");
+        res.status(200).send("Appointment Deleted Successfully");
     } catch (err) {
         console.log(err);
         res.status(500).send("Error Deleting Appointment");
@@ -173,7 +173,7 @@ router.put("/update/:id", async (req, res) => {
         );
 
         console.log(updatedAppointment);
-        res.send("Appointment Updated Successfully");
+        res.status(200).send("Appointment Updated Successfully");
     } catch (err) {
         console.log(err);
         res.status(500).send("Error Updating Appointment");

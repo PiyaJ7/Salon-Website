@@ -25,7 +25,7 @@ router.post("/make", async (req, res) => {
         });
 
         console.log(createdSchedule);
-        res.json({ message: "Schedule created successfully", schedule: createdSchedule });
+        res.status(201).json({ message: "Schedule created successfully", schedule: createdSchedule });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error creating schedule" });
@@ -42,7 +42,7 @@ router.post("/make", async (req, res) => {
 router.get("/schedules", async (req, res) => {
     try {
         const schedules = await Schedule.find();
-        res.json(schedules);
+        res.status(200).json(schedules);
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error fetching schedules" });
@@ -63,7 +63,7 @@ router.delete("/delete/:id", async (req, res) => {
     try {
         const deletedSchedule = await Schedule.findByIdAndDelete({ _id: req.params.id });
         console.log(deletedSchedule);
-        res.json({ message: "Schedule deleted successfully", deletedSchedule: deletedSchedule });
+        res.status(200).json({ message: "Schedule deleted successfully", deletedSchedule: deletedSchedule });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error deleting schedule" });
@@ -105,7 +105,7 @@ router.put("/update/:id", async (req, res) => {
         );
 
         console.log(updatedSchedule);
-        res.json({ message: "Schedule updated successfully", updatedSchedule: updatedSchedule });
+        res.status(200).json({ message: "Schedule updated successfully", updatedSchedule: updatedSchedule });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error updating schedule" });

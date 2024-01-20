@@ -27,7 +27,7 @@ router.post("/add", async (req, res) => {
         });
 
         console.log(createdSupplier);
-        res.json({ message: "Supplier created successfully", supplier: createdSupplier });
+        res.status(201).json({ message: "Supplier created successfully", supplier: createdSupplier });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error creating supplier" });
@@ -44,7 +44,7 @@ router.post("/add", async (req, res) => {
 router.get("/ords", async (req, res) => {
     try {
         const suppliers = await Supplier.find();
-        res.json(suppliers);
+        res.status(200).json(suppliers);
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error fetching suppliers" });
@@ -110,7 +110,7 @@ router.put("/update/:id", async (req, res) => {
         );
 
         console.log(updatedSupplier);
-        res.json({ message: "Supplier updated successfully", updatedSupplier: updatedSupplier });
+        res.status(200).json({ message: "Supplier updated successfully", updatedSupplier: updatedSupplier });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error updating supplier" });

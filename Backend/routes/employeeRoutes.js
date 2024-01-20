@@ -29,7 +29,7 @@ router.post("/add", async (req, res) => {
         });
 
         console.log(createdEmployee);
-        res.json({ message: "Employee added successfully", employee: createdEmployee });
+        res.status(201).json({ message: "Employee added successfully", employee: createdEmployee });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error adding employee" });
@@ -46,7 +46,7 @@ router.post("/add", async (req, res) => {
 router.get("/emps", async (req, res) => {
     try {
         const employees = await emp.find();
-        res.json(employees);
+        res.status(200).json(employees);
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error fetching employees" });
@@ -67,7 +67,7 @@ router.delete("/delete/:id", async (req, res) => {
     try {
         const deletedEmployee = await emp.findByIdAndDelete({ _id: req.params.id });
         console.log(deletedEmployee);
-        res.json({ message: "Employee deleted successfully", deletedEmployee: deletedEmployee });
+        res.status(200).json({ message: "Employee deleted successfully", deletedEmployee: deletedEmployee });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error deleting employee" });
@@ -110,7 +110,7 @@ router.put("/update/:id", async (req, res) => {
         );
 
         console.log(updatedEmployee);
-        res.json({ message: "Employee updated successfully", updatedEmployee: updatedEmployee });
+        res.status(200).json({ message: "Employee updated successfully", updatedEmployee: updatedEmployee });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error updating employee" });
