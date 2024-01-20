@@ -76,23 +76,47 @@ router.delete("/delete/:id", async (req, res) => {
 
 
 // Create API route for Update method in CRUD Operations
-router.put("/update/:id", (req, res) => {
-    emp.findByIdAndUpdate(
-        { _id: req.params.id },
-        {
-            name: req.body.name,
-            id: req.body.id,
-            position: req.body.position,
-            NIC: req.body.NIC,
-            joinedDate: req.body.joinedDate,
-            address: req.body.address,
-            phoneNo: req.body.phoneNo,
-        }
-    )
-        .then((doc) => console.log(doc))
-        .catch((err) => console.log(err));
+// router.put("/update/:id", (req, res) => {
+//     emp.findByIdAndUpdate(
+//         { _id: req.params.id },
+//         {
+//             name: req.body.name,
+//             id: req.body.id,
+//             position: req.body.position,
+//             NIC: req.body.NIC,
+//             joinedDate: req.body.joinedDate,
+//             address: req.body.address,
+//             phoneNo: req.body.phoneNo,
+//         }
+//     )
+//         .then((doc) => console.log(doc))
+//         .catch((err) => console.log(err));
 
+// });
+router.put("/update/:id", async (req, res) => {
+    try {
+        const updatedEmployee = await emp.findByIdAndUpdate(
+            { _id: req.params.id },
+            {
+                name: req.body.name,
+                id: req.body.id,
+                position: req.body.position,
+                NIC: req.body.NIC,
+                joinedDate: req.body.joinedDate,
+                address: req.body.address,
+                phoneNo: req.body.phoneNo,
+            },
+            { new: true } // To return the updated document
+        );
+
+        console.log(updatedEmployee);
+        res.json({ message: "Employee updated successfully", updatedEmployee: updatedEmployee });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Error updating employee" });
+    }
 });
+
 
 
 module.exports = router;
