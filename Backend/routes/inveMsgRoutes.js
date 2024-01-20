@@ -23,7 +23,7 @@ router.post("/add", async (req, res) => {
         });
 
         console.log(createdInvMessage);
-        res.json({ message: "Inventory message created successfully", invMessage: createdInvMessage });
+        res.status(201).json({ message: "Inventory message created successfully", invMessage: createdInvMessage });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error creating inventory message" });
@@ -76,7 +76,7 @@ router.put("/update/:id", async (req, res) => {
         );
 
         console.log(updatedSupplier);
-        res.json({ message: "Supplier updated successfully", updatedSupplier: updatedSupplier });
+        res.status(200).json({ message: "Supplier updated successfully", updatedSupplier: updatedSupplier });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error updating supplier" });

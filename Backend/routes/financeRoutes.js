@@ -43,7 +43,7 @@ router.post("/add", async (req, res) => {
 router.get("/trans", async (req, res) => {
   try {
     const financeEntries = await Finance.find();
-    res.json(financeEntries);
+    res.status(200).json(financeEntries);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Error fetching finance entries" });
@@ -63,7 +63,7 @@ router.delete("/delete/:id", async (req, res) => {
       _id: req.params.id,
     });
     console.log(deletedFinance);
-    res.json({
+    res.status(200).json({
       message: "Finance entry deleted successfully",
       deletedFinance: deletedFinance,
     });
@@ -107,7 +107,7 @@ router.put("/update/:id", async (req, res) => {
     );
 
     console.log(updatedFinance);
-    res.json({
+    res.status(200).json({
       message: "Finance entry updated successfully",
       updatedFinance: updatedFinance,
     });

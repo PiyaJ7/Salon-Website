@@ -19,7 +19,7 @@ router.post("/create", async (req, res) => {
         });
 
         console.log(createdCustom);
-        res.json({ message: "Custom created successfully", custom: createdCustom });
+        res.status(201).json({ message: "Custom created successfully", custom: createdCustom });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error creating Custom" });

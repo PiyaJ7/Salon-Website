@@ -46,7 +46,7 @@ router.post("/create", async (req, res) => {
 router.get("/posts", async (req, res) => {
     try {
         const items = await Service.find();
-        res.json(items);
+        res.status(200).json(items);
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: "Internal Server Error" });
@@ -66,7 +66,7 @@ router.delete("/delete/:id", async (req, res) => {
     try {
         const deletedDoc = await Service.findByIdAndDelete({ _id: req.params.id });
         console.log(deletedDoc);
-        res.send("Service Deleted Successfully");
+        res.status(200).send("Service Deleted Successfully");
     } catch (err) {
         console.log(err);
         res.status(500).send("Error Deleting Service");
@@ -104,7 +104,7 @@ router.put("/update/:id", async (req, res) => {
         );
 
         console.log(updatedDoc);
-        res.send("Service Updated Successfully");
+        res.status(200).send("Service Updated Successfully");
     } catch (err) {
         console.log(err);
         res.status(500).send("Error Updating Service");
