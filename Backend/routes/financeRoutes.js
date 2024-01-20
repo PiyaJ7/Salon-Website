@@ -3,18 +3,37 @@ const router = express.Router();
 const Finance = require('../models/financeModel');
 
 // Create API route for Create method in CRUD Operations
-router.post("/add", (req, res) => {
-    Finance.create({
-        amount: req.body.amount,
-        type: req.body.type,
-        category: req.body.category,
-        date: req.body.date,
-        description: req.body.description,
-        reference: req.body.reference
-    })
-        .then((doc) => console.log(doc))
-        .catch((err) => console.log(err));
+// router.post("/add", (req, res) => {
+//     Finance.create({
+//         amount: req.body.amount,
+//         type: req.body.type,
+//         category: req.body.category,
+//         date: req.body.date,
+//         description: req.body.description,
+//         reference: req.body.reference
+//     })
+//         .then((doc) => console.log(doc))
+//         .catch((err) => console.log(err));
+// });
+router.post("/add", async (req, res) => {
+    try {
+        const createdFinance = await Finance.create({
+            amount: req.body.amount,
+            type: req.body.type,
+            category: req.body.category,
+            date: req.body.date,
+            description: req.body.description,
+            reference: req.body.reference
+        });
+
+        console.log(createdFinance);
+        res.json({ message: "Finance entry created successfully", finance: createdFinance });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Error creating finance entry" });
+    }
 });
+
 
 // Create API route for Read method in CRUD Operations
 router.get("/trans", (req, res) => {
