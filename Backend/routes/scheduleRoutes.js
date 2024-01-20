@@ -24,11 +24,22 @@ router.post("/make", async (req, res) => {
 });
 
 // Create API route for Read method in CRUD Operations
-router.get("/schedules", (req, res) => {
-  Schedule.find()
-    .then((items) => res.json(items))
-    .catch((err) => console.log(err));
+// router.get("/schedules", (req, res) => {
+//   Schedule.find()
+//     .then((items) => res.json(items))
+//     .catch((err) => console.log(err));
+// });
+
+router.get("/schedules", async (req, res) => {
+  try {
+    const schedules = await Schedule.find();
+    res.status(200).json(schedules);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Error fetching schedules" });
+  }
 });
+
 
 // Create API route for Delete method in CRUD Operations
 router.delete("/delete/:id", async (req, res) => {
