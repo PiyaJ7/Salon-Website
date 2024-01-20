@@ -3,18 +3,37 @@ const router = express.Router();
 const Supplier = require('../models/orderModel');
 
 // Create API route for Create method in CRUD Operations
-router.post("/add", (req, res) => {
-    Supplier.create({
-        name: req.body.name,
-        product: req.body.product,
-        date: req.body.date,
-        quantity: req.body.quantity,
-        price: req.body.price,
-        status: req.body.status
-    })
-        .then((doc) => console.log(doc))
-        .catch((err) => console.log(err));
+// router.post("/add", (req, res) => {
+//     Supplier.create({
+//         name: req.body.name,
+//         product: req.body.product,
+//         date: req.body.date,
+//         quantity: req.body.quantity,
+//         price: req.body.price,
+//         status: req.body.status
+//     })
+//         .then((doc) => console.log(doc))
+//         .catch((err) => console.log(err));
+// });
+router.post("/add", async (req, res) => {
+    try {
+        const createdSupplier = await Supplier.create({
+            name: req.body.name,
+            product: req.body.product,
+            date: req.body.date,
+            quantity: req.body.quantity,
+            price: req.body.price,
+            status: req.body.status
+        });
+
+        console.log(createdSupplier);
+        res.json({ message: "Supplier created successfully", supplier: createdSupplier });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Error creating supplier" });
+    }
 });
+
 
 // Create API route for Read method in CRUD Operations
 router.get("/ords", (req, res) => {
