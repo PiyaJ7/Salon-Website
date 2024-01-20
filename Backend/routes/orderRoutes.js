@@ -74,24 +74,48 @@ router.delete("/delete/:id", async (req, res) => {
 
 
 // Create API route for Update method in CRUD Operations
-router.put("/update/:id", (req, res) => {
-    Supplier.findByIdAndUpdate(
-        { _id: req.params.id },
-        {
-            name: req.body.name,
-            product: req.body.product,
-            date: req.body.date,
-            quantity: req.body.quantity,
-            price: req.body.price,
-            status: req.body.status,
+// router.put("/update/:id", (req, res) => {
+//     Supplier.findByIdAndUpdate(
+//         { _id: req.params.id },
+//         {
+//             name: req.body.name,
+//             product: req.body.product,
+//             date: req.body.date,
+//             quantity: req.body.quantity,
+//             price: req.body.price,
+//             status: req.body.status,
 
 
 
-        }
-    )
-        .then((doc) => console.log(doc))
-        .catch((err) => console.log(err));
+//         }
+//     )
+//         .then((doc) => console.log(doc))
+//         .catch((err) => console.log(err));
 
+// });
+
+router.put("/update/:id", async (req, res) => {
+    try {
+        const updatedSupplier = await Supplier.findByIdAndUpdate(
+            { _id: req.params.id },
+            {
+                name: req.body.name,
+                product: req.body.product,
+                date: req.body.date,
+                quantity: req.body.quantity,
+                price: req.body.price,
+                status: req.body.status,
+            },
+            { new: true } // To return the updated document
+        );
+
+        console.log(updatedSupplier);
+        res.json({ message: "Supplier updated successfully", updatedSupplier: updatedSupplier });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Error updating supplier" });
+    }
 });
+
 
 module.exports = router;
