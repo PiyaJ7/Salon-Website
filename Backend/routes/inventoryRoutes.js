@@ -77,22 +77,47 @@ router.delete("/delete/:id", async (req, res) => {
 
 
 // Create API route for Update method in CRUD Operations
-router.put("/update/:id", (req, res) => {
-    Product.findByIdAndUpdate(
-        { _id: req.params.id },
-        {
-            name: req.body.name,
-            type: req.body.type,
-            category: req.body.category,
-            date: req.body.date,
-            rquantity: req.body.rquantity,
-            uquantity: req.body.uquantity,
-            totalPrice: req.body.totalPrice,
-        }
-    )
-        .then((doc) => console.log(doc))
-        .catch((err) => console.log(err));
+// router.put("/update/:id", (req, res) => {
+//     Product.findByIdAndUpdate(
+//         { _id: req.params.id },
+//         {
+//             name: req.body.name,
+//             type: req.body.type,
+//             category: req.body.category,
+//             date: req.body.date,
+//             rquantity: req.body.rquantity,
+//             uquantity: req.body.uquantity,
+//             totalPrice: req.body.totalPrice,
+//         }
+//     )
+//         .then((doc) => console.log(doc))
+//         .catch((err) => console.log(err));
 
+// });
+
+router.put("/update/:id", async (req, res) => {
+    try {
+        const updatedProduct = await Product.findByIdAndUpdate(
+            { _id: req.params.id },
+            {
+                name: req.body.name,
+                type: req.body.type,
+                category: req.body.category,
+                date: req.body.date,
+                rquantity: req.body.rquantity,
+                uquantity: req.body.uquantity,
+                totalPrice: req.body.totalPrice,
+            },
+            { new: true } // To return the updated document
+        );
+
+        console.log(updatedProduct);
+        res.json({ message: "Product updated successfully", updatedProduct: updatedProduct });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Error updating product" });
+    }
 });
+
 
 module.exports = router;
