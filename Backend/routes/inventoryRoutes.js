@@ -29,7 +29,7 @@ router.post("/add", async (req, res) => {
         });
 
         console.log(createdProduct);
-        res.json({ message: "Product created successfully", product: createdProduct });
+        res.status(201).json({ message: "Product created successfully", product: createdProduct });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error creating product" });
@@ -47,7 +47,7 @@ router.post("/add", async (req, res) => {
 router.get("/products", async (req, res) => {
     try {
         const products = await Product.find();
-        res.json(products);
+        res.status(200).json(products);
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error fetching products" });
@@ -68,7 +68,7 @@ router.delete("/delete/:id", async (req, res) => {
     try {
         const deletedProduct = await Product.findByIdAndDelete({ _id: req.params.id });
         console.log(deletedProduct);
-        res.json({ message: "Product deleted successfully", deletedProduct: deletedProduct });
+        res.status(200).json({ message: "Product deleted successfully", deletedProduct: deletedProduct });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error deleting product" });
@@ -112,7 +112,7 @@ router.put("/update/:id", async (req, res) => {
         );
 
         console.log(updatedProduct);
-        res.json({ message: "Product updated successfully", updatedProduct: updatedProduct });
+        res.status(200).json({ message: "Product updated successfully", updatedProduct: updatedProduct });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error updating product" });
