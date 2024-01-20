@@ -34,11 +34,21 @@ router.post("/make", async (req, res) => {
 
 
 // Create API route for Read method in CRUD Operations
-router.get("/schedules", (req, res) => {
-    Schedule.find()
-        .then((items) => res.json(items))
-        .catch((err) => console.log(err));
+// router.get("/schedules", (req, res) => {
+//     Schedule.find()
+//         .then((items) => res.json(items))
+//         .catch((err) => console.log(err));
+// });
+router.get("/schedules", async (req, res) => {
+    try {
+        const schedules = await Schedule.find();
+        res.json(schedules);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Error fetching schedules" });
+    }
 });
+
 
 
 
