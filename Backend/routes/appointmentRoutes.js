@@ -71,18 +71,38 @@ router.post("/make2", async (req, res) => {
 
 //Create API route for Read method in CRUD Operations
 
-router.get("/appointments", (req, res) => {
-    Appointment.find()
-        .then((items) => res.json(items))
-        .catch((err) => console.log(err));
+// router.get("/appointments", (req, res) => {
+//     Appointment.find()
+//         .then((items) => res.json(items))
+//         .catch((err) => console.log(err));
+// });
+
+// router.get("/appointment/:id", (req, res) => {
+//     Appointment.findById(
+//         { _id: req.params.id })
+//         .then((items) => res.json(items))
+//         .catch((err) => console.log(err));
+// });
+router.get("/appointments", async (req, res) => {
+    try {
+        const appointments = await Appointment.find();
+        res.json(appointments);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
 });
 
-router.get("/appointment/:id", (req, res) => {
-    Appointment.findById(
-        { _id: req.params.id })
-        .then((items) => res.json(items))
-        .catch((err) => console.log(err));
+router.get("/appointment/:id", async (req, res) => {
+    try {
+        const appointment = await Appointment.findById(req.params.id);
+        res.json(appointment);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
 });
+
 
 // router.get("/appointment/:id", (req, res) => {
 //     let postId = req.params.id;
