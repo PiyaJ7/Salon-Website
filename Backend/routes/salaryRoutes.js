@@ -3,17 +3,35 @@ const router = express.Router();
 const sal = require('../models/salaryModel');
 
 // Create API route for Create method in CRUD Operations
-router.post("/adds", (req, res) => {
-    sal.create({
-        id: req.body.id,
-        month: req.body.month,
-        workingDays: req.body.workingDays,
-        payRate: req.body.payRate,
-        netSal: req.body.netSal,
-    })
-        .then((doc) => console.log(doc))
-        .catch((err) => console.log(err));
+// router.post("/adds", (req, res) => {
+//     sal.create({
+//         id: req.body.id,
+//         month: req.body.month,
+//         workingDays: req.body.workingDays,
+//         payRate: req.body.payRate,
+//         netSal: req.body.netSal,
+//     })
+//         .then((doc) => console.log(doc))
+//         .catch((err) => console.log(err));
+// });
+router.post("/adds", async (req, res) => {
+    try {
+        const createdSalary = await sal.create({
+            id: req.body.id,
+            month: req.body.month,
+            workingDays: req.body.workingDays,
+            payRate: req.body.payRate,
+            netSal: req.body.netSal,
+        });
+
+        console.log(createdSalary);
+        res.json({ message: "Salary entry created successfully", salary: createdSalary });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Error creating salary entry" });
+    }
 });
+
 
 // Create API route for Read method in CRUD Operations
 router.get("/sals", (req, res) => {
