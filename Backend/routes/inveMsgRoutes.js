@@ -49,19 +49,40 @@ router.get("/imsgs", async (req, res) => {
 
 
 // Create API route for Update method in CRUD Operations
-router.put("/update/:id", (req, res) => {
-    Supplier.findByIdAndUpdate(
-        { _id: req.params.id },
-        {
-            date: req.body.date,
-            title: req.body.title,
-            msg: req.body.msg,
-        }
-    )
-        .then((doc) => console.log(doc))
-        .catch((err) => console.log(err));
+// router.put("/update/:id", (req, res) => {
+//     Supplier.findByIdAndUpdate(
+//         { _id: req.params.id },
+//         {
+//             date: req.body.date,
+//             title: req.body.title,
+//             msg: req.body.msg,
+//         }
+//     )
+//         .then((doc) => console.log(doc))
+//         .catch((err) => console.log(err));
 
+// });
+
+router.put("/update/:id", async (req, res) => {
+    try {
+        const updatedSupplier = await Supplier.findByIdAndUpdate(
+            { _id: req.params.id },
+            {
+                date: req.body.date,
+                title: req.body.title,
+                msg: req.body.msg,
+            },
+            { new: true } // To return the updated document
+        );
+
+        console.log(updatedSupplier);
+        res.json({ message: "Supplier updated successfully", updatedSupplier: updatedSupplier });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Error updating supplier" });
+    }
 });
+
 
 
 module.exports = router;
