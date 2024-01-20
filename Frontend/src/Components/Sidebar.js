@@ -69,8 +69,8 @@ export default function Sidebar() {
       </button>
       <div className="sidebar-layer">
         <div className="side-bar-display">
-          <button onClick={hideSidebar}>
-            <IoClose className="sidebar-close-icon" size={29} />
+          <button onClick={hideSidebar} className="sidebar-close-button">
+            <IoClose size={29} />
           </button>
           <div onClick={clickDashboard} className="dashboard-item">
             Dashboard

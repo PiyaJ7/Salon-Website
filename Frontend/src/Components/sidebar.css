@@ -2,21 +2,21 @@
   position: fixed;
   top: 0;
   left: 0;
+  bottom: 0;
   height: 100%;
   width: 250px;
   padding-top: 3%;
   z-index: 50;
   display: none;
   background-image: url("images/loginbg.webp");
-  background-repeat: no-repeat;
   background-size: cover;
-  height: 100%;
 }
 
 .side-bar-display {
   position: fixed;
   top: 0;
   left: 0;
+  bottom: 0;
   height: 100%;
   width: 250px;
   padding-top: 1%;
@@ -54,9 +54,8 @@
   cursor: pointer;
 }
 
-.sidebar-close-icon {
-  position: absolute;
-  top: 0;
-  right: 0;
+.sidebar-close-button {
+  background: transparent;
+  border: none;
   cursor: pointer;
 }

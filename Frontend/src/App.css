@@ -4,11 +4,3 @@
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
-
-body,
-html {
-  height: 100%;
-  margin: 0;
-  background-image: url("images/loginbg.webp");
-  background-size: cover;
-}

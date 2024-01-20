@@ -30,6 +30,7 @@ import AddProduct from "./Pages/AddProduct";
 function App() {
   return (
     <div className="App">
+      <div className="bg-image"></div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LoginPage />}></Route>
