@@ -3,18 +3,37 @@ const router = express.Router();
 const Appointment = require('../models/appointmentModel');
 
 // Create API route for Create method in CRUD Operations
-router.post("/make", (req, res) => {
-    Appointment.create({
-        name: req.body.name,
-        contact: req.body.contact,
-        email: req.body.email,
-        date: req.body.date,
-        time: req.body.time,
-        service: req.body.service
-    })
-        .then((doc) => console.log(doc))
-        .catch((err) => console.log(err));
+// router.post("/make", (req, res) => {
+//     Appointment.create({
+//         name: req.body.name,
+//         contact: req.body.contact,
+//         email: req.body.email,
+//         date: req.body.date,
+//         time: req.body.time,
+//         service: req.body.service
+//     })
+//         .then((doc) => console.log(doc))
+//         .catch((err) => console.log(err));
+// });
+router.post("/make", async (req, res) => {
+    try {
+        const newAppointment = await Appointment.create({
+            name: req.body.name,
+            contact: req.body.contact,
+            email: req.body.email,
+            date: req.body.date,
+            time: req.body.time,
+            service: req.body.service
+        });
+
+        console.log(newAppointment);
+        res.status(201).send("Appointment Created Successfully");
+    } catch (err) {
+        console.log(err);
+        res.status(500).send("Error Creating Appointment");
+    }
 });
+
 
 
 router.post("/make2", async (req, res) => {
