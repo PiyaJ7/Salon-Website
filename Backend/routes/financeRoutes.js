@@ -43,7 +43,7 @@ router.post("/add", async (req, res) => {
 router.get("/trans", async (req, res) => {
   try {
     const financeEntries = await Finance.find();
-    res.json(financeEntries);
+    res.status(200).json(financeEntries);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Error fetching finance entries" });
