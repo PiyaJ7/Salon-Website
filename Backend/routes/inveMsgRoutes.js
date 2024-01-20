@@ -32,11 +32,21 @@ router.post("/add", async (req, res) => {
 
 
 // Create API route for Read method in CRUD Operations
-router.get("/imsgs", (req, res) => {
-    InvMessage.find()
-        .then((items) => res.json(items))
-        .catch((err) => console.log(err));
+// router.get("/imsgs", (req, res) => {
+//     InvMessage.find()
+//         .then((items) => res.json(items))
+//         .catch((err) => console.log(err));
+// });
+router.get("/imsgs", async (req, res) => {
+    try {
+        const inventoryMessages = await InvMessage.find();
+        res.json(inventoryMessages);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Error fetching inventory messages" });
+    }
 });
+
 
 // Create API route for Update method in CRUD Operations
 router.put("/update/:id", (req, res) => {
