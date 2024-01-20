@@ -112,3 +112,38 @@ th {
 .financeManagement tr:nth-child(even) {
   background-color: rgb(234, 234, 234);
 }
+
+.finance-table-edit-button,
+.finance-table-delete-button {
+  width: 40%;
+  height: 30px;
+  margin: 0 5%;
+  border: none;
+  font-weight: bold;
+  font-size: 1vw;
+  cursor: pointer;
+}
+
+.finance-table-edit-button {
+  background-color: rgb(33, 145, 33);
+}
+
+.finance-table-edit-button:hover {
+  background-color: rgb(71, 173, 71);
+}
+
+.finance-table-edit-button:active {
+  background-color: rgb(21, 120, 21);
+}
+
+.finance-table-delete-button {
+  background-color: rgb(167, 43, 43);
+}
+
+.finance-table-delete-button:hover {
+  background-color: rgb(178, 67, 67);
+}
+
+.finance-table-delete-button:active {
+  background-color: rgb(147, 33, 33);
+}

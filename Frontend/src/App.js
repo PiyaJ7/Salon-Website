@@ -5,7 +5,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PackageManagement from "./Pages/PackageManagement";
 import CreatePackages from "./Pages/CreatePackages";
 import ServiceManagement from "./Pages/ServiceManagement";
-import Home from "./Pages/Home";
 import AttendanceDetals from "./Pages/AttendanceDetals";
 import Dashboard from "./Pages/Dashboard";
 import ScheduleManagement from "./Pages/ScheduleManagement";
