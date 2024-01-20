@@ -72,21 +72,45 @@ router.delete("/delete/:id", async (req, res) => {
 
 
 // Create API route for Update method in CRUD Operations
-router.put("/update/:id", (req, res) => {
-    Shedule.findByIdAndUpdate(
-        { _id: req.params.id },
-        {
-            name: req.body.name,
-            contact: req.body.contact,
-            email: req.body.email,
-            date: req.body.date,
-            time: req.body.time,
-            service: req.body.service,
-        }
-    )
-        .then((doc) => console.log(doc))
-        .catch((err) => console.log(err));
+// router.put("/update/:id", (req, res) => {
+//     Shedule.findByIdAndUpdate(
+//         { _id: req.params.id },
+//         {
+//             name: req.body.name,
+//             contact: req.body.contact,
+//             email: req.body.email,
+//             date: req.body.date,
+//             time: req.body.time,
+//             service: req.body.service,
+//         }
+//     )
+//         .then((doc) => console.log(doc))
+//         .catch((err) => console.log(err));
 
+// });
+
+router.put("/update/:id", async (req, res) => {
+    try {
+        const updatedSchedule = await Schedule.findByIdAndUpdate(
+            { _id: req.params.id },
+            {
+                name: req.body.name,
+                contact: req.body.contact,
+                email: req.body.email,
+                date: req.body.date,
+                time: req.body.time,
+                service: req.body.service,
+            },
+            { new: true } // To return the updated document
+        );
+
+        console.log(updatedSchedule);
+        res.json({ message: "Schedule updated successfully", updatedSchedule: updatedSchedule });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Error updating schedule" });
+    }
 });
+
 
 module.exports = router;
