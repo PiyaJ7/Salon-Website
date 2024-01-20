@@ -3,17 +3,35 @@ const router = express.Router();
 const Schedule = require('../models/scheduleModel');
 
 // Create API route for Create method in CRUD Operations
-router.post("/make", (req, res) => {
-    Schedule.create({
-        name: req.body.name,
-        contact: req.body.contact,
-        date: req.body.date,
-        time: req.body.time,
-        service: req.body.service
-    })
-        .then((doc) => console.log(doc))
-        .catch((err) => console.log(err));
+// router.post("/make", (req, res) => {
+//     Schedule.create({
+//         name: req.body.name,
+//         contact: req.body.contact,
+//         date: req.body.date,
+//         time: req.body.time,
+//         service: req.body.service
+//     })
+//         .then((doc) => console.log(doc))
+//         .catch((err) => console.log(err));
+// });
+router.post("/make", async (req, res) => {
+    try {
+        const createdSchedule = await Schedule.create({
+            name: req.body.name,
+            contact: req.body.contact,
+            date: req.body.date,
+            time: req.body.time,
+            service: req.body.service
+        });
+
+        console.log(createdSchedule);
+        res.json({ message: "Schedule created successfully", schedule: createdSchedule });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Error creating schedule" });
+    }
 });
+
 
 // Create API route for Read method in CRUD Operations
 router.get("/schedules", (req, res) => {
