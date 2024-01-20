@@ -24,12 +24,12 @@ export default function AddService() {
         "http://localhost:8000/api/services/create",
         serviceData
       );
-      navigate("/ServiceManagement");
 
-      console.log(response);
+      console.log(serviceData);
 
       if (response.status === 201) {
         console.log(response);
+        navigate("/ServiceManagement");
       } else {
         console.log(response);
       }
@@ -83,7 +83,7 @@ export default function AddService() {
               onChange={(e) => setSCategory(e.target.value)}
               required
             >
-              <option value="0">Select Category</option>
+              <option value="Not Selected">Select Category</option>
               <option value="Hair">Hair</option>
               <option value="Skin">Skin</option>
               <option value="Body">Body</option>
