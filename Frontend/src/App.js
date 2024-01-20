@@ -26,6 +26,7 @@ import AddTransaction from "./Pages/AddTransaction";
 import AddAttendance from "./Pages/AddAttendance";
 import AddProduct from "./Pages/AddProduct";
 import UpdateSchedule from "./Pages/UpdateSchedule";
+import UpdateService from "./Pages/UpdateService";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
             element={<ServiceManagement />}
           ></Route>
           <Route path="/AddService" element={<AddService />}></Route>
+          <Route path="/UpdateService/:id" element={<UpdateService />}></Route>
           <Route
             path="/AttendanceDetals"
             element={<AttendanceDetals />}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./serviceManagement.css";
 import axios from "axios";
 import Header from "../Components/Header";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Sidebar from "../Components/Sidebar";
 
 export default function ServiceManagement() {
@@ -15,6 +15,16 @@ export default function ServiceManagement() {
       .then((items) => setService(items.data))
       .catch((err) => console.log(err));
   }, []);
+
+  const handleDelete = (id) => {
+    axios
+      .delete("http://localhost:8000/api/services/delete/" + id)
+      .then((res) => {
+        console.log("Delete successful:", res);
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
 
   const addServiceClick = () => {
     navigate("/AddService");
@@ -58,10 +68,15 @@ export default function ServiceManagement() {
                     <td>{service.sPrice}</td>
                     <td>{service.sCategory}</td>
                     <td>
-                      <button className="service-table-edit-button">
-                        Edit
-                      </button>
-                      <button className="service-table-delete-button">
+                      <Link to={`/UpdateService/${service._id}`}>
+                        <button className="service-table-edit-button">
+                          Edit
+                        </button>
+                      </Link>
+                      <button
+                        onClick={(e) => handleDelete(service._id)}
+                        className="service-table-delete-button"
+                      >
                         Delete
                       </button>
                     </td>
