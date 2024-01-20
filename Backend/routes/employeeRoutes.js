@@ -57,12 +57,23 @@ router.get("/emps", async (req, res) => {
 
 
 // Create API route for Delete method in CRUD Operations
-router.delete("/delete/:id", (req, res) => {
-    //create route for delete
-    emp.findByIdAndDelete({ _id: req.params.id })
-        .then((doc) => console.log(doc))
-        .catch((err) => console.log(err));
+// router.delete("/delete/:id", (req, res) => {
+//     //create route for delete
+//     emp.findByIdAndDelete({ _id: req.params.id })
+//         .then((doc) => console.log(doc))
+//         .catch((err) => console.log(err));
+// });
+router.delete("/delete/:id", async (req, res) => {
+    try {
+        const deletedEmployee = await emp.findByIdAndDelete({ _id: req.params.id });
+        console.log(deletedEmployee);
+        res.json({ message: "Employee deleted successfully", deletedEmployee: deletedEmployee });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Error deleting employee" });
+    }
 });
+
 
 // Create API route for Update method in CRUD Operations
 router.put("/update/:id", (req, res) => {
