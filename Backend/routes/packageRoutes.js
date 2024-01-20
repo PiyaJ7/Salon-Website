@@ -34,7 +34,7 @@ router.post("/create", async (req, res) => {
 router.get("/posts", async (req, res) => {
   try {
     const items = await Post.find();
-    res.status(201).json(items);
+    res.status(200).json(items);
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Internal Server Error" });
@@ -53,7 +53,7 @@ router.delete("/delete/:id", async (req, res) => {
   try {
     const deletedDoc = await Post.findByIdAndDelete({ _id: req.params.id });
     console.log(deletedDoc);
-    res.status(201).json({ message: "Post deleted successfully", data: deletedDoc });
+    res.status(200).json({ message: "Post deleted successfully", data: deletedDoc });
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Internal Server Error" });
@@ -90,7 +90,7 @@ router.put("/update/:id", async (req, res) => {
     );
 
     console.log(updatedDoc);
-    res.status(201).json({ message: "Post updated successfully", data: updatedDoc });
+    res.status(200).json({ message: "Post updated successfully", data: updatedDoc });
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Internal Server Error" });
