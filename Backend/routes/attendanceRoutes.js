@@ -16,7 +16,7 @@ router.post("/create", async (req, res) => {
         });
 
         const result = await attendance.save();
-        res.json({ attendance: result });
+        res.status(201).json({ attendance: result });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error creating attendance" });
@@ -35,7 +35,7 @@ router.post("/add", (req, res) => {
         })
             .then((doc) => {
                 console.log(doc);
-                res.json({ message: "Employee added successfully", employee: doc });
+                res.status(200).json({ message: "Employee added successfully", employee: doc });
             })
             .catch((err) => {
                 console.error(err);
@@ -47,20 +47,31 @@ router.post("/add", (req, res) => {
     }
 });
 
-router.get("/data", (req, res) => {
-    Attendance.find()
-        .then((items) => res.json(items))
-        .catch((err) => {
-            console.error(err);
-            res.status(500).json({ error: "Error fetching data" });
-        });
+// router.get("/data", (req, res) => {
+//     Attendance.find()
+//         .then((items) => res.json(items))
+//         .catch((err) => {
+//             console.error(err);
+//             res.status(500).json({ error: "Error fetching data" });
+//         });
+// });
+
+router.get("/data", async (req, res) => {
+    try {
+        const items = await Attendance.find();
+        res.status(200).json(items);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Error fetching data" });
+    }
 });
+
 
 router.delete("/delete/:id", (req, res) => {
     Attendance.findByIdAndDelete({ _id: req.params.id })
         .then((doc) => {
             console.log(doc);
-            res.json({ message: "Attendance deleted successfully", deletedAttendance: doc });
+            res.status(200).json({ message: "Attendance deleted successfully", deletedAttendance: doc });
         })
         .catch((err) => {
             console.error(err);
@@ -80,7 +91,7 @@ router.put("/update/:id", (req, res) => {
     )
         .then((doc) => {
             console.log(doc);
-            res.json({ message: "Attendance updated successfully", updatedAttendance: doc });
+            res.status(200).json({ message: "Attendance updated successfully", updatedAttendance: doc });
         })
         .catch((err) => {
             console.error(err);
