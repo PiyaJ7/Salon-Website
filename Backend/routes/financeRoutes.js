@@ -55,12 +55,23 @@ router.get("/trans", async (req, res) => {
 
 
 // Create API route for Delete method in CRUD Operations
-router.delete("/delete/:id", (req, res) => {
-    //create route for delete
-    Finance.findByIdAndDelete({ _id: req.params.id })
-        .then((doc) => console.log(doc))
-        .catch((err) => console.log(err));
+// router.delete("/delete/:id", (req, res) => {
+//     //create route for delete
+//     Finance.findByIdAndDelete({ _id: req.params.id })
+//         .then((doc) => console.log(doc))
+//         .catch((err) => console.log(err));
+// });
+router.delete("/delete/:id", async (req, res) => {
+    try {
+        const deletedFinance = await Finance.findByIdAndDelete({ _id: req.params.id });
+        console.log(deletedFinance);
+        res.json({ message: "Finance entry deleted successfully", deletedFinance: deletedFinance });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Error deleting finance entry" });
+    }
 });
+
 
 // Create API route for Update method in CRUD Operations
 router.put("/update/:id", (req, res) => {
