@@ -3,16 +3,33 @@ const router = express.Router();
 const InvMessage = require('../models/inveMsgModel');
 
 // Create API route for Create method in CRUD Operations
-router.post("/add", (req, res) => {
-    InvMessage.create({
-        date: req.body.date,
-        title: req.body.title,
-        message: req.body.message
+// router.post("/add", (req, res) => {
+//     InvMessage.create({
+//         date: req.body.date,
+//         title: req.body.title,
+//         message: req.body.message
 
-    })
-        .then((doc) => console.log(doc))
-        .catch((err) => console.log(err));
+//     })
+//         .then((doc) => console.log(doc))
+//         .catch((err) => console.log(err));
+// });
+
+router.post("/add", async (req, res) => {
+    try {
+        const createdInvMessage = await InvMessage.create({
+            date: req.body.date,
+            title: req.body.title,
+            message: req.body.message
+        });
+
+        console.log(createdInvMessage);
+        res.json({ message: "Inventory message created successfully", invMessage: createdInvMessage });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Error creating inventory message" });
+    }
 });
+
 
 // Create API route for Read method in CRUD Operations
 router.get("/imsgs", (req, res) => {
