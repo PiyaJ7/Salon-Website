@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./financeManagement.css";
 import Header from "../Components/Header";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Sidebar from "../Components/Sidebar";
 import axios from "axios";
 
@@ -15,6 +15,16 @@ export default function FinanceManagement() {
       .then((item) => setFinance(item.data))
       .catch((err) => console.log(err));
   }, []);
+
+  const handleDelete = (id) => {
+    axios
+      .delete("http://localhost:8000/api/Fin/delete/" + id)
+      .then((res) => {
+        console.log("Delete successful:", res);
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
 
   const addTransactionClick = () => {
     navigate("/AddTransaction");
@@ -74,10 +84,15 @@ export default function FinanceManagement() {
                     <td>{finance.description}</td>
                     <td>{finance.reference}</td>
                     <td>
-                      <button className="finance-table-edit-button">
-                        Edit
-                      </button>
-                      <button className="finance-table-delete-button">
+                      <Link to={`/UpdateTransactions/${finance._id}`}>
+                        <button className="finance-table-edit-button">
+                          Edit
+                        </button>
+                      </Link>
+                      <button
+                        onClick={(e) => handleDelete(finance._id)}
+                        className="finance-table-delete-button"
+                      >
                         Delete
                       </button>
                     </td>

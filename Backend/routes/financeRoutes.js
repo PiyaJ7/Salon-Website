@@ -91,6 +91,19 @@ router.delete("/delete/:id", async (req, res) => {
 
 // });
 
+router.get("/update/:id", async (req, res) => {
+  try {
+    const financialRecord = await Finance.findById(req.params.id);
+    if (!financialRecord) {
+      return res.status(404).json({ error: "Financial record not found" });
+    }
+    res.status(200).json(financialRecord);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 router.put("/update/:id", async (req, res) => {
   try {
     const updatedFinance = await Finance.findByIdAndUpdate(
