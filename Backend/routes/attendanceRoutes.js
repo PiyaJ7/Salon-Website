@@ -5,13 +5,14 @@ const Attendance = require('../models/attendanceModel');
 
 router.post("/create", async (req, res) => {
     try {
-        const { date, attendan, name } = req.body;
+        //const { date, attendan, name } = req.body;
+        const { date, name } = req.body;
 
-        const objectId = new mongoose.Types.ObjectId(attendan);
+        //const objectId = new mongoose.Types.ObjectId(attendan);
 
         const attendance = new Attendance({
             date: date,
-            attendance: objectId,
+            //attendance: objectId,
             name: name
         });
 
