@@ -74,21 +74,45 @@ router.delete("/delete/:id", async (req, res) => {
 
 
 // Create API route for Update method in CRUD Operations
-router.put("/update/:id", (req, res) => {
-    Finance.findByIdAndUpdate(
-        { _id: req.params.id },
-        {
-            amount: req.body.amount,
-            type: req.body.type,
-            category: req.body.category,
-            date: req.body.date,
-            description: req.body.description,
-            reference: req.body.reference,
-        }
-    )
-        .then((doc) => console.log(doc))
-        .catch((err) => console.log(err));
+// router.put("/update/:id", (req, res) => {
+//     Finance.findByIdAndUpdate(
+//         { _id: req.params.id },
+//         {
+//             amount: req.body.amount,
+//             type: req.body.type,
+//             category: req.body.category,
+//             date: req.body.date,
+//             description: req.body.description,
+//             reference: req.body.reference,
+//         }
+//     )
+//         .then((doc) => console.log(doc))
+//         .catch((err) => console.log(err));
 
+// });
+
+router.put("/update/:id", async (req, res) => {
+    try {
+        const updatedFinance = await Finance.findByIdAndUpdate(
+            { _id: req.params.id },
+            {
+                amount: req.body.amount,
+                type: req.body.type,
+                category: req.body.category,
+                date: req.body.date,
+                description: req.body.description,
+                reference: req.body.reference,
+            },
+            { new: true } // To return the updated document
+        );
+
+        console.log(updatedFinance);
+        res.json({ message: "Finance entry updated successfully", updatedFinance: updatedFinance });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Error updating finance entry" });
+    }
 });
+
 
 module.exports = router;
