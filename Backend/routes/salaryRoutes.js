@@ -25,7 +25,7 @@ router.post("/adds", async (req, res) => {
         });
 
         console.log(createdSalary);
-        res.json({ message: "Salary entry created successfully", salary: createdSalary });
+        res.status(201).json({ message: "Salary entry created successfully", salary: createdSalary });
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error creating salary entry" });
@@ -42,7 +42,7 @@ router.post("/adds", async (req, res) => {
 router.get("/sals", async (req, res) => {
     try {
         const salaries = await sal.find();
-        res.json(salaries);
+        res.status(200).json(salaries);
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: "Error fetching salaries" });
