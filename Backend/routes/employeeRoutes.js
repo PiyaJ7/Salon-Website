@@ -3,19 +3,39 @@ const router = express.Router();
 const emp = require('../models/employeeModel');
 
 // Create API route for Create method in CRUD Operations
-router.post("/add", (req, res) => {
-    emp.create({
-        name: req.body.name,
-        id: req.body.id,
-        position: req.body.position,
-        NIC: req.body.NIC,
-        joinedDate: req.body.joinedDate,
-        address: req.body.address,
-        phoneNo: req.body.phoneNo
-    })
-        .then((doc) => console.log(doc))
-        .catch((err) => console.log(err));
+// router.post("/add", (req, res) => {
+//     emp.create({
+//         name: req.body.name,
+//         id: req.body.id,
+//         position: req.body.position,
+//         NIC: req.body.NIC,
+//         joinedDate: req.body.joinedDate,
+//         address: req.body.address,
+//         phoneNo: req.body.phoneNo
+//     })
+//         .then((doc) => console.log(doc))
+//         .catch((err) => console.log(err));
+// });
+router.post("/add", async (req, res) => {
+    try {
+        const createdEmployee = await emp.create({
+            name: req.body.name,
+            id: req.body.id,
+            position: req.body.position,
+            NIC: req.body.NIC,
+            joinedDate: req.body.joinedDate,
+            address: req.body.address,
+            phoneNo: req.body.phoneNo
+        });
+
+        console.log(createdEmployee);
+        res.json({ message: "Employee added successfully", employee: createdEmployee });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Error adding employee" });
+    }
 });
+
 
 // Create API route for Read method in CRUD Operations
 router.get("/emps", (req, res) => {
