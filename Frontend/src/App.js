@@ -29,6 +29,7 @@ import UpdateSchedule from "./Pages/UpdateSchedule";
 import UpdateService from "./Pages/UpdateService";
 import UpdateTransactions from "./Pages/UpdateTransactions";
 import UpdateProduct from "./Pages/UpdateProduct";
+import UpdateEmployee from "./Pages/UpdateEmployee";
 
 function App() {
   return (
@@ -88,6 +89,10 @@ function App() {
             element={<EmployeeManagement />}
           ></Route>
           <Route path="/AddEmployee" element={<AddEmployee />}></Route>
+          <Route
+            path="/UpdateEmployee/:id"
+            element={<UpdateEmployee />}
+          ></Route>
           <Route path="/SalaryDetails" element={<SalaryDetails />}></Route>
           <Route path="/AddSalary" element={<AddSalary />}></Route>
           <Route

@@ -1,12 +1,13 @@
-import React, { useState } from "react";
-import "./addEmployee.css";
+import React, { useEffect, useState } from "react";
+import "./updateEmployee.css";
 import close from "./images/close.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-export default function AddEmployee() {
+export default function UpdateEmployee() {
   const navigate = useNavigate();
-  const [id, setId] = useState("");
+  const { id } = useParams();
+  const [EmpId, setEmpId] = useState("");
   const [name, setName] = useState("");
   const [NIC, setNIC] = useState("");
   const [joinedDate, setJoinedDate] = useState("");
@@ -14,50 +15,54 @@ export default function AddEmployee() {
   const [address, setAddress] = useState("");
   const [phoneNo, setPhoneNo] = useState("");
 
-  const handleSubmit = async (e) => {
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/employees/update/" + id)
+      .then((result) => {
+        console.log(result);
+        setEmpId(result.data.id);
+        setName(result.data.name);
+        setNIC(result.data.NIC);
+        setJoinedDate(result.data.joinedDate);
+        setPosition(result.data.position);
+        setAddress(result.data.address);
+        setPhoneNo(result.data.phoneNo);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const handleUpdate = (e) => {
     e.preventDefault();
-
-    const employeeData = {
-      id,
-      name,
-      NIC,
-      joinedDate,
-      position,
-      address,
-      phoneNo,
-    };
-
-    try {
-      const response = await axios.post(
-        "http://localhost:8000/api/employees/add",
-        employeeData
-      );
-
-      console.log(employeeData);
-
-      if (response.status === 201) {
-        console.log(response);
+    axios
+      .put("http://localhost:8000/api/employees/update/" + id, {
+        id: EmpId,
+        name,
+        NIC,
+        joinedDate,
+        position,
+        address,
+        phoneNo,
+      })
+      .then((result) => {
+        console.log(result);
         navigate("/EmployeeManagement");
-      } else {
-        console.log(response);
-      }
-    } catch (error) {
-      console.error("Error:", error.message);
-    }
+      })
+      .catch((err) => console.log(err));
   };
 
   const navigteBack = () => {
     navigate(-1);
   };
+
   return (
-    <div className="addEmployee-page">
-      <div className="addEmployee-container">
-        <form onSubmit={handleSubmit}>
+    <div className="updateEmployee-page">
+      <div className="updateEmployee-container">
+        <form onSubmit={handleUpdate}>
           <button className="close-button">
             <img onClick={navigteBack} className="close-icon" src={close} />
           </button>
 
-          <h1>Add new employee</h1>
+          <h1>Update employee</h1>
 
           <div className="input-box">
             <input
@@ -76,8 +81,8 @@ export default function AddEmployee() {
               type="text"
               id="id"
               name="id"
-              value={id}
-              onChange={(e) => setId(e.target.value)}
+              value={EmpId}
+              onChange={(e) => setEmpId(e.target.value)}
               required
             />
             <label htmlFor="id">Employee ID</label>
@@ -147,8 +152,8 @@ export default function AddEmployee() {
             <label htmlFor="phoneNo">Contact No</label>
           </div>
 
-          <button type="submit" className="addEmployee-button">
-            Add employee
+          <button type="submit" className="updateEmployee-button">
+            Update employee
           </button>
         </form>
       </div>

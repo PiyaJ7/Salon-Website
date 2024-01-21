@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./employeeManagement.css";
-import { TiThMenu } from "react-icons/ti";
 import Header from "../Components/Header";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Sidebar from "../Components/Sidebar";
+import axios from "axios";
 
 export default function EmployeeManagement() {
   const navigate = useNavigate();
+  const [employee, setEmployee] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/employees/emps")
+      .then((items) => setEmployee(items.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const handleDelete = (id) => {
+    axios
+      .delete("http://localhost:8000/api/employees/delete/" + id)
+      .then((res) => {
+        console.log("Delete successful:", res);
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
 
   const addEmployeeClick = () => {
     navigate("/AddEmployee");
@@ -45,16 +63,47 @@ export default function EmployeeManagement() {
             <button className="sort-by-name-button">Sort by name</button>
           </div>
           <table>
-            <tr>
-              <th>EmployeeName</th>
-              <th>Employee ID</th>
-              <th>NIC</th>
-              <th>Joined Date</th>
-              <th>Position</th>
-              <th>Address</th>
-              <th>Contact No</th>
-              <th>Action</th>
-            </tr>
+            <thead>
+              <tr>
+                <th>Employee ID</th>
+                <th>EmployeeName</th>
+                <th>NIC</th>
+                <th>Joined Date</th>
+                <th>Position</th>
+                <th>Address</th>
+                <th>Contact No</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {employee.map((employee, index) => {
+                return (
+                  <tr key={employee.id}>
+                    <td>{employee.id}</td>
+                    <td>{employee.name}</td>
+                    <td>{employee.NIC}</td>
+                    <td>{employee.joinedDate}</td>
+                    <td>{employee.position}</td>
+                    <td>{employee.address}</td>
+                    <td>{employee.phoneNo}</td>
+                    <td>
+                      <Link to={`/UpdateEmployee/${employee._id}`}>
+                        <button className="employee-table-edit-button">
+                          Edit
+                        </button>
+                      </Link>
+
+                      <button
+                        onClick={(e) => handleDelete(employee._id)}
+                        className="employee-table-delete-button"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
           </table>
         </div>
       </div>
