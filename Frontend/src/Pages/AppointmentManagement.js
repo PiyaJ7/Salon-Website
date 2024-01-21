@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./appointmentManagement.css";
-import { TiThMenu } from "react-icons/ti";
 import Header from "../Components/Header";
 import Sidebar from "../Components/Sidebar";
+import axios from "axios";
 
 export default function AppointmentManagement() {
+  const [appointment, setAppointment] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/Book/appointments")
+      .then((items) => setAppointment(items.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const handleDelete = (id) => {
+    axios
+      .delete("http://localhost:8000/api/Book/delete/" + id)
+      .then((res) => {
+        console.log("Delete successful:", res);
+        window.location.reload();
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div>
       <Header />
@@ -25,15 +44,39 @@ export default function AppointmentManagement() {
             <button className="sort-by-name-button">Sort by name</button>
           </div>
           <table>
-            <tr>
-              <th>Name</th>
-              <th>Contact No</th>
-              <th>Email</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Service</th>
-              <th>Action</th>
-            </tr>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Contact No</th>
+                <th>Email</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Service</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {appointment.map((appointment) => {
+                return (
+                  <tr key={appointment.id}>
+                    <td>{appointment.name}</td>
+                    <td>{appointment.contact}</td>
+                    <td>{appointment.email}</td>
+                    <td>{appointment.date}</td>
+                    <td>{appointment.time}</td>
+                    <td>{appointment.service}</td>
+                    <td>
+                      <button
+                        onClick={(e) => handleDelete(appointment._id)}
+                        className="appointment-table-delete-button"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
           </table>
         </div>
       </div>
