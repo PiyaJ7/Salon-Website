@@ -31,6 +31,7 @@ import UpdateTransactions from "./Pages/UpdateTransactions";
 import UpdateProduct from "./Pages/UpdateProduct";
 import UpdateEmployee from "./Pages/UpdateEmployee";
 import UpdateSupplier from "./Pages/UpdateSupplier";
+import UpdateOrder from "./Pages/UpdateOrder";
 
 function App() {
   return (
@@ -108,6 +109,7 @@ function App() {
           <Route path="/AddSupplier" element={<AddSupplier />}></Route>
           <Route path="/OrderDetails" element={<OrderDetails />}></Route>
           <Route path="/AddOrder" element={<AddOrder />}></Route>
+          <Route path="/UpdateOrder/:id" element={<UpdateOrder />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
