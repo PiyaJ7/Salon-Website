@@ -115,7 +115,7 @@
 th {
   border: 1px solid black;
   text-align: left;
-  padding: 1%;
+  padding: 1% 0.5%;
 }
 
 .inventoryManagement-body th {
@@ -129,4 +129,39 @@ th {
 
 .inventoryManagement tr:nth-child(even) {
   background-color: rgb(234, 234, 234);
+}
+
+.inventory-table-edit-button,
+.inventory-table-delete-button {
+  width: 45%;
+  height: 32px;
+  margin: 0 1%;
+  border: none;
+  font-weight: bold;
+  font-size: 0.8vw;
+  cursor: pointer;
+}
+
+.inventory-table-edit-button {
+  background-color: rgb(33, 145, 33);
+}
+
+.inventory-table-edit-button:hover {
+  background-color: rgb(71, 173, 71);
+}
+
+.inventory-table-edit-button:active {
+  background-color: rgb(21, 120, 21);
+}
+
+.inventory-table-delete-button {
+  background-color: rgb(167, 43, 43);
+}
+
+.inventory-table-delete-button:hover {
+  background-color: rgb(178, 67, 67);
+}
+
+.inventory-table-delete-button:active {
+  background-color: rgb(147, 33, 33);
 }

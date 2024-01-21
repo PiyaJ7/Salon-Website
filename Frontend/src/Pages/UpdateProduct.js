@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import "./addProduct.css";
+import React, { useEffect, useState } from "react";
+import "./updateProduct.css";
 import close from "./images/close.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-export default function AddProduct() {
+export default function UpdateProduct() {
   const navigate = useNavigate();
+  const { id } = useParams();
   const [name, setName] = useState("");
   const [type, setType] = useState("");
   const [category, setCategory] = useState("");
@@ -14,52 +15,56 @@ export default function AddProduct() {
   const [uquantity, setUquantity] = useState("");
   const [totalPrice, setTotalPrice] = useState("");
 
-  const handleSubmit = async (e) => {
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/Product/update/" + id)
+      .then((result) => {
+        console.log(result);
+        setName(result.data.name);
+        setType(result.data.type);
+        setCategory(result.data.category);
+        setDate(result.data.date);
+        setRquantity(result.data.rquantity);
+        setUquantity(result.data.uquantity);
+        setTotalPrice(result.data.totalPrice);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const handleUpdate = (e) => {
     e.preventDefault();
-
-    const inventoryData = {
-      name,
-      type,
-      category,
-      date,
-      rquantity,
-      uquantity,
-      totalPrice,
-    };
-
-    try {
-      const response = await axios.post(
-        "http://localhost:8000/api/Product/add",
-        inventoryData
-      );
-
-      console.log(inventoryData);
-
-      if (response.status === 201) {
-        console.log(response);
+    axios
+      .put("http://localhost:8000/api/Product/update/" + id, {
+        name,
+        type,
+        category,
+        date,
+        rquantity,
+        uquantity,
+        totalPrice,
+      })
+      .then((result) => {
+        console.log(result);
         navigate("/InventoryMnagement");
-      } else {
-        console.log(response);
-      }
-    } catch (error) {
-      console.error("Error:", error.message);
-    }
+      })
+      .catch((err) => console.log(err));
   };
 
   const navigteBack = () => {
     navigate(-1);
   };
+
   return (
-    <div className="addProduct-page">
-      <div className="addProduct-container">
-        <form onSubmit={handleSubmit}>
+    <div className="updateProduct-page">
+      <div className="updateProduct-container">
+        <form onSubmit={handleUpdate}>
           <button className="close-button">
             <img onClick={navigteBack} className="close-icon" src={close} />
           </button>
 
-          <h1>Add Products</h1>
+          <h1>Update Products</h1>
 
-          <div className="addProduct-input-box">
+          <div className="updateProduct-input-box">
             <input
               type="text"
               id="name"
@@ -71,7 +76,7 @@ export default function AddProduct() {
             <label htmlFor="name">Name</label>
           </div>
 
-          <div className="addProduct-select-box">
+          <div className="updateProduct-select-box">
             <select
               id="type"
               name="type"
@@ -91,7 +96,7 @@ export default function AddProduct() {
             </select>
           </div>
 
-          <div className="addProduct-select-box">
+          <div className="updateProduct-select-box">
             <select
               id="category"
               name="category"
@@ -105,7 +110,7 @@ export default function AddProduct() {
             </select>
           </div>
 
-          <div className="addProduct-date-input">
+          <div className="updateProduct-date-input">
             <label htmlFor="date">Date</label> <br />
             <input
               type="date"
@@ -117,7 +122,7 @@ export default function AddProduct() {
             />
           </div>
 
-          <div className="addProduct-input-box">
+          <div className="updateProduct-input-box">
             <input
               type="text"
               id="rquantity"
@@ -129,7 +134,7 @@ export default function AddProduct() {
             <label htmlFor="rquantity">Remaining quantity</label>
           </div>
 
-          <div className="addProduct-input-box">
+          <div className="updateProduct-input-box">
             <input
               type="text"
               id="uquantity"
@@ -141,7 +146,7 @@ export default function AddProduct() {
             <label htmlFor="uquantity">Used quantity</label>
           </div>
 
-          <div className="addProduct-input-box">
+          <div className="updateProduct-input-box">
             <input
               type="text"
               id="totalPrice"
@@ -153,8 +158,8 @@ export default function AddProduct() {
             <label htmlFor="totalPrice">Total Price</label>
           </div>
 
-          <button type="submit" className="addProduct-button">
-            Add Product
+          <button type="submit" className="updateProduct-button">
+            Update Product
           </button>
         </form>
       </div>
