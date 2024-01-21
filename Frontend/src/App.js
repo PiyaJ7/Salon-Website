@@ -32,6 +32,7 @@ import UpdateProduct from "./Pages/UpdateProduct";
 import UpdateEmployee from "./Pages/UpdateEmployee";
 import UpdateSupplier from "./Pages/UpdateSupplier";
 import UpdateOrder from "./Pages/UpdateOrder";
+import UpdatePackage from "./Pages/UpdatePackage";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
             element={<PackageManagement />}
           ></Route>
           <Route path="/CreatePackages" element={<CreatePackages />}></Route>
+          <Route path="/UpdatePackage/:id" element={<UpdatePackage />}></Route>
           <Route
             path="/ServiceManagement"
             element={<ServiceManagement />}

@@ -41,7 +41,6 @@ router.get("/posts", async (req, res) => {
   }
 });
 
-
 // Create API route for Delete method in CRUD Operations
 // router.delete("/delete/:id", (req, res) => {
 //   //create route for delete
@@ -53,13 +52,14 @@ router.delete("/delete/:id", async (req, res) => {
   try {
     const deletedDoc = await Post.findByIdAndDelete({ _id: req.params.id });
     console.log(deletedDoc);
-    res.status(200).json({ message: "Post deleted successfully", data: deletedDoc });
+    res
+      .status(200)
+      .json({ message: "Post deleted successfully", data: deletedDoc });
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
-
 
 // Create API route for Update method in CRUD Operations
 // router.put("/update/:id", (req, res) => {
@@ -76,6 +76,20 @@ router.delete("/delete/:id", async (req, res) => {
 //     .catch((err) => console.log(err));
 // });
 
+// Create API route for Update method in CRUD Operations
+router.get("/update/:id", async (req, res) => {
+  try {
+    const updatePack = await Post.findById(req.params.id);
+    if (!updatePack) {
+      return res.status(404).json({ error: "Package not found" });
+    }
+    res.status(200).json(updatePack);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 router.put("/update/:id", async (req, res) => {
   try {
     const updatedDoc = await Post.findByIdAndUpdate(
@@ -90,12 +104,13 @@ router.put("/update/:id", async (req, res) => {
     );
 
     console.log(updatedDoc);
-    res.status(200).json({ message: "Post updated successfully", data: updatedDoc });
+    res
+      .status(200)
+      .json({ message: "Post updated successfully", data: updatedDoc });
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
-
 
 module.exports = router;

@@ -111,16 +111,37 @@
   font-size: 1vw;
   font-weight: bold;
   border-radius: 50px;
+  cursor: pointer;
 }
 
 .package-block-update {
-  background-color: rgb(160, 160, 160);
-  box-shadow: 2px 3px #636363c9;
+  background-color: rgb(38, 38, 225);
+  box-shadow: 2px 3px rgb(14, 14, 96);
 }
 
 .package-block-delete {
   background-color: rgb(144, 40, 40);
-  box-shadow: 2px 3px #4a0b0bc9;
+  box-shadow: 2px 3px #3d0b0b;
+}
+
+.package-block-update:hover {
+  background-color: rgb(73, 73, 207);
+  box-shadow: 2px 3px rgb(50, 50, 167);
+}
+
+.package-block-delete:hover {
+  background-color: rgb(170, 66, 66);
+  box-shadow: 2px 3px #692222;
+}
+
+.package-block-update:active {
+  background-color: rgb(22, 22, 182);
+  box-shadow: 2px 3px rgb(7, 7, 62);
+}
+
+.package-block-delete:active {
+  background-color: rgb(111, 30, 30);
+  box-shadow: 2px 3px #290606;
 }
 
 .custom-link {
