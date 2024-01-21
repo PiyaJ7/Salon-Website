@@ -30,6 +30,7 @@ import UpdateService from "./Pages/UpdateService";
 import UpdateTransactions from "./Pages/UpdateTransactions";
 import UpdateProduct from "./Pages/UpdateProduct";
 import UpdateEmployee from "./Pages/UpdateEmployee";
+import UpdateSupplier from "./Pages/UpdateSupplier";
 
 function App() {
   return (
@@ -100,6 +101,10 @@ function App() {
             element={<SupplierManagement />}
           ></Route>
           <Route path="/SupplierDetails" element={<SupplierDetails />}></Route>
+          <Route
+            path="/UpdateSupplier/:id"
+            element={<UpdateSupplier />}
+          ></Route>
           <Route path="/AddSupplier" element={<AddSupplier />}></Route>
           <Route path="/OrderDetails" element={<OrderDetails />}></Route>
           <Route path="/AddOrder" element={<AddOrder />}></Route>

@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import "./addSupplier.css";
+import React, { useEffect, useState } from "react";
+import "./updateSupplier.css";
 import close from "./images/close.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-export default function SupplierDetails() {
+export default function UpdateSupplier() {
   const navigate = useNavigate();
+  const { id } = useParams();
   const [name, setName] = useState("");
   const [product, setProduct] = useState("");
   const [contact, setContact] = useState("");
@@ -15,37 +16,41 @@ export default function SupplierDetails() {
   const [quantity, setQuantity] = useState("");
   const [price, setPrice] = useState("");
 
-  const handleSubmit = async (e) => {
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/Sup/update/" + id)
+      .then((result) => {
+        console.log(result);
+        setName(result.data.name);
+        setProduct(result.data.product);
+        setContact(result.data.contact);
+        setEmail(result.data.email);
+        setStatus(result.data.status);
+        setDate(result.data.date);
+        setQuantity(result.data.quantity);
+        setPrice(result.data.price);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const handleUpdate = (e) => {
     e.preventDefault();
-
-    const supplierData = {
-      name,
-      product,
-      contact,
-      email,
-      status,
-      date,
-      quantity,
-      price,
-    };
-
-    try {
-      const response = await axios.post(
-        "http://localhost:8000/api/Sup/add",
-        supplierData
-      );
-
-      console.log(supplierData);
-
-      if (response.status === 201) {
-        console.log(response);
+    axios
+      .put("http://localhost:8000/api/Sup/update/" + id, {
+        name,
+        product,
+        contact,
+        email,
+        status,
+        date,
+        quantity,
+        price,
+      })
+      .then((result) => {
+        console.log(result);
         navigate("/SupplierDetails");
-      } else {
-        console.log(response);
-      }
-    } catch (error) {
-      console.error("Error:", error.message);
-    }
+      })
+      .catch((err) => console.log(err));
   };
 
   const navigteBack = () => {
@@ -54,13 +59,13 @@ export default function SupplierDetails() {
 
   return (
     <div className="supplierDetails-page">
-      <div className="supplierDetails-container">
-        <form onSubmit={handleSubmit}>
+      <div className="updateSupplier-container">
+        <form onSubmit={handleUpdate}>
           <button onClick={navigteBack} className="close-button">
             <img className="close-icon" src={close} />
           </button>
 
-          <h1>Add new supplier</h1>
+          <h1>Update supplier</h1>
 
           <div className="input-box">
             <input
@@ -110,7 +115,7 @@ export default function SupplierDetails() {
             <label htmlFor="email">Email</label>
           </div>
 
-          <div className="select-supplier-box">
+          <div className="select-updateSupplier-box">
             <select
               id="status"
               name="status"
@@ -124,7 +129,7 @@ export default function SupplierDetails() {
             </select>
           </div>
 
-          <div className="schedule-date-input">
+          <div className="updateSupplier-date-input">
             <label htmlFor="">Date</label> <br />
             <input
               type="date"
@@ -160,8 +165,8 @@ export default function SupplierDetails() {
             <label htmlFor="price">Price (LKR)</label>
           </div>
 
-          <button type="submit" className="supplierDetails-button">
-            Add employee
+          <button type="submit" className="updateSupplier-button">
+            Update employee
           </button>
         </form>
       </div>
