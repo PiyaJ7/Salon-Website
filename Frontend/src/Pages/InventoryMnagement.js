@@ -16,14 +16,20 @@ export default function InventoryMnagement() {
       .catch((err) => console.log(err));
   }, []);
 
-  const handleDelete = (id) => {
-    axios
-      .delete("http://localhost:8000/api/Product/delete/" + id)
-      .then((res) => {
-        console.log("Delete successful:", res);
-        window.location.reload();
-      })
-      .catch((err) => console.log(err));
+  const handleDelete = (id, name) => {
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete "${name}"?`
+    );
+
+    if (confirmDelete) {
+      axios
+        .delete("http://localhost:8000/api/Product/delete/" + id)
+        .then((res) => {
+          console.log("Delete successful:", res);
+          window.location.reload();
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   const addProductClick = () => {
@@ -88,7 +94,9 @@ export default function InventoryMnagement() {
                       </Link>
 
                       <button
-                        onClick={(e) => handleDelete(inventory._id)}
+                        onClick={(e) =>
+                          handleDelete(inventory._id, inventory.name)
+                        }
                         className="inventory-table-delete-button"
                       >
                         Delete

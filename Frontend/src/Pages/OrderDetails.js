@@ -17,14 +17,20 @@ export default function OrderDetails() {
       .catch((err) => console.log(err));
   }, []);
 
-  const handleDelete = (id) => {
-    axios
-      .delete("http://localhost:8000/api/Ord/delete/" + id)
-      .then((res) => {
-        console.log("Delete successful:", res);
-        window.location.reload();
-      })
-      .catch((err) => console.log(err));
+  const handleDelete = (id, name) => {
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete "${name}"?`
+    );
+
+    if (confirmDelete) {
+      axios
+        .delete("http://localhost:8000/api/Ord/delete/" + id)
+        .then((res) => {
+          console.log("Delete successful:", res);
+          window.location.reload();
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   const addOrderClick = () => {
@@ -86,7 +92,7 @@ export default function OrderDetails() {
                       </Link>
 
                       <button
-                        onClick={(e) => handleDelete(order._id)}
+                        onClick={(e) => handleDelete(order._id, order.name)}
                         className="order-table-delete-button"
                       >
                         Delete

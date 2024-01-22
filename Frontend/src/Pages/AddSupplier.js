@@ -161,7 +161,7 @@ export default function SupplierDetails() {
           </div>
 
           <button type="submit" className="supplierDetails-button">
-            Add employee
+            Add Supplier
           </button>
         </form>
       </div>

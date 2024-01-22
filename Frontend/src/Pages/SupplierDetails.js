@@ -17,14 +17,20 @@ export default function SupplierDetails() {
       .catch((err) => console.log(err));
   }, []);
 
-  const handleDelete = (id) => {
-    axios
-      .delete("http://localhost:8000/api/sup/delete/" + id)
-      .then((res) => {
-        console.log("Delete successful:", res);
-        window.location.reload();
-      })
-      .catch((err) => console.log(err));
+  const handleDelete = (id, name) => {
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete "${name}"?`
+    );
+
+    if (confirmDelete) {
+      axios
+        .delete("http://localhost:8000/api/sup/delete/" + id)
+        .then((res) => {
+          console.log("Delete successful:", res);
+          window.location.reload();
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   const addSupplierClick = () => {
@@ -93,7 +99,9 @@ export default function SupplierDetails() {
                       </Link>
 
                       <button
-                        onClick={(e) => handleDelete(supplier._id)}
+                        onClick={(e) =>
+                          handleDelete(supplier._id, supplier.name)
+                        }
                         className="supplier-table-delete-button"
                       >
                         Delete

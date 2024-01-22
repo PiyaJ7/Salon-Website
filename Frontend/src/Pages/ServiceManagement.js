@@ -16,14 +16,20 @@ export default function ServiceManagement() {
       .catch((err) => console.log(err));
   }, []);
 
-  const handleDelete = (id) => {
-    axios
-      .delete("http://localhost:8000/api/services/delete/" + id)
-      .then((res) => {
-        console.log("Delete successful:", res);
-        window.location.reload();
-      })
-      .catch((err) => console.log(err));
+  const handleDelete = (id, name) => {
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete "${name}"?`
+    );
+
+    if (confirmDelete) {
+      axios
+        .delete("http://localhost:8000/api/services/delete/" + id)
+        .then((res) => {
+          console.log("Delete successful:", res);
+          window.location.reload();
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   const addServiceClick = () => {
@@ -52,7 +58,7 @@ export default function ServiceManagement() {
           <table>
             <thead>
               <tr>
-                <th>Service ID</th>
+                <th>ID</th>
                 <th>Service name</th>
                 <th>Price</th>
                 <th>Category</th>
@@ -74,7 +80,9 @@ export default function ServiceManagement() {
                         </button>
                       </Link>
                       <button
-                        onClick={(e) => handleDelete(service._id)}
+                        onClick={(e) =>
+                          handleDelete(service._id, service.sName)
+                        }
                         className="service-table-delete-button"
                       >
                         Delete

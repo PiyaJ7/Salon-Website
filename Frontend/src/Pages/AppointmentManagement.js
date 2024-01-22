@@ -14,14 +14,20 @@ export default function AppointmentManagement() {
       .catch((err) => console.log(err));
   }, []);
 
-  const handleDelete = (id) => {
-    axios
-      .delete("http://localhost:8000/api/Book/delete/" + id)
-      .then((res) => {
-        console.log("Delete successful:", res);
-        window.location.reload();
-      })
-      .catch((err) => console.log(err));
+  const handleDelete = (id, name) => {
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete "${name}"?`
+    );
+
+    if (confirmDelete) {
+      axios
+        .delete("http://localhost:8000/api/Book/delete/" + id)
+        .then((res) => {
+          console.log("Delete successful:", res);
+          window.location.reload();
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   return (
@@ -67,7 +73,9 @@ export default function AppointmentManagement() {
                     <td>{appointment.service}</td>
                     <td>
                       <button
-                        onClick={(e) => handleDelete(appointment._id)}
+                        onClick={(e) =>
+                          handleDelete(appointment._id, appointment.name)
+                        }
                         className="appointment-table-delete-button"
                       >
                         Delete

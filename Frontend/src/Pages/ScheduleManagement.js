@@ -16,14 +16,20 @@ export default function ScheduleManagement() {
       .catch((err) => console.log(err));
   }, []);
 
-  const handleDelete = (id) => {
-    axios
-      .delete("http://localhost:8000/api/schedu/delete/" + id)
-      .then((res) => {
-        console.log("Delete successful:", res);
-        window.location.reload();
-      })
-      .catch((err) => console.log(err));
+  const handleDelete = (id, name) => {
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete "${name}"?`
+    );
+
+    if (confirmDelete) {
+      axios
+        .delete("http://localhost:8000/api/schedu/delete/" + id)
+        .then((res) => {
+          console.log("Delete successful:", res);
+          window.location.reload();
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   const createScheduleClick = () => {
@@ -84,7 +90,9 @@ export default function ScheduleManagement() {
                       </Link>
 
                       <button
-                        onClick={(e) => handleDelete(schedule._id)}
+                        onClick={(e) =>
+                          handleDelete(schedule._id, schedule.name)
+                        }
                         className="schedule-table-delete-button"
                       >
                         Delete

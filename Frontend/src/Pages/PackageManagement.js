@@ -16,18 +16,22 @@ export default function PackageManagement() {
       .catch((err) => console.log(err));
   }, []);
 
-  const handleDelete = (id) => {
-    axios
-      .delete("http://localhost:8000/api/packages/delete/" + id)
-      .then((res) => {
-        console.log("Delete successful:", res);
-        window.location.reload();
-      })
-      .catch((err) => console.log(err));
-  };
+  const handleDelete = (id, packTitle) => {
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete "${packTitle}"?`
+    );
 
-  const createScheduleClick = () => {
-    navigate("/CreateSchedule");
+    if (confirmDelete) {
+      axios
+        .delete("http://localhost:8000/api/packages/delete/" + id)
+        .then((res) => {
+          console.log("Delete successful:", res);
+          window.location.reload();
+        })
+        .catch((err) => console.log(err));
+    } else {
+      console.log("Deletion canceled..");
+    }
   };
 
   const CreatePackageClick = () => {
@@ -73,7 +77,7 @@ export default function PackageManagement() {
                   </Link>
 
                   <button
-                    onClick={(e) => handleDelete(packages._id)}
+                    onClick={(e) => handleDelete(packages._id, packages.title)}
                     className="package-block-delete"
                   >
                     Delete

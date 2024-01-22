@@ -16,14 +16,20 @@ export default function FinanceManagement() {
       .catch((err) => console.log(err));
   }, []);
 
-  const handleDelete = (id) => {
-    axios
-      .delete("http://localhost:8000/api/Fin/delete/" + id)
-      .then((res) => {
-        console.log("Delete successful:", res);
-        window.location.reload();
-      })
-      .catch((err) => console.log(err));
+  const handleDelete = (id, reference) => {
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete "${reference}"?`
+    );
+
+    if (confirmDelete) {
+      axios
+        .delete("http://localhost:8000/api/Fin/delete/" + id)
+        .then((res) => {
+          console.log("Delete successful:", res);
+          window.location.reload();
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   const addTransactionClick = () => {
@@ -90,7 +96,9 @@ export default function FinanceManagement() {
                         </button>
                       </Link>
                       <button
-                        onClick={(e) => handleDelete(finance._id)}
+                        onClick={(e) =>
+                          handleDelete(finance._id, finance.reference)
+                        }
                         className="finance-table-delete-button"
                       >
                         Delete
