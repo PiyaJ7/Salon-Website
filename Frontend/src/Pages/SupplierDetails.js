@@ -9,6 +9,8 @@ import axios from "axios";
 export default function SupplierDetails() {
   const navigate = useNavigate();
   const [supplier, setSupplier] = useState([]);
+  const [sortCriteria, setSortCriteria] = useState(null);
+  const [sortOrder, setSortOrder] = useState("asc");
 
   useEffect(() => {
     axios
@@ -32,6 +34,28 @@ export default function SupplierDetails() {
         .catch((err) => console.log(err));
     }
   };
+
+  const handleSort = (criteria) => {
+    if (sortCriteria === criteria) {
+      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+    } else {
+      setSortCriteria(criteria);
+      setSortOrder("asc");
+    }
+  };
+
+  const sortedSupplier = [...supplier].sort((a, b) => {
+    if (sortCriteria === "name") {
+      return sortOrder === "asc"
+        ? a.name.localeCompare(b.name)
+        : b.name.localeCompare(a.name);
+    } else if (sortCriteria === "product") {
+      return sortOrder === "asc"
+        ? a.product - b.product
+        : b.product - a.product;
+    }
+    return 0;
+  });
 
   const addSupplierClick = () => {
     navigate("/AddSupplier");
@@ -60,8 +84,15 @@ export default function SupplierDetails() {
         </div>
         <div className="supplierDetails-body">
           <div className="sort-button">
-            <button className="sort-by-type">Sort by type</button>
-            <button className="sort-by-price">Sort by price</button>
+            <button className="sort-by-type" onClick={() => handleSort("name")}>
+              Sort by name
+            </button>
+            <button
+              className="sort-by-price"
+              onClick={() => handleSort("product")}
+            >
+              Sort by product
+            </button>
           </div>
           <table>
             <thead>
@@ -79,7 +110,7 @@ export default function SupplierDetails() {
               </tr>
             </thead>
             <tbody>
-              {supplier.map((supplier, index) => {
+              {sortedSupplier.map((supplier, index) => {
                 return (
                   <tr key={supplier.id}>
                     <td>{index + 1}</td>

@@ -81,9 +81,11 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  padding-right: 5%;
 }
 
-.sort-by-name-button {
+.sort-by-name-button,
+.sort-by-id-button {
   width: 10%;
   height: 50%;
   font-size: 1.1vw;
@@ -94,15 +96,17 @@
   color: rgb(63, 63, 63);
   border: none;
   cursor: pointer;
-  margin: 0% 5%;
+  margin: 0%;
 }
 
-.sort-by-name-button:hover {
+.sort-by-name-button:hover,
+.sort-by-id-button:hover {
   background-color: rgb(160, 160, 160);
   box-shadow: 2px 3px #636363c9;
 }
 
-.sort-by-name-button:active {
+.sort-by-name-button:active,
+.sort-by-id-button:active {
   background-color: rgb(122, 122, 122);
   box-shadow: 2px 3px #404040c9;
 }

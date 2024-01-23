@@ -8,6 +8,8 @@ import axios from "axios";
 export default function InventoryMnagement() {
   const navigate = useNavigate();
   const [inventory, setInventory] = useState([]);
+  const [sortCriteria, setSortCriteria] = useState(null);
+  const [sortOrder, setSortOrder] = useState("asc");
 
   useEffect(() => {
     axios
@@ -36,6 +38,28 @@ export default function InventoryMnagement() {
     navigate("/AddProduct");
   };
 
+  const handleSort = (criteria) => {
+    if (sortCriteria === criteria) {
+      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+    } else {
+      setSortCriteria(criteria);
+      setSortOrder("asc");
+    }
+  };
+
+  const sortedInventory = [...inventory].sort((a, b) => {
+    if (sortCriteria === "type") {
+      return sortOrder === "asc"
+        ? a.type.localeCompare(b.type)
+        : b.type.localeCompare(a.type);
+    } else if (sortCriteria === "price") {
+      return sortOrder === "asc"
+        ? a.totalPrice - b.totalPrice
+        : b.totalPrice - a.totalPrice;
+    }
+    return 0;
+  });
+
   return (
     <div>
       <Header />
@@ -57,8 +81,15 @@ export default function InventoryMnagement() {
         </div>
         <div className="inventoryManagement-body">
           <div className="sort-button">
-            <button className="sort-by-type">Sort by type</button>
-            <button className="sort-by-price">Sort by price</button>
+            <button className="sort-by-type" onClick={() => handleSort("type")}>
+              Sort by type
+            </button>
+            <button
+              className="sort-by-price"
+              onClick={() => handleSort("price")}
+            >
+              Sort by price
+            </button>
           </div>
           <table>
             <thead>
@@ -75,7 +106,7 @@ export default function InventoryMnagement() {
               </tr>
             </thead>
             <tbody>
-              {inventory.map((inventory, index) => {
+              {sortedInventory.map((inventory, index) => {
                 return (
                   <tr>
                     <td key={inventory.id}>{index + 1}</td>

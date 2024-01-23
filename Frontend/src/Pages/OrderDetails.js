@@ -9,6 +9,8 @@ import axios from "axios";
 export default function OrderDetails() {
   const navigate = useNavigate();
   const [order, setOrder] = useState([]);
+  const [sortCriteria, setSortCriteria] = useState(null);
+  const [sortOrder, setSortOrder] = useState("asc");
 
   useEffect(() => {
     axios
@@ -37,6 +39,28 @@ export default function OrderDetails() {
     navigate("/AddOrder");
   };
 
+  const handleSort = (criteria) => {
+    if (sortCriteria === criteria) {
+      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+    } else {
+      setSortCriteria(criteria);
+      setSortOrder("asc");
+    }
+  };
+
+  const sortedOrder = [...order].sort((a, b) => {
+    if (sortCriteria === "name") {
+      return sortOrder === "asc"
+        ? a.name.localeCompare(b.name)
+        : b.name.localeCompare(a.name);
+    } else if (sortCriteria === "product") {
+      return sortOrder === "asc"
+        ? a.product - b.product
+        : b.product - a.product;
+    }
+    return 0;
+  });
+
   return (
     <div>
       <Header />
@@ -57,8 +81,15 @@ export default function OrderDetails() {
         </div>
         <div className="orderDetails-body">
           <div className="sort-button">
-            <button className="sort-by-type">Sort by type</button>
-            <button className="sort-by-price">Sort by price</button>
+            <button className="sort-by-type" onClick={() => handleSort("name")}>
+              Sort by name
+            </button>
+            <button
+              className="sort-by-price"
+              onClick={() => handleSort("product")}
+            >
+              Sort by product
+            </button>
           </div>
           <table>
             <thead>
@@ -74,7 +105,7 @@ export default function OrderDetails() {
               </tr>
             </thead>
             <tbody>
-              {order.map((order, index) => {
+              {sortedOrder.map((order, index) => {
                 return (
                   <tr key={order.id}>
                     <td>{index + 1}</td>

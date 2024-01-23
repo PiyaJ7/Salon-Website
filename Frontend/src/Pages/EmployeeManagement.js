@@ -8,6 +8,8 @@ import axios from "axios";
 export default function EmployeeManagement() {
   const navigate = useNavigate();
   const [employee, setEmployee] = useState([]);
+  const [sortCriteria, setSortCriteria] = useState(null);
+  const [sortOrder, setSortOrder] = useState("asc");
 
   useEffect(() => {
     axios
@@ -40,6 +42,28 @@ export default function EmployeeManagement() {
     navigate("/SalaryDetails");
   };
 
+  const handleSort = (criteria) => {
+    if (sortCriteria === criteria) {
+      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+    } else {
+      setSortCriteria(criteria);
+      setSortOrder("asc");
+    }
+  };
+
+  const sortedEmployee = [...employee].sort((a, b) => {
+    if (sortCriteria === "name") {
+      return sortOrder === "asc"
+        ? a.name.localeCompare(b.name)
+        : b.name.localeCompare(a.name);
+    } else if (sortCriteria === "id") {
+      return sortOrder === "asc"
+        ? a.id.localeCompare(b.id)
+        : b.id.localeCompare(a.id);
+    }
+    return 0;
+  });
+
   return (
     <div>
       <Header />
@@ -66,7 +90,18 @@ export default function EmployeeManagement() {
         </div>
         <div className="employeeManagement-body">
           <div className="sort-button">
-            <button className="sort-by-name-button">Sort by name</button>
+            <button
+              className="sort-by-id-button"
+              onClick={() => handleSort("id")}
+            >
+              Sort by ID
+            </button>
+            <button
+              className="sort-by-name-button"
+              onClick={() => handleSort("name")}
+            >
+              Sort by name
+            </button>
           </div>
           <table>
             <thead>
@@ -82,7 +117,7 @@ export default function EmployeeManagement() {
               </tr>
             </thead>
             <tbody>
-              {employee.map((employee, index) => {
+              {sortedEmployee.map((employee, index) => {
                 return (
                   <tr key={employee.id}>
                     <td>{employee.id}</td>

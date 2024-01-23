@@ -6,6 +6,8 @@ import axios from "axios";
 
 export default function AppointmentManagement() {
   const [appointment, setAppointment] = useState([]);
+  const [sortCriteria, setSortCriteria] = useState(null);
+  const [sortOrder, setSortOrder] = useState("asc");
 
   useEffect(() => {
     axios
@@ -30,6 +32,24 @@ export default function AppointmentManagement() {
     }
   };
 
+  const handleSort = (criteria) => {
+    if (sortCriteria === criteria) {
+      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+    } else {
+      setSortCriteria(criteria);
+      setSortOrder("asc");
+    }
+  };
+
+  const sortedAppointment = [...appointment].sort((a, b) => {
+    if (sortCriteria === "name") {
+      return sortOrder === "asc"
+        ? a.name.localeCompare(b.name)
+        : b.name.localeCompare(a.name);
+    }
+    return 0;
+  });
+
   return (
     <div>
       <Header />
@@ -47,7 +67,12 @@ export default function AppointmentManagement() {
         </div>
         <div className="appointmentManagement-body">
           <div className="sort-button">
-            <button className="sort-by-name-button">Sort by name</button>
+            <button
+              className="sort-by-name-button"
+              onClick={() => handleSort("name")}
+            >
+              Sort by name
+            </button>
           </div>
           <table>
             <thead>
@@ -62,7 +87,7 @@ export default function AppointmentManagement() {
               </tr>
             </thead>
             <tbody>
-              {appointment.map((appointment) => {
+              {sortedAppointment.map((appointment) => {
                 return (
                   <tr key={appointment.id}>
                     <td>{appointment.name}</td>
