@@ -5,6 +5,7 @@
   },
   "dependencies": {
     "apexcharts": "^3.45.1",
+    "chart.js": "^4.4.1",
     "react-apexcharts": "^1.4.1",
     "recharts": "^2.10.4"
   }
