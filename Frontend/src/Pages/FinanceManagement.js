@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Sidebar from "../Components/Sidebar";
 import axios from "axios";
 
+
 export default function FinanceManagement() {
   const navigate = useNavigate();
   const [finance, setFinance] = useState([]);
@@ -19,6 +20,11 @@ export default function FinanceManagement() {
   const addTransactionClick = () => {
     navigate("/AddTransaction");
   };
+
+  const financeReportClick = () => {
+    navigate("/FinanceReport");
+  };
+
 
   return (
     <div>
