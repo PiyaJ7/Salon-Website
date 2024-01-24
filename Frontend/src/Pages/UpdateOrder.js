@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import "./addOrder.css";
+import React, { useEffect, useState } from "react";
+import "./updateOrder.css";
 import close from "./images/close.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-export default function AddOrder() {
+export default function UpdateOrder() {
   const navigate = useNavigate();
+  const { id } = useParams();
   const [name, setName] = useState("");
   const [product, setProduct] = useState("");
   const [date, setDate] = useState("");
@@ -13,35 +14,37 @@ export default function AddOrder() {
   const [price, setPrice] = useState("");
   const [status, setStatus] = useState("");
 
-  const handleSubmit = async (e) => {
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/Ord/update/" + id)
+      .then((result) => {
+        console.log(result);
+        setName(result.data.name);
+        setProduct(result.data.product);
+        setStatus(result.data.status);
+        setDate(result.data.date);
+        setQuantity(result.data.quantity);
+        setPrice(result.data.price);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  const handleUpdate = (e) => {
     e.preventDefault();
-
-    const orderData = {
-      name,
-      product,
-      date,
-      quantity,
-      price,
-      status,
-    };
-
-    try {
-      const response = await axios.post(
-        "http://localhost:8000/api/Ord/add",
-        orderData
-      );
-
-      console.log(orderData);
-
-      if (response.status === 201) {
-        console.log(response);
+    axios
+      .put("http://localhost:8000/api/Ord/update/" + id, {
+        name,
+        product,
+        status,
+        date,
+        quantity,
+        price,
+      })
+      .then((result) => {
+        console.log(result);
         navigate("/OrderDetails");
-      } else {
-        console.log(response);
-      }
-    } catch (error) {
-      console.error("Error:", error.message);
-    }
+      })
+      .catch((err) => console.log(err));
   };
 
   const navigteBack = () => {
@@ -49,14 +52,14 @@ export default function AddOrder() {
   };
 
   return (
-    <div className="addOrder-page">
-      <div className="addOrder-container">
-        <form onSubmit={handleSubmit}>
+    <div className="updateOrder-page">
+      <div className="updateOrder-container">
+        <form onSubmit={handleUpdate}>
           <button onClick={navigteBack} className="close-button">
             <img className="close-icon" src={close} />
           </button>
 
-          <h1>Add new order</h1>
+          <h1>Update order</h1>
 
           <div className="input-box">
             <input
@@ -132,8 +135,8 @@ export default function AddOrder() {
             </select>
           </div>
 
-          <button type="submit" className="addOrder-button">
-            Add order
+          <button type="submit" className="updateOrder-button">
+            Update order
           </button>
         </form>
       </div>

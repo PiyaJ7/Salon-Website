@@ -61,6 +61,8 @@
   border: 2px solid rgba(236, 236, 236, 0.5);
   background-color: rgba(237, 237, 237, 0.64);
   position: absolute;
+  height: fit-content;
+  padding-top: 1%;
   bottom: 2%;
   left: 2%;
   right: 2%;
@@ -123,4 +125,26 @@ th {
 
 .appointmentManagement tr:nth-child(even) {
   background-color: rgb(234, 234, 234);
+}
+
+.appointment-table-delete-button {
+  width: 80%;
+  height: 30px;
+  margin: 0 5%;
+  border: none;
+  font-weight: bold;
+  font-size: 1vw;
+  cursor: pointer;
+}
+
+.appointment-table-delete-button {
+  background-color: rgb(167, 43, 43);
+}
+
+.appointment-table-delete-button:hover {
+  background-color: rgb(178, 67, 67);
+}
+
+.appointment-table-delete-button:active {
+  background-color: rgb(147, 33, 33);
 }

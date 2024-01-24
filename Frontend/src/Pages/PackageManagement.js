@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./packageManagement.css";
 import axios from "axios";
 import Header from "../Components/Header";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Sidebar from "../Components/Sidebar";
 
 export default function PackageManagement() {
@@ -15,6 +15,24 @@ export default function PackageManagement() {
       .then((item) => setPackages(item.data))
       .catch((err) => console.log(err));
   }, []);
+
+  const handleDelete = (id, packTitle) => {
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete "${packTitle}"?`
+    );
+
+    if (confirmDelete) {
+      axios
+        .delete("http://localhost:8000/api/packages/delete/" + id)
+        .then((res) => {
+          console.log("Delete successful:", res);
+          window.location.reload();
+        })
+        .catch((err) => console.log(err));
+    } else {
+      console.log("Deletion canceled..");
+    }
+  };
 
   const CreatePackageClick = () => {
     navigate("/CreatePackages");
@@ -54,8 +72,16 @@ export default function PackageManagement() {
                   <div className="package-price">Rs. {packages.price}</div>
                 </p>
                 <div className="package-block-buttons">
-                  <button className="package-block-update">Update</button>
-                  <button className="package-block-delete">Delete</button>
+                  <Link to={`/updatePackage/${packages._id}`}>
+                    <button className="package-block-update">Update</button>
+                  </Link>
+
+                  <button
+                    onClick={(e) => handleDelete(packages._id, packages.title)}
+                    className="package-block-delete"
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             );

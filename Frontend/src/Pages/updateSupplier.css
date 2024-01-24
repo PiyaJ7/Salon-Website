@@ -1,4 +1,4 @@
-.addEmployee-page {
+.supplierDetails-page {
   background-color: rgba(220, 216, 216, 0.247);
   height: 100vh;
   width: 100%;
@@ -7,7 +7,7 @@
   align-items: center;
 }
 
-.addEmployee-container {
+.updateSupplier-container {
   position: relative;
   background: transparent;
   backdrop-filter: blur(20px);
@@ -38,12 +38,12 @@
 
 h1 {
   text-align: center;
-  margin: 2% 0% 3% 0%;
+  margin: 0%;
 }
 
 .input-box {
   position: relative;
-  height: 50px;
+  height: 43px;
   border-bottom: 2px solid rgba(54, 53, 53, 0.733);
   margin: 12px 0;
 }
@@ -58,14 +58,14 @@ h1 {
   transition: 0.5s;
 }
 
-.updateEmployee-date-input {
+.updateSupplier-date-input {
   margin: 3% 0;
   font-size: 1.1vw;
 }
 
-.updateEmployee-date-input input {
+.updateSupplier-date-input input {
   background: transparent;
-  padding: 2%;
+  padding: 1%;
   font-size: 1.1vw;
   border: 2px solid rgba(54, 53, 53, 0.733);
   outline: none;
@@ -89,9 +89,9 @@ h1 {
   font-size: 1vw;
 }
 
-.select-position-box select {
+.select-updateSupplier-box select {
   background: transparent;
-  padding: 2%;
+  padding: 1%;
   font-size: 1.1vw;
   border: 2px solid rgba(54, 53, 53, 0.733);
   outline: none;
@@ -99,10 +99,10 @@ h1 {
   border-radius: 10px;
 }
 
-.addEmployee-button {
+.updateSupplier-button {
   width: 50%;
   height: 35px;
-  margin-top: 8%;
+  margin-top: 0%;
   margin-left: 25%;
   font-size: 1.4vw;
   font-weight: bold;
@@ -114,12 +114,12 @@ h1 {
   cursor: pointer;
 }
 
-.addEmployee-button:hover {
+.updateSupplier-button:hover {
   background-color: rgb(140, 140, 140);
   box-shadow: 2px 3px #595959c9;
 }
 
-.addEmployee-button:active {
+.updateSupplier-button:active {
   background-color: rgb(92, 92, 92);
   box-shadow: 2px 3px #2f2f2fc9;
 }

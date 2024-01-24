@@ -1,12 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./employeeManagement.css";
-import { TiThMenu } from "react-icons/ti";
 import Header from "../Components/Header";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Sidebar from "../Components/Sidebar";
+import axios from "axios";
 
 export default function EmployeeManagement() {
   const navigate = useNavigate();
+  const [employee, setEmployee] = useState([]);
+  const [sortCriteria, setSortCriteria] = useState(null);
+  const [sortOrder, setSortOrder] = useState("asc");
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/employees/emps")
+      .then((items) => setEmployee(items.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const handleDelete = (id, name) => {
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete "${name}"?`
+    );
+
+    if (confirmDelete) {
+      axios
+        .delete("http://localhost:8000/api/employees/delete/" + id)
+        .then((res) => {
+          console.log("Delete successful:", res);
+          window.location.reload();
+        })
+        .catch((err) => console.log(err));
+    }
+  };
 
   const addEmployeeClick = () => {
     navigate("/AddEmployee");
@@ -15,6 +41,28 @@ export default function EmployeeManagement() {
   const employeesalaryClick = () => {
     navigate("/SalaryDetails");
   };
+
+  const handleSort = (criteria) => {
+    if (sortCriteria === criteria) {
+      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+    } else {
+      setSortCriteria(criteria);
+      setSortOrder("asc");
+    }
+  };
+
+  const sortedEmployee = [...employee].sort((a, b) => {
+    if (sortCriteria === "name") {
+      return sortOrder === "asc"
+        ? a.name.localeCompare(b.name)
+        : b.name.localeCompare(a.name);
+    } else if (sortCriteria === "id") {
+      return sortOrder === "asc"
+        ? a.id.localeCompare(b.id)
+        : b.id.localeCompare(a.id);
+    }
+    return 0;
+  });
 
   return (
     <div>
@@ -42,19 +90,63 @@ export default function EmployeeManagement() {
         </div>
         <div className="employeeManagement-body">
           <div className="sort-button">
-            <button className="sort-by-name-button">Sort by name</button>
+            <button
+              className="sort-by-id-button"
+              onClick={() => handleSort("id")}
+            >
+              Sort by ID
+            </button>
+            <button
+              className="sort-by-name-button"
+              onClick={() => handleSort("name")}
+            >
+              Sort by name
+            </button>
           </div>
           <table>
-            <tr>
-              <th>EmployeeName</th>
-              <th>Employee ID</th>
-              <th>NIC</th>
-              <th>Joined Date</th>
-              <th>Position</th>
-              <th>Address</th>
-              <th>Contact No</th>
-              <th>Action</th>
-            </tr>
+            <thead>
+              <tr>
+                <th>Employee ID</th>
+                <th>EmployeeName</th>
+                <th>NIC</th>
+                <th>Joined Date</th>
+                <th>Position</th>
+                <th>Address</th>
+                <th>Contact No</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {sortedEmployee.map((employee, index) => {
+                return (
+                  <tr key={employee.id}>
+                    <td>{employee.id}</td>
+                    <td>{employee.name}</td>
+                    <td>{employee.NIC}</td>
+                    <td>{employee.joinedDate}</td>
+                    <td>{employee.position}</td>
+                    <td>{employee.address}</td>
+                    <td>{employee.phoneNo}</td>
+                    <td>
+                      <Link to={`/UpdateEmployee/${employee._id}`}>
+                        <button className="employee-table-edit-button">
+                          Edit
+                        </button>
+                      </Link>
+
+                      <button
+                        onClick={(e) =>
+                          handleDelete(employee._id, employee.name)
+                        }
+                        className="employee-table-delete-button"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
           </table>
         </div>
       </div>

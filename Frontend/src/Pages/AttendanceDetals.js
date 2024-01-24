@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./attendanceDetals.css";
-import { TiThMenu } from "react-icons/ti";
 import Header from "../Components/Header";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../Components/Sidebar";
+import axios from "axios";
 
 export default function AttendanceDetals() {
   const navigate = useNavigate();
+  const [attendance, setAttendance] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/api/attendances/data")
+      .then((items) => setAttendance(items.data))
+      .catch((err) => console.log(err));
+  }, []);
 
   const scheduleClick = () => {
     navigate("/ScheduleManagement");
@@ -48,12 +56,33 @@ export default function AttendanceDetals() {
             <button className="sort-by-date-button">Sort by date</button>
           </div>
           <table>
-            <tr>
-              <th>Employee ID</th>
-              <th>Name</th>
-              <th>Date</th>
-              <th>Action</th>
-            </tr>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {attendance.map((attendance, index) => {
+                return (
+                  <tr key={attendance.id}>
+                    <td>{index + 1}</td>
+                    <td>{attendance.date}</td>
+                    <td>{attendance.name}</td>
+                    <td>
+                      <button className="service-table-edit-button">
+                        Edit
+                      </button>
+                      <button className="service-table-delete-button">
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
           </table>
         </div>
       </div>

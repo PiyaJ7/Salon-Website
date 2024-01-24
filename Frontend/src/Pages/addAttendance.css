@@ -31,6 +31,7 @@
   border: 2px solid rgba(236, 236, 236, 0.5);
   background-color: rgba(237, 237, 237, 0.64);
   position: absolute;
+  height: fit-content;
   bottom: 2%;
   left: 2%;
   right: 2%;

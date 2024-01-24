@@ -1,4 +1,4 @@
-.addEmployee-page {
+.updateProduct-page {
   background-color: rgba(220, 216, 216, 0.247);
   height: 100vh;
   width: 100%;
@@ -7,7 +7,7 @@
   align-items: center;
 }
 
-.addEmployee-container {
+.updateProduct-container {
   position: relative;
   background: transparent;
   backdrop-filter: blur(20px);
@@ -41,14 +41,14 @@ h1 {
   margin: 2% 0% 3% 0%;
 }
 
-.input-box {
+.updateProduct-input-box {
   position: relative;
   height: 50px;
   border-bottom: 2px solid rgba(54, 53, 53, 0.733);
   margin: 12px 0;
 }
 
-.input-box label {
+.updateProduct-input-box label {
   position: absolute;
   top: 50%;
   left: 5px;
@@ -58,12 +58,12 @@ h1 {
   transition: 0.5s;
 }
 
-.updateEmployee-date-input {
+.updateProduct-date-input {
   margin: 3% 0;
   font-size: 1.1vw;
 }
 
-.updateEmployee-date-input input {
+.updateProduct-date-input input {
   background: transparent;
   padding: 2%;
   font-size: 1.1vw;
@@ -74,12 +74,12 @@ h1 {
   margin: 2% 0;
 }
 
-.input-box input:focus ~ label,
-.input-box input:valid ~ label {
+.updateProduct-input-box input:focus ~ label,
+.updateProduct-input-box input:valid ~ label {
   top: -1px;
 }
 
-.input-box input {
+.updateProduct-input-box input {
   width: 100%;
   height: 100%;
   background: transparent;
@@ -89,7 +89,7 @@ h1 {
   font-size: 1vw;
 }
 
-.select-position-box select {
+.updateProduct-select-box select {
   background: transparent;
   padding: 2%;
   font-size: 1.1vw;
@@ -97,9 +97,10 @@ h1 {
   outline: none;
   cursor: pointer;
   border-radius: 10px;
+  margin: 1% 0;
 }
 
-.addEmployee-button {
+.updateProduct-button {
   width: 50%;
   height: 35px;
   margin-top: 8%;
@@ -114,12 +115,12 @@ h1 {
   cursor: pointer;
 }
 
-.addEmployee-button:hover {
+.updateProduct-button:hover {
   background-color: rgb(140, 140, 140);
   box-shadow: 2px 3px #595959c9;
 }
 
-.addEmployee-button:active {
+.updateProduct-button:active {
   background-color: rgb(92, 92, 92);
   box-shadow: 2px 3px #2f2f2fc9;
 }

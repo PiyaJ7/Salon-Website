@@ -67,6 +67,8 @@
   border: 2px solid rgba(236, 236, 236, 0.5);
   background-color: rgba(237, 237, 237, 0.64);
   position: absolute;
+  height: fit-content;
+  padding-top: 1%;
   bottom: 2%;
   left: 2%;
   right: 2%;
@@ -79,9 +81,11 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  padding-right: 5%;
 }
 
-.sort-by-name-button {
+.sort-by-name-button,
+.sort-by-id-button {
   width: 10%;
   height: 50%;
   font-size: 1.1vw;
@@ -92,15 +96,17 @@
   color: rgb(63, 63, 63);
   border: none;
   cursor: pointer;
-  margin: 0% 5%;
+  margin: 0%;
 }
 
-.sort-by-name-button:hover {
+.sort-by-name-button:hover,
+.sort-by-id-button:hover {
   background-color: rgb(160, 160, 160);
   box-shadow: 2px 3px #636363c9;
 }
 
-.sort-by-name-button:active {
+.sort-by-name-button:active,
+.sort-by-id-button:active {
   background-color: rgb(122, 122, 122);
   box-shadow: 2px 3px #404040c9;
 }
@@ -129,4 +135,46 @@ th {
 
 .employeeManagement tr:nth-child(even) {
   background-color: rgb(234, 234, 234);
+}
+
+.employee-table-edit-button,
+.employee-table-delete-button {
+  height: 30px;
+  margin: 0 1%;
+  border: none;
+  font-weight: bold;
+  font-size: 1vw;
+  cursor: pointer;
+}
+
+.employee-table-edit-button {
+  width: 40%;
+}
+
+.employee-table-delete-button {
+  width: 55%;
+}
+
+.employee-table-edit-button {
+  background-color: rgb(33, 145, 33);
+}
+
+.employee-table-edit-button:hover {
+  background-color: rgb(71, 173, 71);
+}
+
+.employee-table-edit-button:active {
+  background-color: rgb(21, 120, 21);
+}
+
+.employee-table-delete-button {
+  background-color: rgb(167, 43, 43);
+}
+
+.employee-table-delete-button:hover {
+  background-color: rgb(178, 67, 67);
+}
+
+.employee-table-delete-button:active {
+  background-color: rgb(147, 33, 33);
 }

@@ -1,4 +1,4 @@
-.addEmployee-page {
+.updateTransaction-page {
   background-color: rgba(220, 216, 216, 0.247);
   height: 100vh;
   width: 100%;
@@ -7,7 +7,7 @@
   align-items: center;
 }
 
-.addEmployee-container {
+.updateTransaction-container {
   position: relative;
   background: transparent;
   backdrop-filter: blur(20px);
@@ -38,35 +38,34 @@
 
 h1 {
   text-align: center;
-  margin: 2% 0% 3% 0%;
+  margin: 4% 0% 5% 0%;
 }
 
-.input-box {
+.updateTransaction-input-box {
   position: relative;
   height: 50px;
   border-bottom: 2px solid rgba(54, 53, 53, 0.733);
-  margin: 12px 0;
+  margin: 30px 0;
 }
 
-.input-box label {
+.updateTransaction-input-box label {
   position: absolute;
   top: 50%;
   left: 5px;
   transform: translateY(-50%);
-  font-size: 1.1vw;
+  font-size: 1.15vw;
   pointer-events: none;
   transition: 0.5s;
 }
 
-.updateEmployee-date-input {
-  margin: 3% 0;
-  font-size: 1.1vw;
+.updateTransaction-date-input {
+  margin: 5% 0;
 }
 
-.updateEmployee-date-input input {
+.updateTransaction-date-input input {
   background: transparent;
   padding: 2%;
-  font-size: 1.1vw;
+  font-size: 1.15vw;
   border: 2px solid rgba(54, 53, 53, 0.733);
   outline: none;
   cursor: pointer;
@@ -74,12 +73,12 @@ h1 {
   margin: 2% 0;
 }
 
-.input-box input:focus ~ label,
-.input-box input:valid ~ label {
-  top: -1px;
+.updateTransaction-input-box input:focus ~ label,
+.updateTransaction-input-box input:valid ~ label {
+  top: -5px;
 }
 
-.input-box input {
+.updateTransaction-input-box input {
   width: 100%;
   height: 100%;
   background: transparent;
@@ -89,17 +88,18 @@ h1 {
   font-size: 1vw;
 }
 
-.select-position-box select {
+.updateTransaction-select-box select {
   background: transparent;
   padding: 2%;
-  font-size: 1.1vw;
+  font-size: 1.15vw;
   border: 2px solid rgba(54, 53, 53, 0.733);
   outline: none;
   cursor: pointer;
   border-radius: 10px;
+  margin: 1%;
 }
 
-.addEmployee-button {
+.updateTransaction-button {
   width: 50%;
   height: 35px;
   margin-top: 8%;
@@ -114,12 +114,12 @@ h1 {
   cursor: pointer;
 }
 
-.addEmployee-button:hover {
+.updateTransaction-button:hover {
   background-color: rgb(140, 140, 140);
   box-shadow: 2px 3px #595959c9;
 }
 
-.addEmployee-button:active {
+.updateTransaction-button:active {
   background-color: rgb(92, 92, 92);
   box-shadow: 2px 3px #2f2f2fc9;
 }
