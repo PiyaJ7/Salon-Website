@@ -108,15 +108,15 @@
   padding: 2% 5%;
   margin: 0 5%;
   border: none;
-  font-size: 1vw;
-  font-weight: bold;
+  font-size: 1.2vw;
+  font-weight: 600;
   border-radius: 50px;
   cursor: pointer;
 }
 
 .package-block-update {
-  background-color: rgb(38, 38, 225);
-  box-shadow: 2px 3px rgb(14, 14, 96);
+  background-color: green;
+  box-shadow: 2px 3px rgb(26, 59, 26);
 }
 
 .package-block-delete {
@@ -125,8 +125,8 @@
 }
 
 .package-block-update:hover {
-  background-color: rgb(73, 73, 207);
-  box-shadow: 2px 3px rgb(50, 50, 167);
+  background-color: rgb(40, 159, 40);
+  box-shadow: 2px 3px rgb(59, 99, 59);
 }
 
 .package-block-delete:hover {
@@ -135,8 +135,8 @@
 }
 
 .package-block-update:active {
-  background-color: rgb(22, 22, 182);
-  box-shadow: 2px 3px rgb(7, 7, 62);
+  background-color: rgb(3, 96, 3);
+  box-shadow: 2px 3px rgb(23, 52, 23);
 }
 
 .package-block-delete:active {

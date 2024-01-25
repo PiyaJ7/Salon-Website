@@ -110,49 +110,62 @@ export default function Dashboard() {
   }, []);
 
   useEffect(() => {
+    const incomePercentage = (
+      (totalIncome / (totalIncome + totalExpense)) *
+      100
+    ).toFixed(2);
+    const expensePercentage = (
+      (totalExpense / (totalIncome + totalExpense)) *
+      100
+    ).toFixed(2);
+
+    const balance = totalIncome - totalExpense;
+
     setFinanceChart({
       options: {
         colors: ["#2E93fA", "#66DA26", "#546E7A", "#E91E63", "#FF9800"],
         chart: {
-          id: "basic-bar",
+          type: "donut",
+          height: 350,
         },
-        xaxis: {
-          categories: [""],
+        labels: ["Income", "Expenses"],
+        dataLabels: {
+          enabled: true,
+          formatter: function (val) {
+            return `${parseFloat(val).toFixed(2)}%`;
+          },
+        },
+
+        plotOptions: {
+          pie: {
+            donut: {
+              size: "70%",
+            },
+          },
+          total: {
+            show: true,
+            showAlways: true,
+            label: "Balance",
+            fontSize: "22px",
+            fontFamily: "Helvetica, Arial, sans-serif",
+            fontWeight: 600,
+            color: "black",
+            formatter: function (val) {
+              return val.globals.seriesTotals.reduce((a, b) => {
+                return a + b;
+              }, 0);
+            },
+          },
         },
       },
-      series: [
-        {
-          name: "Income",
-          data: [totalIncome],
-        },
-        {
-          name: "Expenses",
-          data: [totalExpense],
-        },
-      ],
+      series: [totalIncome, totalExpense],
     });
   }, [totalIncome, totalExpense]);
 
   const [financeChart, setFinanceChart] = useState({
-    options: {
-      colors: ["#2E93fA", "#66DA26", "#546E7A", "#E91E63", "#FF9800"],
-      chart: {
-        id: "basic-bar",
-      },
-      xaxis: {
-        categories: [""],
-      },
-    },
-    series: [
-      {
-        name: "series-1",
-        data: [totalIncome],
-      },
-      {
-        name: "series-2",
-        data: [totalExpense],
-      },
-    ],
+    options: {},
+    series: [],
+    labels: [],
   });
 
   useEffect(() => {
@@ -267,15 +280,15 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="dashboard-charts">
-            <div className="chart">
+            <div className="chart1">
               <Chart
                 options={financeChart.options}
                 series={financeChart.series}
-                type="bar"
-                width="500"
+                type="donut"
+                width="400"
               />
             </div>
-            <div className="chart">
+            <div className="chart2">
               <Chart
                 options={inventoryChart.options}
                 series={inventoryChart.series}

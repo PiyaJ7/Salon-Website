@@ -86,6 +86,10 @@
   display: flex;
 }
 
-.chart {
-  margin: 0 5%;
+.chart1 {
+  margin: 3% 10%;
+}
+
+.chart2 {
+  margin: 0 3%;
 }
