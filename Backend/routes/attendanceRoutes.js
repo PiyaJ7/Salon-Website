@@ -48,14 +48,6 @@ router.post("/add", (req, res) => {
     }
 });
 
-// router.get("/data", (req, res) => {
-//     Attendance.find()
-//         .then((items) => res.json(items))
-//         .catch((err) => {
-//             console.error(err);
-//             res.status(500).json({ error: "Error fetching data" });
-//         });
-// });
 
 router.get("/data", async (req, res) => {
     try {
@@ -68,17 +60,6 @@ router.get("/data", async (req, res) => {
 });
 
 
-// router.delete("/delete/:id", (req, res) => {
-//     Attendance.findByIdAndDelete({ _id: req.params.id })
-//         .then((doc) => {
-//             console.log(doc);
-//             res.status(200).json({ message: "Attendance deleted successfully", deletedAttendance: doc });
-//         })
-//         .catch((err) => {
-//             console.error(err);
-//             res.status(500).json({ error: "Error deleting attendance" });
-//         });
-// });
 
 router.delete("/delete/:id", async (req, res) => {
     try {
@@ -98,25 +79,7 @@ router.delete("/delete/:id", async (req, res) => {
 });
 
 
-// router.put("/update/:id", (req, res) => {
-//     Attendance.findByIdAndUpdate(
-//         { _id: req.params.id },
-//         {
-//             name: req.body.name,
-//             id: req.body.id,
-//             date: req.body.date,
-//             state: req.body.state,
-//         }
-//     )
-//         .then((doc) => {
-//             console.log(doc);
-//             res.status(200).json({ message: "Attendance updated successfully", updatedAttendance: doc });
-//         })
-//         .catch((err) => {
-//             console.error(err);
-//             res.status(500).json({ error: "Error updating attendance" });
-//         });
-// });
+
 router.put("/update/:id", async (req, res) => {
     try {
         const updatedDoc = await Attendance.findByIdAndUpdate(
