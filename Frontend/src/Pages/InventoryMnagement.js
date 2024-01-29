@@ -4,6 +4,9 @@ import Header from "../Components/Header";
 import { Link, useNavigate } from "react-router-dom";
 import Sidebar from "../Components/Sidebar";
 import axios from "axios";
+import logo from "./images/logo.png";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 
 export default function InventoryMnagement() {
   const navigate = useNavigate();
@@ -60,6 +63,71 @@ export default function InventoryMnagement() {
     return 0;
   });
 
+  const downloadPDF = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8000/api/Product/products"
+      );
+      const inventoryData = response.data;
+
+      const doc = new jsPDF();
+
+      doc.addImage(logo, "PNG", 10, 5, 40, 40);
+
+      const headerX = doc.internal.pageSize.width - 20;
+
+      doc.setFontSize(14);
+      doc.text("Salon JAYDE", headerX, 20, { align: "right" });
+
+      doc.setFontSize(12);
+      doc.text("43/8, Flower Road, Colombo 07", headerX, 27, {
+        align: "right",
+      });
+      doc.setFontSize(10);
+      doc.text("077-3526412/071-5263491", headerX, 32, {
+        align: "right",
+      });
+
+      doc.setLineWidth(0.5);
+      doc.line(8, 42, 200, 42);
+
+      doc.setFont("bold");
+      doc.setFontSize(20);
+      doc.text("Inventory Report", 80, 60);
+      doc.setFont("normal");
+
+      doc.setDrawColor(0);
+
+      const columns = [
+        { header: "ID", dataKey: "id" },
+        { header: "Name", dataKey: "name" },
+        { header: "Type", dataKey: "type" },
+        { header: "Category", dataKey: "category" },
+        { header: "Date", dataKey: "date" },
+        { header: "Remaining qty", dataKey: "remaning" },
+        { header: "Used qty", dataKey: "used" },
+        { header: "Price", dataKey: "price" },
+      ];
+
+      const rows = inventoryData.map((inventory, index) => ({
+        id: index + 1,
+        name: inventory.name,
+        type: inventory.type,
+        category: inventory.category,
+        date: inventory.date,
+        remaning: inventory.rquantity,
+        used: inventory.uquantity,
+        price: inventory.totalPrice,
+      }));
+
+      autoTable(doc, { columns, body: rows, startY: 70 });
+
+      doc.save("Inventory Report.pdf");
+    } catch (error) {
+      console.error("Error fetching or generating PDF:", error);
+    }
+  };
+
   return (
     <div>
       <Header />
@@ -76,7 +144,9 @@ export default function InventoryMnagement() {
             >
               Add new product
             </button>
-            <button className="report-button">Report</button>
+            <button onClick={downloadPDF} className="report-button">
+              Report
+            </button>
           </div>
         </div>
         <div className="inventoryManagement-body">
