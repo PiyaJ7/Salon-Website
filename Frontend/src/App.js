@@ -34,7 +34,6 @@ import UpdateSupplier from "./Pages/UpdateSupplier";
 import UpdateOrder from "./Pages/UpdateOrder";
 import UpdatePackage from "./Pages/UpdatePackage";
 import FinanceReport from "./Pages/FinanceReport";
-import AppointmentReport from "./Pages/AppointmentReport";
 
 function App() {
   return (
@@ -90,10 +89,6 @@ function App() {
           <Route
             path="/AppointmentManagement"
             element={<AppointmentManagement />}
-          ></Route>
-          <Route
-            path="/AppointmentReport"
-            element={<AppointmentReport />}
           ></Route>
           <Route
             path="/EmployeeManagement"
