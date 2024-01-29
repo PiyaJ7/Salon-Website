@@ -33,6 +33,8 @@ import UpdateEmployee from "./Pages/UpdateEmployee";
 import UpdateSupplier from "./Pages/UpdateSupplier";
 import UpdateOrder from "./Pages/UpdateOrder";
 import UpdatePackage from "./Pages/UpdatePackage";
+import FinanceReport from "./Pages/FinanceReport";
+import AppointmentReport from "./Pages/AppointmentReport";
 
 function App() {
   return (
@@ -80,6 +82,7 @@ function App() {
             element={<FinanceManagement />}
           ></Route>
           <Route path="/AddTransaction" element={<AddTransaction />}></Route>
+          <Route path="/FinanceReport" element={<FinanceReport />}></Route>
           <Route
             path="/UpdateTransactions/:id"
             element={<UpdateTransactions />}
@@ -87,6 +90,10 @@ function App() {
           <Route
             path="/AppointmentManagement"
             element={<AppointmentManagement />}
+          ></Route>
+          <Route
+            path="/AppointmentReport"
+            element={<AppointmentReport />}
           ></Route>
           <Route
             path="/EmployeeManagement"
