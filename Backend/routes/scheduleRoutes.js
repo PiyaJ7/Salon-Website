@@ -24,11 +24,6 @@ router.post("/make", async (req, res) => {
 });
 
 // Create API route for Read method in CRUD Operations
-// router.get("/schedules", (req, res) => {
-//   Schedule.find()
-//     .then((items) => res.json(items))
-//     .catch((err) => console.log(err));
-// });
 
 router.get("/schedules", async (req, res) => {
   try {
