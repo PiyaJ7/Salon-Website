@@ -61,7 +61,9 @@ export default function AttendanceDetals() {
                 <th>ID</th>
                 <th>Date</th>
                 <th>Name</th>
-                <th>Action</th>
+               
+                <th>In Time</th>
+                <th>Out Time</th>
               </tr>
             </thead>
             <tbody>
@@ -71,14 +73,9 @@ export default function AttendanceDetals() {
                     <td>{index + 1}</td>
                     <td>{attendance.date}</td>
                     <td>{attendance.name}</td>
-                    <td>
-                      <button className="service-table-edit-button">
-                        Edit
-                      </button>
-                      <button className="service-table-delete-button">
-                        Delete
-                      </button>
-                    </td>
+                    <td>{attendance.inTime}</td>
+                    <td>{attendance.outTime}</td>
+                    
                   </tr>
                 );
               })}
