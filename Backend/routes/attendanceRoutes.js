@@ -5,15 +5,13 @@ const Attendance = require('../models/attendanceModel');
 
 router.post("/create", async (req, res) => {
     try {
-        //const { date, attendan, name } = req.body;
-        const { date, name } = req.body;
-
-        //const objectId = new mongoose.Types.ObjectId(attendan);
+        const { date, name, inTime, outTime } = req.body;
 
         const attendance = new Attendance({
             date: date,
-            //attendance: objectId,
-            name: name
+            name: name,
+            inTime: inTime,
+            outTime: outTime
         });
 
         const result = await attendance.save();
@@ -24,31 +22,6 @@ router.post("/create", async (req, res) => {
     }
 });
 
-router.post("/add", (req, res) => {
-    try {
-        const { name, id, date, state } = req.body;
-
-        Attendance.create({
-            name: name,
-            id: id,
-            date: date,
-            state: state
-        })
-            .then((doc) => {
-                console.log(doc);
-                res.status(200).json({ message: "Employee added successfully", employee: doc });
-            })
-            .catch((err) => {
-                console.error(err);
-                res.status(500).json({ error: "Error adding employee" });
-            });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: "Internal server error" });
-    }
-});
-
-
 router.get("/data", async (req, res) => {
     try {
         const items = await Attendance.find();
@@ -58,8 +31,6 @@ router.get("/data", async (req, res) => {
         res.status(500).json({ error: "Error fetching data" });
     }
 });
-
-
 
 router.delete("/delete/:id", async (req, res) => {
     try {
@@ -78,17 +49,15 @@ router.delete("/delete/:id", async (req, res) => {
     }
 });
 
-
-
 router.put("/update/:id", async (req, res) => {
     try {
         const updatedDoc = await Attendance.findByIdAndUpdate(
             req.params.id,
             {
                 name: req.body.name,
-                id: req.body.id,
                 date: req.body.date,
-                state: req.body.state,
+                inTime: req.body.inTime,
+                outTime: req.body.outTime,
             },
             { new: true } // To return the updated document
         );
@@ -111,7 +80,7 @@ router.post('/get/daily', async (req, res) => {
         const { date } = req.body;
         console.log(date);
 
-        const data = await Attendance.find({ date: date }).populate("attendance", "name");
+        const data = await Attendance.find({ date: date });
         res.status(200).json(data);
     } catch (err) {
         console.error(err);
