@@ -81,8 +81,10 @@ export default function AppointmentManagement() {
       doc.setLineWidth(0.5);
       doc.line(8, 42, 200, 42);
 
+      doc.setFont("bold");
       doc.setFontSize(20);
       doc.text("Appointment Details", 80, 60);
+      doc.setFont("normal");
 
       doc.setDrawColor(0);
 
