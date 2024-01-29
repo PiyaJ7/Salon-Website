@@ -124,14 +124,13 @@ export default function PackageManagement() {
         startY += 90;
       }
 
-      // Check if it's time to start a new page
       if ((index + 1) % 4 === 0 && index !== packages.length - 1) {
         addFooter(pageNum);
         doc.addPage();
         addHeader();
         pageNum += 1;
         startX = 10;
-        startY = 70; // Adjust the starting Y coordinate for the new page
+        startY = 70;
       }
     });
 
