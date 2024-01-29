@@ -28,6 +28,11 @@ export default function Sidebar() {
   };
 
   const clickScheduleManagement = () => {
+    navigate("/ScheduleManagement");
+    hideSidebar();
+  };
+
+  const clickAttendanceManagement = () => {
     navigate("/AttendanceDetals");
     hideSidebar();
   };
@@ -86,6 +91,9 @@ export default function Sidebar() {
           </div>
           <div onClick={clickScheduleManagement} className="dashboard-item">
             Schedule Management
+          </div>
+          <div onClick={clickAttendanceManagement} className="dashboard-item">
+            Attendance Management
           </div>
           <div onClick={clickInventoryManagement} className="dashboard-item">
             Inventory Management

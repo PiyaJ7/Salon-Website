@@ -171,7 +171,14 @@ export default function Dashboard() {
   useEffect(() => {
     setInventoryChart({
       options: {
-        colors: ["#2E93fA", "#66DA26", "#546E7A", "#E91E63", "#FF9800"],
+        colors: [
+          "#2E93fA",
+          "#66DA26",
+          "#546E7A",
+          "#E91E63",
+          "#FF9800",
+          "#f0e802",
+        ],
         chart: {
           id: "basic-bar",
         },
