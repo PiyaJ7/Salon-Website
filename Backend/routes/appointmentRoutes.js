@@ -3,18 +3,7 @@ const router = express.Router();
 const Appointment = require("../models/appointmentModel");
 
 // Create API route for Create method in CRUD Operations
-// router.post("/make", (req, res) => {
-//     Appointment.create({
-//         name: req.body.name,
-//         contact: req.body.contact,
-//         email: req.body.email,
-//         date: req.body.date,
-//         time: req.body.time,
-//         service: req.body.service
-//     })
-//         .then((doc) => console.log(doc))
-//         .catch((err) => console.log(err));
-// });
+
 router.post("/make", async (req, res) => {
   try {
     const newAppointment = await Appointment.create({
@@ -63,18 +52,6 @@ router.post("/make2", async (req, res) => {
 
 //Create API route for Read method in CRUD Operations
 
-// router.get("/appointments", (req, res) => {
-//     Appointment.find()
-//         .then((items) => res.json(items))
-//         .catch((err) => console.log(err));
-// });
-
-// router.get("/appointment/:id", (req, res) => {
-//     Appointment.findById(
-//         { _id: req.params.id })
-//         .then((items) => res.json(items))
-//         .catch((err) => console.log(err));
-// });
 router.get("/appointments", async (req, res) => {
   try {
     const appointments = await Appointment.find();
@@ -111,12 +88,7 @@ router.get("/appointment/:id", async (req, res) => {
 // });
 
 // Create API route for Delete method in CRUD Operations
-// router.delete("/delete/:id", (req, res) => {
-//     //create route for delete
-//     Appointment.findByIdAndDelete({ _id: req.params.id })
-//         .then((doc) => console.log(doc))
-//         .catch((err) => console.log(err));
-// });
+
 router.delete("/delete/:id", async (req, res) => {
   try {
     const deletedAppointment = await Appointment.findByIdAndDelete({
@@ -131,22 +103,6 @@ router.delete("/delete/:id", async (req, res) => {
 });
 
 // Create API route for Update method in CRUD Operations
-// router.put("/update/:id", (req, res) => {
-//     Appointment.findByIdAndUpdate(
-//         { _id: req.params.id },
-//         {
-//             name: req.body.name,
-//             contact: req.body.contact,
-//             email: req.body.email,
-//             date: req.body.date,
-//             time: req.body.time,
-//             service: req.body.service,
-//         }
-//     )
-//         .then((doc) => console.log(doc))
-//         .catch((err) => console.log(err));
-
-// });
 
 router.put("/update/:id", async (req, res) => {
   try {
