@@ -9,6 +9,8 @@ import autoTable from "jspdf-autotable";
 
 export default function AttendanceDetals() {
   const [attendance, setAttendance] = useState([]);
+  const [sortCriteria, setSortCriteria] = useState(null);
+  const [sortOrder, setSortOrder] = useState("asc");
 
   useEffect(() => {
     axios
@@ -16,6 +18,24 @@ export default function AttendanceDetals() {
       .then((items) => setAttendance(items.data))
       .catch((err) => console.log(err));
   }, []);
+
+  const handleSort = (criteria) => {
+    if (sortCriteria === criteria) {
+      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
+    } else {
+      setSortCriteria(criteria);
+      setSortOrder("asc");
+    }
+  };
+
+  const sortedAttendance = [...attendance].sort((a, b) => {
+    if (sortCriteria === "date") {
+      return sortOrder === "asc"
+        ? a.date.localeCompare(b.date)
+        : b.date.localeCompare(a.date);
+    }
+    return 0;
+  });
 
   const calculateWorkingHours = (timeIn, timeOut) => {
     const [hoursIn, minutesIn, ampmIn] = timeIn
@@ -126,7 +146,12 @@ export default function AttendanceDetals() {
         </div>
         <div className="attendanceDetals-body">
           <div className="sort-button">
-            <button className="sort-by-date-button">Sort by date</button>
+            <button
+              onClick={() => handleSort("date")}
+              className="sort-by-date-button"
+            >
+              Sort by date
+            </button>
           </div>
           <table>
             <thead>
@@ -140,7 +165,7 @@ export default function AttendanceDetals() {
               </tr>
             </thead>
             <tbody>
-              {attendance.map((attendance, index) => {
+              {sortedAttendance.map((attendance, index) => {
                 const workingHours = calculateWorkingHours(
                   attendance.inTime,
                   attendance.outTime
